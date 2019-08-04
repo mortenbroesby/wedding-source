@@ -5,6 +5,8 @@ import { Component } from "vue-property-decorator";
 import { router } from "./router";
 import { $store, RootState } from "./store";
 
+import { localisationService, i18n, formatMessage } from "./services/localisation.service";
+
 // Setup logger
 const logLevel = Logger.DEBUG;
 Logger.useDefaults();
@@ -23,6 +25,9 @@ import Home from "./layouts/home";
 
 // Import styles
 import "./App.scss";
+
+// Call localisation service init before Vue is loaded
+localisationService.initBeforeApplicationLoad();
 
 /*************************************************/
 /* APPLICATION SETUP  */
@@ -63,7 +68,18 @@ function initialiseApplication() {
     /*************************************************/
     /* METHODS */
     /*************************************************/
+    /**
+     * Rooted translate function.
+     * @param key - The key in the locale file
+     * @param payload - pass through data which should be compiled at runtime
+     */
+    public translate(key: any, payload?: any) {
+      return i18n.t(key, payload);
+    }
+
     initialiseApplication() {
+      localisationService.initAfterApplicationLoad("en");
+
       // Simulate load to API.
       $store.dispatch("setSpinner", true);
       $store.dispatch("initialise").then(() => {
@@ -73,7 +89,7 @@ function initialiseApplication() {
     }
   }
 
-  new Application().$mount("#app");
+  new Application({ i18n }).$mount("#app");
 }
 
 /*************************************************/
