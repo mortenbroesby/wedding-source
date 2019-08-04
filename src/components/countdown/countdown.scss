@@ -6,6 +6,8 @@
   align-items: center;
   justify-content: center;
 
+  padding: 26px 0;
+
   &__element {
     width: 100%;
 
@@ -14,13 +16,47 @@
 
       &__text {
         width: 100%;
-        text-align: center;
+        padding: 10px 0;
+
         font-size: 30px;
+        font-family: 'Satisfy', cursive;
+        text-align: center;
       }
     }
   }
 }
 
+@media (min-width: 600px) {
+  .countdown {
+    padding: 26px 0;
+
+    &__element {
+      display: flex;
+      width: auto;
+
+      flex-direction: column;
+      justify-content: center;
+
+      &__section {
+        display: flex;
+        width: auto;
+
+        &:not(:last-child) {
+          margin-right: 6px;
+        }
+
+        &__text {
+          width: auto;
+          min-width: 200px;
+
+          &:not(:last-child) {
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+  }
+}
 
 @media (min-width: 800px) {
   .countdown {
@@ -30,6 +66,8 @@
       display: flex;
       width: auto;
 
+      flex-direction: row;
+      
       &__section {
         display: flex;
         width: auto;
