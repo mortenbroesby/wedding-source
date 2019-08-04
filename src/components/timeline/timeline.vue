@@ -10,8 +10,8 @@
           <div class="timeline__content__item__image__asset" :style="{ backgroundImage: `url('${item.image}')` }"></div>
         </div>
         <div class="timeline__content__item__text">
-          <div class="timeline__content__item__title">{{ item.title }}</div>
-          <div class="timeline__content__item__description" v-html="item.description"></div>
+          <div class="timeline__content__item__text__title">{{ item.title }}</div>
+          <div class="timeline__content__item__text__description" v-html="item.description"></div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-.timeline {
+.information {
   position: relative;
 
   display: flex;
@@ -6,46 +6,30 @@
   min-height: 100vh;
   height: auto;
   
-  background-color: rgb(6, 18, 124);
+  background-color: white;
 }
 
-.timeline__content {
+.information__content {
   width: 100%;
   min-height: 100vh;
   height: auto;
+
+  padding-top: 60px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  padding-top: 80px;
-  padding-bottom: 60px;
 }
 
-.timeline__content__header {
-  flex: 1 100%;
-
-  width: 100%;
-  text-align: center;
-  padding-bottom: 30px;
-
-  &__title {
-    color: white;
-    font-size: 40px;
-    text-shadow: 1px 1px 1px #000;
-    font-family: 'Satisfy', cursive;
-  }
-}
-
-.timeline__content__item {
+.information__content__item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   position: relative;
-  color: white;
+  color: black;
 
   &:not(last-item) {
     padding: 30px;
@@ -53,22 +37,21 @@
 }
 
 @media (min-width: 600px) {
-  .timeline__content__item {
+  .information__content__item {
     flex-direction: row;
     align-items: start;
     justify-content: start;
   }
 }
 
-.timeline__content__item__image {
+.information__content__item__image {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 300px;
 
   &__asset {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 400px;
+    height: 300px;
 
     background-position: center center;
     background-repeat: no-repeat;
@@ -77,13 +60,11 @@
   }
 }
 
-.timeline__content__item__text {
+.information__content__item__text {
   padding-top: 20px;
 
   &__title {
-    color: white;
     font-size: 30px;
-    text-shadow: 1px 1px 1px #000;
     font-family: 'Satisfy', cursive;
     padding-bottom: 20px;
   }
@@ -94,17 +75,7 @@
 }
 
 @media (min-width: 600px) {
-  .timeline__content__item__text {
+  .information__content__item__text {
     padding-left: 60px;
-  }
-}
-
-@media (min-width: 800px) {
-  .timeline {
-    &__content {
-      &__item {
-        max-width: 800px;
-      }
-    }
   }
 }

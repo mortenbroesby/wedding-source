@@ -7,6 +7,7 @@ import { $store } from "../../store";
 import Cover from "../../components/cover";
 import Countdown from "../../components/countdown";
 import Timeline from "../../components/timeline";
+import Information from "../../components/information";
 
 import template from "./home.vue";
 import "./home.scss";
@@ -17,8 +18,7 @@ import "./home.scss";
     Cover,
     Countdown,
     Timeline,
+    Information,
   }
 })
-export default class Home extends mixins(StoreMixin)  {
-
-}
+export default class Home extends mixins(StoreMixin) {}

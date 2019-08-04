@@ -3,5 +3,6 @@
     <cover></cover>
     <countdown></countdown>
     <timeline></timeline>
+    <information></information>
   </div>
 </template>
