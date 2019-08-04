@@ -1,8 +1,6 @@
 import Vue from "vue";
 import * as Vuex from "vuex";
 
-import { setItem, getItem, removeItem } from "../utilities";
-
 Vue.use(Vuex);
 
 type Mutations = typeof mutations;

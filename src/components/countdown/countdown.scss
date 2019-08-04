@@ -1,0 +1,13 @@
+.countdown {
+  position: relative;
+
+  &__element {
+    &__text {
+      display: inline-block;
+
+      &:not(:last-child) {
+        margin-right: 6px;
+      }
+    }
+  }
+}

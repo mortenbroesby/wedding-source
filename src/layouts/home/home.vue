@@ -1,5 +1,6 @@
 <template>
   <div id="home" class="home">
-    Home
+    <countdown>
+    </countdown>
   </div>
 </template>

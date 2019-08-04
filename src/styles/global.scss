@@ -3,7 +3,7 @@ $font-family-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, He
 $font-family-global: Roboto, $font-family-fallback;
 
 $colors: (
-  'background':     rgba(233, 233, 233, 1),
+  'background':     rgba(255, 255, 255, 1),
   'grey':           rgba(33, 33, 33, 0.2),
   'dark-grey':           rgba(33, 33, 33, 0.8),
   'black':          rgba(0, 0, 0, 1),
@@ -109,7 +109,7 @@ button:focus {
 }
 
 button:focus {
-  outline: 1px solid #color('white');
+  outline: 1px solid color('white');
   outline-offset: -4px;
 }
 
