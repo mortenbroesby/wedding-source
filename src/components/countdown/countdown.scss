@@ -1,12 +1,51 @@
 .countdown {
   position: relative;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &__element {
-    &__text {
-      display: inline-block;
+    width: 100%;
 
-      &:not(:last-child) {
-        margin-right: 6px;
+    &__section {
+      width: 100%;
+
+      &__text {
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 800px) {
+  .countdown {
+    padding: 26px 0;
+
+    &__element {
+      display: flex;
+      width: auto;
+
+      &__section {
+        display: flex;
+        width: auto;
+
+        &:not(:last-child) {
+          margin-right: 6px;
+        }
+
+        &__text {
+          width: auto;
+          min-width: 200px;
+
+          &:not(:last-child) {
+            margin-right: 6px;
+          }
+        }
       }
     }
   }
