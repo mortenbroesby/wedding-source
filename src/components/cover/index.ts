@@ -8,6 +8,4 @@ import "./cover.scss";
   mixins: [template],
   components: {}
 })
-export default class Cover extends Vue {
-  
-}
+export default class Cover extends Vue {}

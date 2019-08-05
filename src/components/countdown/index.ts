@@ -47,7 +47,7 @@ export default class Countdown extends Vue {
       const todaysDate = moment();
 
       const diff = eventDate.diff(todaysDate);
-      const timeLeft = moment.duration(diff)
+      const timeLeft = moment.duration(diff);
 
       this.daysLeft = eventDate.diff(todaysDate, "days");
       this.hoursLeft = timeLeft.hours();
@@ -64,7 +64,7 @@ export default class Countdown extends Vue {
   setupCountdownInterval() {
     this.countdown();
 
-    var intervalSeconds = 1;
+    const intervalSeconds = 1;
     this.countdownInterval = setInterval(() => {
       this.countdown();
     }, intervalSeconds * 1000);
