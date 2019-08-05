@@ -124,11 +124,11 @@ class LocalisationService {
   private getOptions(language: string): LanguageOptions {
     const langConfig = this.getLangConfig(language) || this.getLangConfig(this.defaultLanguage);
 
-    const en = require(`./locale/en.json`)
-    const fr = require(`./locale/fr.json`)
-    const dk = require(`./locale/dk.json`)
+    const en = require(`./locale/en.json`);
+    const fr = require(`./locale/fr.json`);
+    const dk = require(`./locale/dk.json`);
 
-    const json = require(`./locale/${language}.json`)
+    const json = require(`./locale/${language}.json`);
 
     return {
       language: langConfig.culture,
