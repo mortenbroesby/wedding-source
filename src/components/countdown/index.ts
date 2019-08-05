@@ -36,7 +36,7 @@ export default class Countdown extends Vue {
   /* METHODS */
   /*************************************************/
   countdown() {
-    const eventTimeUnix = 1584801000; // Sat, 21 Mar 2020 14: 30: 00 + 0000 
+    const eventTimeUnix = 1584801000; // Sat, 21 Mar 2020 14: 30: 00 + 0000
     const currentTimeUnix = Math.floor(Date.now() / 1000);
 
     const diffTime = eventTimeUnix - currentTimeUnix;
