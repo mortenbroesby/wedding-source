@@ -67,7 +67,9 @@
       color: white;
       font-size: 60px;
       text-shadow: 1px 1px 1px #000;
-      font-family: 'Satisfy', cursive;
+      font-family: "Alex Brush", cursive;
+
+      padding-bottom: 20px;
     }
 
     &__description {
@@ -76,7 +78,7 @@
       color: white;
       font-size: 30px;
       text-shadow: 1px 1px 1px #000;
-      font-family: 'Caveat', cursive;
+      font-family: "Satisfy", cursive;
     }
   }
 }
