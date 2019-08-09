@@ -5,7 +5,6 @@ import template from "./cover.vue";
 import "./cover.scss";
 
 @Component({
-  mixins: [template],
-  components: {}
+  mixins: [template]
 })
 export default class Cover extends Vue {}

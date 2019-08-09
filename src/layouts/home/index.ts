@@ -1,8 +1,7 @@
 import { mixins } from "vue-class-component";
-import { Component, Watch } from "vue-property-decorator";
+import { Component } from "vue-property-decorator";
 
 import StoreMixin from "../../mixins/store.mixin";
-import { $store } from "../../store";
 
 import Cover from "../../components/cover";
 import CoupleIntro from "../../components/couple-intro";

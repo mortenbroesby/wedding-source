@@ -5,7 +5,7 @@
   flex-direction: column;
   min-height: 100vh;
   height: auto;
-  
+
   background-color: white;
 }
 
@@ -36,14 +36,6 @@
   }
 }
 
-@media (min-width: 600px) {
-  .information__content__item {
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
-  }
-}
-
 .information__content__item__image {
   position: relative;
   width: 400px;
@@ -71,6 +63,14 @@
 
   &__description {
     position: relative;
+  }
+}
+
+@media (min-width: 600px) {
+  .information__content__item {
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
   }
 }
 

@@ -6,8 +6,7 @@ import template from "./countdown.vue";
 import "./countdown.scss";
 
 @Component({
-  mixins: [template],
-  components: {}
+  mixins: [template]
 })
 export default class Countdown extends Vue {
   /*************************************************/

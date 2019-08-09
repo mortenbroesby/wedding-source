@@ -5,7 +5,6 @@ import template from "./couple-intro.vue";
 import "./couple-intro.scss";
 
 @Component({
-  mixins: [template],
-  components: {}
+  mixins: [template]
 })
 export default class CoupleIntro extends Vue {}

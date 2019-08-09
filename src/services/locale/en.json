@@ -2,5 +2,12 @@
   "cover": {
     "title": "Joséphine & Morten",
     "description": "Getting Married March 21, 2020 — Amsterdam, Holland"
+  },
+
+  "countdown": {
+    "days": "{daysLeft} days",
+    "hours": "{hoursLeft} hours",
+    "minutes": "{minutesLeft} minutes",
+    "seconds": "{secondsLeft} seconds"
   }
 }

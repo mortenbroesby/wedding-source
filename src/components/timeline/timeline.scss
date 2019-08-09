@@ -5,7 +5,7 @@
   flex-direction: column;
   min-height: 100vh;
   height: auto;
-  
+
   background-color: rgb(6, 18, 124);
 }
 
@@ -52,14 +52,6 @@
   }
 }
 
-@media (min-width: 600px) {
-  .timeline__content__item {
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
-  }
-}
-
 .timeline__content__item__image {
   position: relative;
   width: 200px;
@@ -94,17 +86,21 @@
 }
 
 @media (min-width: 600px) {
+  .timeline__content__item {
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+  }
+}
+
+@media (min-width: 600px) {
   .timeline__content__item__text {
     padding-left: 60px;
   }
 }
 
 @media (min-width: 800px) {
-  .timeline {
-    &__content {
-      &__item {
-        max-width: 800px;
-      }
-    }
+  .timeline__content__item {
+    max-width: 800px;
   }
 }
