@@ -5,6 +5,7 @@ import StoreMixin from "../../mixins/store.mixin";
 import { $store } from "../../store";
 
 import Cover from "../../components/cover";
+import CoupleIntro from "../../components/couple-intro";
 import Countdown from "../../components/countdown";
 import Timeline from "../../components/timeline";
 import Information from "../../components/information";
@@ -16,6 +17,7 @@ import "./home.scss";
   mixins: [template],
   components: {
     Cover,
+    CoupleIntro,
     Countdown,
     Timeline,
     Information,

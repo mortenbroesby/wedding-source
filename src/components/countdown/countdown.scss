@@ -8,52 +8,53 @@
 
   padding: 26px 0;
 
-  &__element {
-    width: 100%;
+  background: #ecf2f0;
+}
 
-    &__section {
-      width: 100%;
+.countdown__element {
+  width: 100%;
+}
 
-      &__text {
-        width: 100%;
-        padding: 10px 0;
+.countdown__element__section {
+  width: 100%;
+}
 
-        font-size: 30px;
-        font-family: 'Satisfy', cursive;
-        text-align: center;
-      }
-    }
-  }
+.countdown__element__section__text {
+  width: 100%;
+  padding: 10px 0;
+
+  font-size: 30px;
+  font-family: 'Satisfy', cursive;
+  text-align: center;
 }
 
 @media (min-width: 600px) {
   .countdown {
     padding: 26px 0;
+  }
 
-    &__element {
-      width: auto;
+  .countdown__element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+  }
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+  .countdown__element__section {
+    display: flex;
+    width: auto;
 
-      &__section {
-        display: flex;
-        width: auto;
+    &:not(:last-child) {
+      margin-right: 6px;
+    }
+  }
 
-        &:not(:last-child) {
-          margin-right: 6px;
-        }
+  .countdown__element__section__text {
+    width: auto;
+    min-width: 200px;
 
-        &__text {
-          width: auto;
-          min-width: 200px;
-
-          &:not(:last-child) {
-            margin-right: 6px;
-          }
-        }
-      }
+    &:not(:last-child) {
+      margin-right: 6px;
     }
   }
 }
@@ -61,30 +62,29 @@
 @media (min-width: 800px) {
   .countdown {
     padding: 26px 0;
+  }
 
-    &__element {
-      display: flex;
-      width: auto;
+  .countdown__element {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
 
-      flex-direction: row;
-      
-      &__section {
-        display: flex;
-        width: auto;
+  .countdown__element__section {
+    display: flex;
+    width: auto;
 
-        &:not(:last-child) {
-          margin-right: 6px;
-        }
+    &:not(:last-child) {
+      margin-right: 6px;
+    }
+  }
 
-        &__text {
-          width: auto;
-          min-width: 200px;
+  .countdown__element__section__text {
+    width: auto;
+    min-width: 200px;
 
-          &:not(:last-child) {
-            margin-right: 6px;
-          }
-        }
-      }
+    &:not(:last-child) {
+      margin-right: 6px;
     }
   }
 }
