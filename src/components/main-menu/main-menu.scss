@@ -1,0 +1,81 @@
+@import "../../styles/global.scss";
+
+.main-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  @include z-index(menu);
+}
+
+.main-menu__bar {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+
+  background-color: white;
+
+  width: 100%;
+  height: 61px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.main-menu__bar__hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 60px;
+  width: 60px;
+
+  background-color: white;
+
+  -webkit-transition: background-color 330ms linear;
+  -ms-transition: background-color 330ms linear;
+  transition: background-color 330ms linear;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.main-menu__overlay {
+  position: fixed;
+  z-index: 100;
+  background: rgba(255, 255, 255, 1);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s, visibility .35s;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &.visible {
+    opacity: 0.8;
+    visibility: visible;
+    -webkit-animation: perspective 0.5s cubic-bezier(0.58, 0.27, 0.81, 0.57) forwards;
+            animation: perspective 0.5s cubic-bezier(0.58, 0.27, 0.81, 0.57) forwards;
+  }
+}
+
+.main-menu__overlay__item {
+
+}
+
+@media (min-width: 700px) {
+  .main-menu__bar__hamburger,
+  .main-menu__overlay {
+    display: none !important;
+  }
+}

@@ -3,6 +3,7 @@ import { Component } from "vue-property-decorator";
 
 import StoreMixin from "../../mixins/store.mixin";
 
+import MainMenu from "../../components/main-menu";
 import Cover from "../../components/cover";
 import CoupleIntro from "../../components/couple-intro";
 import Countdown from "../../components/countdown";
@@ -15,6 +16,7 @@ import "./home.scss";
 @Component({
   mixins: [template],
   components: {
+    MainMenu,
     Cover,
     CoupleIntro,
     Countdown,
