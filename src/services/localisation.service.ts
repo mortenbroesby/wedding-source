@@ -24,17 +24,10 @@ interface LanguageConfig {
 class LocalisationService {
   defaultLanguage = config.defaultLanguage;
   activeLanguage = "";
-  useSystemLocale: boolean = false;
+  useSystemLocale: boolean = true;
 
   initBeforeApplicationLoad(): void {
-    const language = String(this.getFromStorage() || this.defaultLanguage);
-    const options: any = this.getOptions(language);
-
-    this.activeLanguage = language;
-
-    i18n.locale = language;
-
-    i18n.setLocaleMessage(language, options.messages);
+    this.setLanguage(`${this.getFromStorage()}`, false);
   }
 
   initAfterApplicationLoad(locale: string): void {
@@ -45,8 +38,7 @@ class LocalisationService {
     }
 
     let systemLanguage = getItem("systemLanguage");
-
-    if (!systemLanguage || systemLanguage != language) {
+    if (!systemLanguage || systemLanguage !== language) {
       setItem("systemLanguage", language);
       systemLanguage = language;
     }
@@ -62,6 +54,7 @@ class LocalisationService {
     if (this.exists(language) && language !== this.activeLanguage) {
       const options: any = this.getOptions(language);
       this.activeLanguage = language;
+
       if (isUserPreference) {
         setItem("userLanguage", language);
       }
@@ -100,7 +93,7 @@ class LocalisationService {
   }
 
   public translateManual(key: string, payload?: any): string {
-    const messages = this.getOptions(this.activeLanguage).messages;
+    const messages = this.getOptions(this.activeLanguage || this.defaultLanguage).messages;
     let text = this.getObjectProperty(messages, key);
     if (payload) {
       for (const id in payload) {
@@ -115,18 +108,19 @@ class LocalisationService {
     const systemLanguage = getItem("systemLanguage");
 
     if (this.useSystemLocale) {
-      return userLanguage ? userLanguage : systemLanguage ? systemLanguage : this.defaultLanguage;
+      return userLanguage || systemLanguage || this.defaultLanguage;
     } else {
-      return userLanguage ? userLanguage : this.defaultLanguage;
+      return userLanguage || this.defaultLanguage;
     }
   }
 
   private getOptions(language: string): LanguageOptions {
-    const langConfig = this.getLangConfig(language) || this.getLangConfig(this.defaultLanguage);
+    const langConfig = this.getLangConfig(language);
 
+    // @TODO: Fix hardcoded import
     const en = require(`./locale/en.json`);
-    const fr = require(`./locale/fr.json`);
-    const dk = require(`./locale/dk.json`);
+    // const fr = require(`./locale/fr.json`);
+    // const dk = require(`./locale/dk.json`);
 
     const json = require(`./locale/${language}.json`);
 

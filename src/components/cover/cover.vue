@@ -5,8 +5,8 @@
 
     <div class="cover__content">
       <div class="cover__content__metadata">
-        <h1 class="cover__content__metadata__title">Joséphine & Morten</h1>
-        <h3 class="cover__content__metadata__description">Getting Married March 21, 2020 — Amsterdam, Holland</h3>
+        <h1 class="cover__content__metadata__title">{{ $t("cover.title") }}</h1>
+        <h3 class="cover__content__metadata__description">{{ $t("cover.description") }}</h3>
       </div>
     </div>
   </div>

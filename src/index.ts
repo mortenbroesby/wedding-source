@@ -1,11 +1,17 @@
 import Logger from "js-logger";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
+import config from "./config";
 
 import { router } from "./router";
 import { $store, RootState } from "./store";
 
-import { localisationService, i18n, formatMessage } from "./services/localisation.service";
+import {
+  i18n,
+  localisationService,
+} from "./services/localisation.service";
+
+import { getUserLocale } from "get-user-locale";
 
 // Setup logger
 const logLevel = Logger.DEBUG;
@@ -40,7 +46,7 @@ function initialiseApplication() {
     components: {
       Spinner,
       Home,
-    },
+    }
   })
   class Application extends Vue {
     /*************************************************/
@@ -68,6 +74,31 @@ function initialiseApplication() {
     /*************************************************/
     /* METHODS */
     /*************************************************/
+    initialiseApplication() {
+      this.setUserLocale();
+
+      // Simulate load to API.
+      $store.dispatch("setSpinner", true);
+      $store.dispatch("initialise").then(() => {
+        Logger.info("Application initialised.");
+        setTimeout(() => {
+          $store.dispatch("setSpinner", false);
+        }, 1000);
+      });
+    }
+
+    setUserLocale() {
+      let locale = config.languages[config.defaultLanguage].culture;
+
+      try {
+        locale = getUserLocale();
+      } catch (error) {
+        Logger.error("Error getting user locale");
+      }
+
+      localisationService.initAfterApplicationLoad(locale);
+    }
+
     /**
      * Rooted translate function.
      * @param key - The key in the locale file
@@ -75,17 +106,6 @@ function initialiseApplication() {
      */
     public translate(key: any, payload?: any) {
       return i18n.t(key, payload);
-    }
-
-    initialiseApplication() {
-      localisationService.initAfterApplicationLoad("en");
-
-      // Simulate load to API.
-      $store.dispatch("setSpinner", true);
-      $store.dispatch("initialise").then(() => {
-        Logger.info("Application initialised.");
-        $store.dispatch("setSpinner", false);
-      });
     }
   }
 

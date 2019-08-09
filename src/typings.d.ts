@@ -7,3 +7,7 @@ declare module "*.json" {
   const value: any;
   export default value;
 }
+
+declare module "get-user-locale" {
+  const getUserLocale: any;
+}
