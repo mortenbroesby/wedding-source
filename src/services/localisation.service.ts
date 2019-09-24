@@ -1,3 +1,4 @@
+import Logger from "js-logger";
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 import config from "../config";
@@ -21,17 +22,6 @@ interface LanguageConfig {
   culture: string;
   currency: string;
 }
-
-export const defaultLanguage = config.defaultLanguage;
-
-export const defaultLocale = () => {
-  const defaultLanguage = _.find(config.languages, (language: any, key: string) => key === config.defaultLanguage);
-  if (defaultLanguage) {
-    return defaultLanguage.locale;
-  }
-
-  return "en-US";
-};
 
 class LocalisationService {
   defaultLanguage = config.defaultLanguage;
@@ -126,19 +116,22 @@ class LocalisationService {
     }
   }
 
+  loadJSON(language: string) {
+    if (language === "dk") {
+      return require(`./locale/dk.json`);
+    } else if (language === "fr") {
+      return require(`./locale/fr.json`);
+    }
+
+    return require(`./locale/en.json`);
+  }
+
   private getOptions(language: string): LanguageOptions {
     const langConfig = this.getLangConfig(language);
 
-    // @TODO: Fix hardcoded import
-    const en = require(`./locale/en.json`);
-    // const fr = require(`./locale/fr.json`);
-    // const dk = require(`./locale/dk.json`);
-
-    const json = require(`./locale/${language}.json`);
-
     return {
       language: langConfig.culture,
-      messages: json
+      messages: this.loadJSON(language)
     };
   }
 }
@@ -146,3 +139,14 @@ class LocalisationService {
 export let localisationService = new LocalisationService();
 
 export const formatMessage = (key: string, payload?: any) => String(i18n.t(key, payload));
+
+export const defaultLanguage = config.defaultLanguage;
+
+export const defaultLocale = () => {
+  const defaultLanguage = _.find(config.languages, (language: any, key: string) => key === config.defaultLanguage);
+  if (defaultLanguage) {
+    return defaultLanguage.locale;
+  }
+
+  return "en-US";
+};
