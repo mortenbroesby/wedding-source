@@ -4,18 +4,21 @@
       <h1 class="rsvp-form__content__title">RSVP</h1>
 
       <div class="rsvp-form__content__userData">
-        <input type="text" name="name" v-model="name" placeholder="Name" />
-        <input type="text" name="email" v-model="email" placeholder="Email" />
+        <input type="text" name="name" v-model="formData.name" placeholder="Name" />
+        <input type="text" name="email" v-model="formData.email" placeholder="Email" />
       </div>
 
       <div class="rsvp-form__content__isAttending">
-        Attending? <input type="checkbox" v-model="isAttending">
+        Attending? <input type="checkbox" v-model="formData.isAttending">
       </div>
 
-      Song suggestions
-      <textarea v-model="songSuggestions"></textarea>
+      <p>Song suggestions</p>
+      <textarea v-model="formData.songSuggestions"></textarea>
 
-      <button class="sendButton" @click="sendForm">SEND</button>
+      <div>
+        <button class="sendButton" @click="sendForm">SEND</button>
+        <button class="clearButton" @click="clearForm">CLEAR</button>
+      </div>
     </div>
   </div>
 </template>

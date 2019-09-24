@@ -14,17 +14,18 @@ export default class RSVPForm extends Vue {
   /*************************************************/
   /* PROPERTIES */
   /*************************************************/
-  name: string = "";
-  email: string = "";
-
-  isAttending: boolean = false;
-  songSuggestions: string = "";
+  formData = {
+    name: "",
+    email: "",
+    isAttending: false,
+    songSuggestions: "",
+  };
 
   /*************************************************/
   /* COMPUTED'S */
   /*************************************************/
   attending(): string {
-    return this.isAttending ? "yes" : "no";
+    return this.formData.isAttending ? "yes" : "no";
   }
 
   /*************************************************/
@@ -32,15 +33,24 @@ export default class RSVPForm extends Vue {
   /*************************************************/
   sendForm() {
     const data = {
-      name: this.name,
-      email: this.email,
-      attending: this.isAttending ? "yes" : "no",
-      songSuggestions: this.songSuggestions,
+      name: this.formData.name,
+      email: this.formData.email,
+      attending: this.formData.isAttending ? "yes" : "no",
+      songSuggestions: this.formData.songSuggestions,
     };
 
     db.collection("rsvp").doc().set(data).then(() => {
-      Logger.info("RSVP successfully sent! - data: ", data);
       alert("Success sending RSVP");
+      this.clearForm();
     });
+  }
+
+  clearForm() {
+    this.formData = {
+      name: "",
+      email: "",
+      isAttending: false,
+      songSuggestions: "",
+    };
   }
 }
