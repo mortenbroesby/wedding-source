@@ -120,8 +120,16 @@ function migrateStoredData(storageItem: StorageItem) {
 /*************************************************/
 /* UTILITY FUNCTIONS */
 /*************************************************/
-export function stringIsEmpty(string: string) {
+export function isEmptyString(string: string) {
   return (!string || 0 === string.length);
+}
+
+export function isNonEmptyString(str: string) {
+  return !isEmptyString(str);
+}
+
+export function isDefined(value: any): boolean {
+  return typeof value !== "undefined";
 }
 
 export function stringHasUpperCase(string: string) {

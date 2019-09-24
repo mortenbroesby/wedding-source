@@ -1,23 +1,40 @@
 <template>
   <div class="rsvp-form">
-    <div class="rsvp-form__content">
-      <h1 class="rsvp-form__content__title">RSVP</h1>
+    <div class="content">
+      <h1 class="title">RSVP</h1>
 
-      <div class="rsvp-form__content__userData">
-        <input type="text" name="name" v-model="formData.name" placeholder="Name" />
-        <input type="text" name="email" v-model="formData.email" placeholder="Email" />
+      <div class="userData">
+        <div class="inputContainer">
+          <p>Name</p>
+          <input class="input" type="text" name="name" v-model="formData.name" placeholder="" />
+        </div>
+        <div class="inputContainer">
+          <p>Email</p>
+          <input class="input" type="text" name="email" v-model="formData.email" placeholder="" />
+        </div>
       </div>
 
-      <div class="rsvp-form__content__isAttending">
-        Attending? <input type="checkbox" v-model="formData.isAttending">
+      <div class="isAttending">
+        <p class="isAttending__label">Are you attending?</p>
+        <select v-model="formData.isAttending">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
 
-      <p>Song suggestions</p>
-      <textarea v-model="formData.songSuggestions"></textarea>
+      <div class="bigField">
+        <p class="bigField__label">Song suggestions</p>
+        <textarea v-model="formData.songSuggestions"></textarea>
+      </div>
+
+      <div class="bigField">
+        <p class="bigField__label">Diet restrictions</p>
+        <textarea v-model="formData.dietRestrictions"></textarea>
+      </div>
 
       <div>
-        <button class="sendButton" @click="sendForm">SEND</button>
-        <button class="clearButton" @click="clearForm">CLEAR</button>
+        <button class="sendButton" @click="onSubmit">SEND</button>
+        <button class="clearButton" @click="onReset">CLEAR</button>
       </div>
     </div>
   </div>

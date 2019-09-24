@@ -3,6 +3,7 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
 import { db } from "../../index";
+import { isNonEmptyString } from "../../utilities";
 
 import template from "./rsvp-form.vue";
 
@@ -13,43 +14,69 @@ export default class RSVPForm extends Vue {
   /*************************************************/
   /* PROPERTIES */
   /*************************************************/
-  formData = {
-    name: "",
-    email: "",
-    isAttending: false,
-    songSuggestions: "",
-  };
+  formData = this.defaultData();
 
   /*************************************************/
-  /* COMPUTED'S */
+  /* LIFE CYCLE */
   /*************************************************/
-  attending(): string {
-    return this.formData.isAttending ? "yes" : "no";
+  created() {
+    this.resetForm();
+  }
+
+  mounted() {
+    this.resetForm();
   }
 
   /*************************************************/
   /* METHODS */
   /*************************************************/
-  sendForm() {
-    const data = {
-      name: this.formData.name,
-      email: this.formData.email,
-      attending: this.formData.isAttending ? "yes" : "no",
-      songSuggestions: this.formData.songSuggestions,
-    };
-
-    db.collection("rsvp").doc().set(data).then(() => {
-      alert("Success sending RSVP");
-      this.clearForm();
-    });
-  }
-
-  clearForm() {
-    this.formData = {
+  defaultData() {
+    return {
       name: "",
       email: "",
-      isAttending: false,
+      isAttending: "Yes",
       songSuggestions: "",
+      dietRestrictions: "",
     };
+  }
+
+  onReset() {
+    this.resetForm();
+  }
+
+  onSubmit() {
+    const nameFilled = isNonEmptyString(this.formData.name);
+    if (!nameFilled) {
+      return alert("Name not filled");
+    }
+
+    const emailFilled = isNonEmptyString(this.formData.email);
+    if (!emailFilled) {
+      return alert("Email not filled");
+    }
+
+    const hasDietRestrictions = isNonEmptyString(this.formData.dietRestrictions);
+    const dietRestrictions = hasDietRestrictions ? this.formData.dietRestrictions : "None";
+
+    const payload = {
+      name: this.formData.name,
+      email: this.formData.email,
+      isAttending: this.formData.isAttending,
+      songSuggestions: this.formData.songSuggestions,
+      dietRestrictions: dietRestrictions,
+    };
+
+    this.sendForm(payload);
+  }
+
+  resetForm() {
+    this.formData = this.defaultData();
+  }
+
+  sendForm(data: any = {}) {
+    db.collection("rsvp").doc().set(data).then(() => {
+      alert("Success sending RSVP");
+      this.resetForm();
+    });
   }
 }

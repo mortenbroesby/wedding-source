@@ -11,7 +11,7 @@
   background-color: white;
 }
 
-.rsvp-form__content {
+.content {
   width: 100%;
   min-height: 100vh;
   height: auto;
@@ -22,30 +22,50 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .title {
+    font-size: 30px;
+    font-family: "Alex Brush", cursive;
+    padding-bottom: 20px;
+  }
+
+  .userData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    .inputContainer {
+      margin-bottom: 10px;
+    }
+  }
+
+  .isAttending {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    &__label {
+      margin-bottom: 10px;
+    }
+  }
+
+  .bigField {
+    textarea {
+      margin-bottom: 20px;
+    }
+  }
+
+  .sendButton,
+  .clearButton {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #000;
+  }
 }
 
-.rsvp-form__content__title {
-  font-size: 30px;
-  font-family: "Alex Brush", cursive;
-  padding-bottom: 20px;
-}
-
-.rsvp-form__content__userData {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 20px;
-}
-
-.rsvp-form__content__isAttending {
-  margin-bottom: 20px;
-}
-
-.sendButton,
-.clearButton {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #000;
-}
