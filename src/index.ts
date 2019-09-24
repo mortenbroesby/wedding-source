@@ -6,9 +6,16 @@ import config from "./config";
 import { router } from "./router";
 import { $store, RootState } from "./store";
 
+import { firestorePlugin } from "vuefire";
+import firebase from "firebase/app";
+import "firebase/firestore";
+
+
+
 import {
   i18n,
   localisationService,
+  defaultLocale,
 } from "./services/localisation.service";
 
 import { getUserLocale } from "get-user-locale";
@@ -32,8 +39,17 @@ import Home from "./layouts/home";
 // Import styles
 import "./App.scss";
 
+// Initialise firestore
+firebase.initializeApp(config.firebase);
+
+export const db =
+  firebase.firestore();
+
 // Call localisation service init before Vue is loaded
 localisationService.initBeforeApplicationLoad();
+
+// Initialise Vue plugins
+Vue.use(firestorePlugin);
 
 /*************************************************/
 /* APPLICATION SETUP  */
@@ -87,16 +103,16 @@ function initialiseApplication() {
       });
     }
 
-    setUserLocale() {
-      let locale = config.languages[config.defaultLanguage].culture;
+    async setUserLocale() {
+      let locale = defaultLocale();
 
       try {
-        locale = getUserLocale();
+        locale = await getUserLocale();
       } catch (error) {
         Logger.error("Error getting user locale");
+      } finally {
+        localisationService.initAfterApplicationLoad(locale);
       }
-
-      localisationService.initAfterApplicationLoad(locale);
     }
 
     /**

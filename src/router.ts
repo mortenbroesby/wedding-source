@@ -35,7 +35,7 @@ export const routes: RouteConfig[] = [
 
 const routeOptions: RouterOptions = {
   routes,
-  mode: "history",
+  mode: "hash",
   linkActiveClass: "active"
 };
 

@@ -10,14 +10,16 @@ export interface ConfigInterface {
   api: {
     requestTimeout: number;
   };
+
   defaultLanguage: string;
+
   languages: {
     [lang in Langs]: {
-      culture: string,
+      locale: string,
     }
   };
 
-  [key: string]: any; // Permit untyped data from envConfig
+  [key: string]: any;
 }
 
 type Langs = "en" | "fr" | "dk";
@@ -26,16 +28,18 @@ let config: ConfigInterface = {
   api: {
     requestTimeout: 30000
   },
+
   defaultLanguage: "en",
+
   languages: {
     "en": {
-      "culture": "en-US",
+      "locale": "en-US",
     },
     "fr": {
-      "culture": "fr-FR",
+      "locale": "fr-FR",
     },
     "dk": {
-      "culture": "dk-DK",
+      "locale": "dk-DK",
     },
   },
 };

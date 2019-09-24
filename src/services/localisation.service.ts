@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 import config from "../config";
+import _ from "lodash";
 
 import { setItem, getItem, removeItem } from "../utilities";
 
@@ -20,6 +21,17 @@ interface LanguageConfig {
   culture: string;
   currency: string;
 }
+
+export const defaultLanguage = config.defaultLanguage;
+
+export const defaultLocale = () => {
+  const defaultLanguage = _.find(config.languages, (language: any, key: string) => key === config.defaultLanguage);
+  if (defaultLanguage) {
+    return defaultLanguage.locale;
+  }
+
+  return "en-US";
+};
 
 class LocalisationService {
   defaultLanguage = config.defaultLanguage;
