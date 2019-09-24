@@ -1,5 +1,8 @@
+import Logger from "js-logger";
 import { mixins } from "vue-class-component";
 import { Component } from "vue-property-decorator";
+
+import { db } from "../../index";
 
 import StoreMixin from "../../mixins/store.mixin";
 
@@ -9,6 +12,7 @@ import CoupleIntro from "../../components/couple-intro";
 import Countdown from "../../components/countdown";
 import Timeline from "../../components/timeline";
 import Information from "../../components/information";
+import RSVPForm from "../../components/rsvp-form";
 
 import template from "./home.vue";
 import "./home.scss";
@@ -22,6 +26,18 @@ import "./home.scss";
     Countdown,
     Timeline,
     Information,
+    RSVPForm,
   }
 })
-export default class Home extends mixins(StoreMixin) {}
+export default class Home extends mixins(StoreMixin) {
+  temporaryData: any[] = [];
+
+  mounted() {
+    db.collection("rsvp").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        Logger.info(doc.id, " => ", doc.data());
+        this.temporaryData.push(doc.data());
+      });
+    });
+  }
+}

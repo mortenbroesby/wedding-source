@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   @include z-index(menu);
+  pointer-events: none;
 }
 
 .main-menu__bar {

@@ -10,3 +10,41 @@
 
   background-color: white;
 }
+
+.rsvp-form__content {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+
+  padding-top: 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsvp-form__content__title {
+  font-size: 30px;
+  font-family: "Alex Brush", cursive;
+  padding-bottom: 20px;
+}
+
+.rsvp-form__content__userData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+
+.rsvp-form__content__isAttending {
+  margin-bottom: 20px;
+}
+
+.sendButton {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #000;
+}
