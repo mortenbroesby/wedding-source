@@ -34,9 +34,10 @@ export default class Home extends mixins(StoreMixin) {
 
   mounted() {
     db.collection("rsvp").onSnapshot((querySnapshot) => {
+      this.temporaryData = [];
+
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        Logger.info(doc.id, " => ", data);
         this.temporaryData.push(data);
       });
     });
