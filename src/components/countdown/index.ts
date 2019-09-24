@@ -3,10 +3,9 @@ import { Component, Watch } from "vue-property-decorator";
 import moment from "moment";
 
 import template from "./countdown.vue";
-import "./countdown.scss";
 
 @Component({
-  mixins: [template]
+  mixins: [template],
 })
 export default class Countdown extends Vue {
   /*************************************************/

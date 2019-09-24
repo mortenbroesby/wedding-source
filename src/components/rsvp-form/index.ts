@@ -5,7 +5,6 @@ import { Component } from "vue-property-decorator";
 import { db } from "../../index";
 
 import template from "./rsvp-form.vue";
-import "./rsvp-form.scss";
 
 @Component({
   mixins: [template],

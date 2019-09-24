@@ -2,11 +2,9 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
 import template from "./information.vue";
-import "./information.scss";
 
 @Component({
   mixins: [template],
-  components: {}
 })
 export default class Information extends Vue {
   /*************************************************/

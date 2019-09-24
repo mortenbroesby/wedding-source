@@ -10,8 +10,6 @@ import { firestorePlugin } from "vuefire";
 import firebase from "firebase/app";
 import "firebase/firestore";
 
-
-
 import {
   i18n,
   localisationService,

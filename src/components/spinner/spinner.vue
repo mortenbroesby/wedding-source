@@ -8,3 +8,6 @@
   </transition>
 </template>
 
+<style lang="scss" scoped>
+  @import "./spinner.scss"
+</style>

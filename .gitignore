@@ -8,6 +8,7 @@ package-lock.json
 
 # Build
 *.min.js
+dev-dist
 dist
 lib
 

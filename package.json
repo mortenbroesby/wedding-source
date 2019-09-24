@@ -6,14 +6,13 @@
   "main": "index.ts",
   "scripts": {
     "eslint": "eslint --fix --ext .js,.vue src",
-    "dev": "parcel serve src/index.html -d dist --public-url /dist/ --open",
+    "dev": "parcel serve src/index.html -d dev-dist --public-url /dev-dist/ --open",
     "clean": "rimraf .cache/ && rimraf dist/ && rimraf build/",
     "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=production parcel build ./src/index.html --public-url ./",
+    "deploy": "npm run build && firebase deploy --only hosting",
     "unit": "jest --config test/unit/jest.config.js --coverage",
-    "unitWatch": "jest --config test/unit/jest.config.js --watch",
-    "unitClean": "npm run unit -- -u",
-    "unitCleanWatch": "npm run unitWatch -- -u"
+    "unitWatch": "jest --config test/unit/jest.config.js --watch"
   },
   "keywords": [
     "vue",
@@ -55,6 +54,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-vue": "^2.0.2",
     "cross-env": "^5.1.3",
+    "dart-sass": "^1.22.12",
     "eslint": "^6.1.0",
     "eslint-plugin-vue": "^5.2.3",
     "jest": "^24.8.0",

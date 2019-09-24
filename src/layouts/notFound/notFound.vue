@@ -3,3 +3,7 @@
     Not found...
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "./notFound.scss"
+</style>

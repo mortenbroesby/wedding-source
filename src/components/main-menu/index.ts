@@ -2,7 +2,6 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
 import template from "./main-menu.vue";
-import "./main-menu.scss";
 
 @Component({
   mixins: [template],

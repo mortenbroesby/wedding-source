@@ -11,3 +11,7 @@
     <div v-for="(data, index) in temporaryData" :key="index">{{ data }}</div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "./home.scss"
+</style>

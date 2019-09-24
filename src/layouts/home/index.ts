@@ -15,7 +15,6 @@ import Information from "../../components/information";
 import RSVPForm from "../../components/rsvp-form";
 
 import template from "./home.vue";
-import "./home.scss";
 
 @Component({
   mixins: [template],
@@ -31,8 +30,11 @@ import "./home.scss";
 })
 export default class Home extends mixins(StoreMixin) {
   temporaryData: any[] = [];
+  enableData: boolean = false;
 
   mounted() {
+    if (!this.enableData) return;
+
     db.collection("rsvp").onSnapshot((querySnapshot) => {
       this.temporaryData = [];
 

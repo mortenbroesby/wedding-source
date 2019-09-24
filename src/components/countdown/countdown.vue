@@ -13,3 +13,7 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "./countdown.scss"
+</style>

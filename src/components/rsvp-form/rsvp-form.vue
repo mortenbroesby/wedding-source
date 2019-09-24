@@ -22,3 +22,7 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "./rsvp-form.scss"
+</style>

@@ -14,3 +14,6 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "./information.scss"
+</style>

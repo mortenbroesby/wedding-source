@@ -11,3 +11,7 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "./main-menu.scss"
+</style>
