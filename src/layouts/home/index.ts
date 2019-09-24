@@ -33,10 +33,11 @@ export default class Home extends mixins(StoreMixin) {
   temporaryData: any[] = [];
 
   mounted() {
-    db.collection("rsvp").get().then((querySnapshot) => {
+    db.collection("rsvp").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        Logger.info(doc.id, " => ", doc.data());
-        this.temporaryData.push(doc.data());
+        const data = doc.data();
+        Logger.info(doc.id, " => ", data);
+        this.temporaryData.push(data);
       });
     });
   }

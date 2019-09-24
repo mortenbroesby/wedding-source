@@ -25,3 +25,5 @@ test/unit/reports
 test/e2e/reports
 coverage
 .nyc_output
+
+.firebase/
