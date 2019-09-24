@@ -144,55 +144,12 @@ export function stringContainsOnlyLetters(string: string) {
   return /^[a-zA-Z]+$/.test(string);
 }
 
-export function stringContainsAlphabetSequence(string: string) {
-  let containsAlphabetSequence: boolean = false;
+export function isValidEmail(email: string = ""): boolean {
+  if (isEmptyString(email)) {
+    return false;
+  }
 
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const explodedAlphabet = alphabet.split("");
-
-  explodedAlphabet.forEach(character => {
-    const characterIndex = alphabet.indexOf(character);
-    const characterSequence = alphabet.substring(characterIndex, characterIndex + 3);
-
-    if (characterSequence.length === 3) {
-      const stringIsSequence = string.includes(characterSequence);
-      if (stringIsSequence) {
-        containsAlphabetSequence = true;
-      }
-    }
-  });
-
-  return containsAlphabetSequence;
-}
-
-export function stringContainsBlacklistedCharacters(string: string, blacklistedCharacters: string[]) {
-  let containsBlacklist: boolean = false;
-
-  blacklistedCharacters.forEach(character => {
-    const stringIncludesBlacklist = string.includes(character);
-    if (stringIncludesBlacklist) {
-      containsBlacklist = true;
-    }
-  });
-
-  return containsBlacklist;
-}
-
-export function stringContainsTwoOverlappingPairs(string: string) {
-  let inputString: string = string;
-  let matchCount = 0;
-
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const explodedAlphabet = alphabet.split("");
-
-  explodedAlphabet.forEach(character => {
-    const characterDoubled = character + character;
-    const inputMatches = inputString.includes(characterDoubled);
-
-    if (inputMatches) {
-      matchCount++;
-    }
-  });
-
-  return matchCount >= 2;
+  // https://davidcel.is/posts/stop-validating-email-addresses-with-regex/
+  const regexMatchEmail: RegExp = /.+@.+\..+/i;
+  return regexMatchEmail.test(email);
 }

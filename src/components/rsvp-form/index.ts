@@ -3,7 +3,7 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
 import { db } from "../../index";
-import { isNonEmptyString } from "../../utilities";
+import { isNonEmptyString, isValidEmail } from "../../utilities";
 
 import template from "./rsvp-form.vue";
 
@@ -55,6 +55,11 @@ export default class RSVPForm extends Vue {
       return alert("Email not filled");
     }
 
+    const emailIsValid = isValidEmail(this.formData.email);
+    if (!emailIsValid) {
+      return alert("Email is not valid");
+    }
+
     const hasDietRestrictions = isNonEmptyString(this.formData.dietRestrictions);
     const dietRestrictions = hasDietRestrictions ? this.formData.dietRestrictions : "None";
 
@@ -76,6 +81,7 @@ export default class RSVPForm extends Vue {
   sendForm(data: any = {}) {
     db.collection("rsvp").doc().set(data).then(() => {
       alert("Success sending RSVP");
+      Logger.info("Form data sent: ", data);
       this.resetForm();
     });
   }

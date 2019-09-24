@@ -23,10 +23,21 @@ const logLevel = Logger.DEBUG;
 Logger.useDefaults();
 Logger.setLevel(logLevel);
 
+// Initialise firestore
+firebase.initializeApp(config.firebase);
+
+export const db = firebase.firestore();
+
 // Configure Vue
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
 Vue.config.performance = true;
+
+// Initialise Vue plugins
+Vue.use(firestorePlugin);
+
+// Call localisation service init before Vue is loaded
+localisationService.initBeforeApplicationLoad();
 
 // Import components
 import App from "./App.vue";
@@ -36,18 +47,6 @@ import Home from "./layouts/home";
 
 // Import styles
 import "./App.scss";
-
-// Initialise firestore
-firebase.initializeApp(config.firebase);
-
-export const db =
-  firebase.firestore();
-
-// Call localisation service init before Vue is loaded
-localisationService.initBeforeApplicationLoad();
-
-// Initialise Vue plugins
-Vue.use(firestorePlugin);
 
 /*************************************************/
 /* APPLICATION SETUP  */
@@ -107,7 +106,7 @@ function initialiseApplication() {
       try {
         locale = await getUserLocale();
       } catch (error) {
-        Logger.error("Error getting user locale");
+        Logger.error("Error getting user locale", error);
       } finally {
         localisationService.initAfterApplicationLoad(locale);
       }
