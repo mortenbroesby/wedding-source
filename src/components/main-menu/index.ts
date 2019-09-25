@@ -12,10 +12,11 @@ export default class MainMenu extends Vue {
   /*************************************************/
   menuVisible: boolean = false;
 
-  sections = [
-    { label: "When & Where", url: "when-where" },
-    { label: "All infos", url: "all-infos" },
-    { label: "RSVP", url: "rsvp" },
+  menuItems = [
+    { label: "Home", url: "home", showExpanded: false },
+    { label: "When & Where", url: "timeline", showExpanded: true },
+    { label: "All infos", url: "info", showExpanded: true },
+    { label: "RSVP", url: "rsvp", showExpanded: true },
   ];
 
   /*************************************************/
@@ -23,6 +24,10 @@ export default class MainMenu extends Vue {
   /*************************************************/
   get hamburgerIcon(): string {
     return this.menuVisible ? "close" : "menu";
+  }
+
+  get expandedMenuItems() {
+    return this.menuItems.filter((item) => item.showExpanded);
   }
 
   /*************************************************/

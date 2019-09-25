@@ -3,6 +3,7 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
 import { db } from "../../index";
+
 import { isNonEmptyString, isValidEmail } from "../../utilities";
 
 import template from "./rsvp-form.vue";

@@ -1,9 +1,18 @@
 <template>
   <div class="couple-intro">
-    <div class="couple-intro__couples">
-      <div class="couple-intro__couples__couple couple-intro__couples__couple--bride"></div>
-      <div class="couple-intro__couples__and">&</div>
-      <div class="couple-intro__couples__couple couple-intro__couples__couple--groom"></div>
+    <div class="couples">
+      <div class="couple couple--bride"></div>
+      <div class="and">&</div>
+      <div class="couple couple--groom"></div>
+    </div>
+
+    <div class="countdown">
+      <h1 class="countdown__title">We are getting married in</h1>
+      <countdown></countdown>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "./couple-intro.scss"
+</style>

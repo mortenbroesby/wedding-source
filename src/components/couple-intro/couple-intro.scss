@@ -12,59 +12,85 @@
   padding-top: 50px;
 
   background-color: white;
-}
 
-.couple-intro__couples {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-}
+  .couples {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
 
-.couple-intro__couples__couple {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+    .couple {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
 
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #D8D8D8;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #D8D8D8;
 
-  &--bride {
-    // background-image: url("../../assets/cover.jpg");
+      &--bride {
+        // background-image: url("../../assets/cover.jpg");
+      }
+
+      &--groom {
+        // background-image: url("../../assets/cover.jpg");
+      }
+    }
+
+    .and {
+      padding-top: 28px;
+      padding-bottom: 20px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      font-size: 80px;
+      text-shadow: 1px 1px 1px #000;
+      font-family: "Alex Brush", cursive;
+    }
   }
 
-  &--groom {
-    // background-image: url("../../assets/cover.jpg");
+  .countdown {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    &__title {
+      margin-top: 40px;
+      font-size: 40px;
+      font-family: "Karla", cursive;
+      font-weight: bold;
+
+      color: #B0DDD7;
+    }
   }
-}
-
-.couple-intro__couples__and {
-  padding-top: 28px;
-  padding-bottom: 20px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  font-size: 80px;
-  text-shadow: 1px 1px 1px #000;
-  font-family: "Alex Brush", cursive;
 }
 
 @media (min-width: 800px) {
-  .couple-intro__couples {
-    flex-direction: row;
-  }
+  .couple-intro {
+    .couples {
+      flex-direction: row;
 
-  .couple-intro__couples__and {
-    padding-left: 25px;
-    padding-right: 25px;
+      .and {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+    }
+
+    .countdown__title {
+      margin-top: 60px;
+    }
   }
 }

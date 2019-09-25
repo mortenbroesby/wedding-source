@@ -8,54 +8,54 @@
 
   padding: 26px 0;
 
-  background: #ecf2f0;
-}
+  color: #142E4B;
 
-.countdown__element {
-  width: 100%;
-}
+  .countdown__element {
+    width: 100%;
 
-.countdown__element__section {
-  width: 100%;
-}
+    .section {
+      width: 100%;
+    }
 
-.countdown__element__section__text {
-  width: 100%;
-  padding: 10px 0;
+    .text {
+      width: 100%;
+      padding: 10px 0;
 
-  font-size: 30px;
-  font-family: "Karla", cursive;
-  font-weight: bold;
-  text-align: center;
+      font-size: 30px;
+      font-family: "Karla", cursive;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
 }
 
 @media (min-width: 600px) {
   .countdown {
     padding: 26px 0;
-  }
 
-  .countdown__element {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: auto;
-  }
-
-  .countdown__element__section {
-    display: flex;
-    width: auto;
-
-    &:not(:last-child) {
-      margin-right: 6px;
+    .countdown__element {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: auto;
     }
-  }
 
-  .countdown__element__section__text {
-    width: auto;
-    min-width: 200px;
+    .section {
+      display: flex;
+      width: auto;
 
-    &:not(:last-child) {
-      margin-right: 6px;
+      &:not(:last-child) {
+        margin-right: 6px;
+      }
+    }
+
+    .text {
+      width: auto;
+      min-width: 200px;
+
+      &:not(:last-child) {
+        margin-right: 6px;
+      }
     }
   }
 }
@@ -63,29 +63,29 @@
 @media (min-width: 800px) {
   .countdown {
     padding: 26px 0;
-  }
 
-  .countdown__element {
-    display: flex;
-    flex-direction: row;
-    width: auto;
-  }
-
-  .countdown__element__section {
-    display: flex;
-    width: auto;
-
-    &:not(:last-child) {
-      margin-right: 6px;
+    .countdown__element {
+      display: flex;
+      flex-direction: row;
+      width: auto;
     }
-  }
 
-  .countdown__element__section__text {
-    width: auto;
-    min-width: 200px;
+    .section {
+      display: flex;
+      width: auto;
 
-    &:not(:last-child) {
-      margin-right: 6px;
+      &:not(:last-child) {
+        margin-right: 6px;
+      }
+    }
+
+    .text {
+      width: auto;
+      min-width: 200px;
+
+      &:not(:last-child) {
+        margin-right: 6px;
+      }
     }
   }
 }

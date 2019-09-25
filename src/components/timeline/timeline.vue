@@ -1,18 +1,18 @@
 <template>
   <div class="timeline">
     <div class="timeline__content">
-      <div class="timeline__content__header">
-        <h2 class="timeline__content__header__title">Saturday 21st March 2020</h2>
-        <h2 class="timeline__content__header__subtitle">What's the plan?</h2>
+      <div class="header">
+        <h2 class="header__title">When & where?</h2>
+        <h2 class="header__subtitle">Saturday 21st of March 2020</h2>
       </div>
 
-      <div class="timeline__content__item" v-for="(item, index) in timelineItems" :key="index">
-        <div class="timeline__content__item__image">
-          <div class="timeline__content__item__image__asset" :style="imageStyling"></div>
+      <div class="item" v-for="(item, index) in timelineItems" :key="index">
+        <div class="item__image">
+          <div class="item__image__asset" :style="imageStyling"></div>
         </div>
-        <div class="timeline__content__item__text">
-          <div class="timeline__content__item__text__title">{{ item.title }}</div>
-          <div class="timeline__content__item__text__description"
+        <div class="item__text">
+          <div class="item__text__title">{{ item.title }}</div>
+          <div class="item__text__description"
             v-html="item.description"></div>
         </div>
       </div>

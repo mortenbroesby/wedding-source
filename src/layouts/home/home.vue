@@ -4,10 +4,10 @@
 
     <cover></cover>
     <couple-intro></couple-intro>
-    <countdown></countdown>
-    <timeline></timeline>
-    <information></information>
-    <RSVPForm></RSVPForm>
+
+    <timeline id="timeline"></timeline>
+    <information id="info"></information>
+    <RSVPForm id="rsvp"></RSVPForm>
   </div>
 </template>
 
