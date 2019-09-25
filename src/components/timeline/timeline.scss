@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .timeline {
   position: relative;
 
@@ -6,7 +8,8 @@
   min-height: 100vh;
   height: auto;
 
-  background-color: rgb(6, 18, 124);
+  background-color: $timeline-background;
+  color: $timeline-color;
 }
 
 .timeline__content {
@@ -31,10 +34,18 @@
   padding-bottom: 30px;
 
   &__title {
-    color: white;
     font-size: 40px;
-    text-shadow: 1px 1px 1px #000;
-    font-family: "Caveat", cursive;
+    font-family: "Karla", cursive;
+    font-weight: bold;
+    color: $timeline-color;
+
+    margin-bottom: 20px;
+  }
+
+  &__subtitle {
+    font-size: 26px;
+    font-family: "Lora", cursive;
+    color: $timeline-color;
   }
 }
 
@@ -65,7 +76,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: gray;
+    background-color: darken(#E3E3E3, 20%);
   }
 }
 
@@ -73,15 +84,17 @@
   padding-top: 20px;
 
   &__title {
-    color: white;
     font-size: 30px;
-    text-shadow: 1px 1px 1px #000;
-    font-family: "Alex Brush", cursive;
+    font-family: "Karla", cursive;
+    font-weight: bold;
+    color: $timeline-color;
+
     padding-bottom: 20px;
   }
 
   &__description {
     position: relative;
+    color: $timeline-color;
   }
 }
 

@@ -31,14 +31,14 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: gray;
+  background-color: #D8D8D8;
 
   &--bride {
-    background-image: url("../../assets/cover.jpg");
+    // background-image: url("../../assets/cover.jpg");
   }
 
   &--groom {
-    background-image: url("../../assets/cover.jpg");
+    // background-image: url("../../assets/cover.jpg");
   }
 }
 
@@ -58,26 +58,13 @@
   font-family: "Alex Brush", cursive;
 }
 
-.couple-intro__text {
-  padding-top: 50px;
-  padding-bottom: 50px;
-
-  &__title {
-    text-align: center;
-    padding-bottom: 30px;
-
-    color: #000;
-    font-size: 46px;
-    text-shadow: 1px 1px 1px #000;
-    font-family: "Satisfy", cursive;
+@media (min-width: 800px) {
+  .couple-intro__couples {
+    flex-direction: row;
   }
 
-  &__description {
-    text-align: center;
-
-    color: #000;
-    font-size: 26px;
-    text-shadow: 1px 1px 1px #000;
-    font-family: "Satisfy", cursive;
+  .couple-intro__couples__and {
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }

@@ -48,7 +48,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: gray;
+    background-color: #D8D8D8;
   }
 }
 
@@ -57,7 +57,9 @@
 
   &__title {
     font-size: 30px;
-    font-family: "Alex Brush", cursive;
+    font-family: "Karla", cursive;
+    font-weight: bold;
+
     padding-bottom: 20px;
   }
 

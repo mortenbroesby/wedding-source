@@ -2,7 +2,6 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
 import template from "./timeline.vue";
-import "./timeline.scss";
 
 @Component({
   mixins: [template],
@@ -28,7 +27,7 @@ export default class Timeline extends Vue {
     const items = new Array(10).fill({}).map((item, index) => {
       return {
         id: index,
-        image: require("../../assets/cover.jpg"),
+        image: "", // require("../../assets/cover.jpg"),
         title: "Title 1",
         description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id fermentum arcu.
           Mauris rhoncus libero ac mauris facilisis faucibus. Quisque sodales malesuada massa at sollicitudin.
@@ -37,5 +36,11 @@ export default class Timeline extends Vue {
     });
 
     this.timelineItems = items;
+  }
+
+  imageStyling(item: any) {
+    return {
+      backgroundImage: `url(${item.image})`
+    };
   }
 }
