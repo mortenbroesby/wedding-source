@@ -26,22 +26,30 @@ import template from "./home.vue";
     Timeline,
     Information,
     RSVPForm,
-  }
+  },
+  metaInfo: {}
 })
 export default class Home extends mixins(StoreMixin) {
-  temporaryData: any[] = [];
-  enableData: boolean = false;
+  /*************************************************/
+  /* COMPUTEDS */
+  /*************************************************/
+  get metaInfo() {
+    return {
+      titleTemplate: "%s :: Home",
+    };
+  }
 
-  mounted() {
-    if (!this.enableData) return;
+  /*************************************************/
+  /* LIFE CYCLE */
+  /*************************************************/
+  created() {
+    this.setMeta();
+  }
 
-    db.collection("rsvp").onSnapshot((querySnapshot) => {
-      this.temporaryData = [];
-
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        this.temporaryData.push(data);
-      });
-    });
+  /*************************************************/
+  /* METHODS */
+  /*************************************************/
+  setMeta() {
+    this.$options.metaInfo = this.metaInfo;
   }
 }

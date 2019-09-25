@@ -148,5 +148,7 @@ export const defaultLocale = () => {
     return defaultLanguage.locale;
   }
 
-  return "en-US";
+  return "en_GB";
 };
+
+export const activeLanguage = localisationService.getActiveLanguage();

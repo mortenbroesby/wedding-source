@@ -18,13 +18,10 @@ export enum RouteName {
 
 export const routes: RouteConfig[] = [
   {
-    path: "/",
-    redirect: `/${RouteName.HOME}/`,
-  },
-  {
     path: `/${RouteName.HOME}/`,
     name: RouteName.HOME,
     component: Home,
+    alias: "/",
   },
   {
     path: "*",
@@ -35,7 +32,7 @@ export const routes: RouteConfig[] = [
 
 const routeOptions: RouterOptions = {
   routes,
-  mode: "hash",
+  mode: "history",
   linkActiveClass: "active"
 };
 

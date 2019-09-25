@@ -12,6 +12,12 @@ export default class MainMenu extends Vue {
   /*************************************************/
   menuVisible: boolean = false;
 
+  sections = [
+    { label: "When & Where", url: "when-where" },
+    { label: "All infos", url: "all-infos" },
+    { label: "RSVP", url: "rsvp" },
+  ];
+
   /*************************************************/
   /* COMPUTED'S */
   /*************************************************/
@@ -30,5 +36,9 @@ export default class MainMenu extends Vue {
     this.$nextTick().then(() => {
       this.menuVisible = false;
     });
+  }
+
+  getURL(section: any) {
+    return `#${section.url}`;
   }
 }

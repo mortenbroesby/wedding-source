@@ -1,13 +1,31 @@
 <template>
   <div class="main-menu">
     <div class="main-menu__bar">
-      <button class="main-menu__bar__hamburger" @click="toggleMenu">
+      <div class="logo">
+        MoJo
+      </div>
+
+      <button class="hamburger" @click="toggleMenu">
         <i class="material-icons">{{ hamburgerIcon }}</i>
       </button>
+
+      <div class="navigation-expanded">
+        <a class="navigation-item"
+          @click="hideMenu"
+          :href="getURL(section)"
+          v-for="(section, index) in sections" :key="index">
+          {{ section.label }}
+        </a>
+      </div>
     </div>
 
-    <div class="main-menu__overlay" :class="{ visible: menuVisible }" @click="hideMenu">
-      <button class="main-menu__overlay__item" @click="hideMenu">Menu Item</button>
+    <div class="overlay" :class="{ visible: menuVisible }" @click="hideMenu">
+      <a class="overlay__item"
+        @click="hideMenu"
+        :href="getURL(section)"
+        v-for="(section, index) in sections" :key="index">
+        {{ section.label }}
+      </a>
     </div>
   </div>
 </template>

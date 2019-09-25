@@ -22,7 +22,7 @@ export default class NotFound extends Vue {
   /*************************************************/
   redirectUser() {
     this.$router.replace({
-      name: RouteName.HOME
+      path: "/"
     });
   }
 }

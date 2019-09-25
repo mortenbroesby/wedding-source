@@ -10,10 +10,13 @@ import { firestorePlugin } from "vuefire";
 import firebase from "firebase/app";
 import "firebase/firestore";
 
+import VueMeta from "vue-meta";
+
 import {
   i18n,
   localisationService,
   defaultLocale,
+  activeLanguage,
 } from "./services/localisation.service";
 
 import { getUserLocale } from "get-user-locale";
@@ -36,6 +39,10 @@ Vue.config.performance = true;
 // Initialise Vue plugins
 Vue.use(firestorePlugin);
 
+Vue.use(VueMeta, {
+  refreshOnceOnNavigation: true,
+});
+
 // Call localisation service init before Vue is loaded
 localisationService.initBeforeApplicationLoad();
 
@@ -56,19 +63,13 @@ function initialiseApplication() {
     mixins: [App],
     store: $store,
     router: router,
+    metaInfo: {},
     components: {
       Spinner,
       Home,
-    }
+    },
   })
   class Application extends Vue {
-    /*************************************************/
-    /* LIFE CYCLE */
-    /*************************************************/
-    mounted() {
-      this.initialiseApplication();
-    }
-
     /*************************************************/
     /* COMPUTED'S */
     /*************************************************/
@@ -84,20 +85,48 @@ function initialiseApplication() {
       return this.store.applicationHasLoaded;
     }
 
+    get metaInfo() {
+      return {
+        title: "Wedding :: Josephine & Morten",
+        meta: config.metaOptions,
+        htmlAttrs: {
+          lang: activeLanguage,
+        },
+      };
+    }
+
+    /*************************************************/
+    /* LIFE CYCLE */
+    /*************************************************/
+    async created() {
+      this.initialiseApplication().then(() => {
+        this.setMeta();
+      });
+    }
+
     /*************************************************/
     /* METHODS */
     /*************************************************/
-    initialiseApplication() {
-      this.setUserLocale();
+    setMeta() {
+      this.$options.metaInfo = this.metaInfo;
+    }
 
-      // Simulate load to API.
-      $store.dispatch("setSpinner", true);
-      $store.dispatch("initialise").then(() => {
-        Logger.info("Application initialised.");
-        setTimeout(() => {
-          $store.dispatch("setSpinner", false);
-        }, 1000);
-      });
+    /*************************************************/
+    /* METHODS */
+    /*************************************************/
+    async initialiseApplication() {
+      await this.setUserLocale();
+
+      await $store.dispatch("setSpinner", true);
+      await $store.dispatch("initialise");
+
+      setTimeout(() => {
+        $store.dispatch("setSpinner", false);
+      }, 1000);
+
+      Logger.info("Application initialised.");
+
+      return Promise.resolve();
     }
 
     async setUserLocale() {
@@ -109,6 +138,7 @@ function initialiseApplication() {
         Logger.error("Error getting user locale", error);
       } finally {
         localisationService.initAfterApplicationLoad(locale);
+        return Promise.resolve();
       }
     }
 
