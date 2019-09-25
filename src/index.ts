@@ -7,8 +7,9 @@ import { router } from "./router";
 import { $store, RootState } from "./store";
 
 import { firestorePlugin } from "vuefire";
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/performance";
 
 import VueMeta from "vue-meta";
 
@@ -26,10 +27,14 @@ const logLevel = Logger.DEBUG;
 Logger.useDefaults();
 Logger.setLevel(logLevel);
 
-// Initialise firestore
+// Initialise firebase configuration
 firebase.initializeApp(config.firebase);
 
+// Initialise firestore
 export const db = firebase.firestore();
+
+// Initialize performance monitoring
+export const perf = firebase.performance();
 
 // Configure Vue
 Vue.config.productionTip = false;

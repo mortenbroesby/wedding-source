@@ -8,7 +8,9 @@ const config = {
     storageBucket: "wedding-2020-1bff8.appspot.com",
     messagingSenderId: "29718419301",
     appId: "1:29718419301:web:0368a0ebb2b329b9cdb38c",
-    measurementId: "G-LGMG99N8BH"
+  },
+  googleAnalytics: {
+    id: "G-92GSB0424R",
   }
 };
 
