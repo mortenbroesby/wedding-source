@@ -85,13 +85,13 @@ export default class RSVPForm extends Vue {
       await db.collection("rsvp").doc().set(data);
 
       Logger.info("Form data sent: ", data);
-      visitor.event("RSVP", "rsvp-success").send();
+      visitor.event("rsvp", "rsvp-success").send();
 
       this.resetForm();
     } catch (error) {
       Logger.warn("sendForm error: ", error);
 
-      visitor.event("RSVP", "rsvp-error").send();
+      visitor.event("rsvp", "rsvp-error").send();
     }
   }
 }
