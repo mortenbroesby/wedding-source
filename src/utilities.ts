@@ -153,3 +153,30 @@ export function isValidEmail(email: string = ""): boolean {
   const regexMatchEmail: RegExp = /.+@.+\..+/i;
   return regexMatchEmail.test(email);
 }
+
+export function randomID(): string {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    let r = Math.random() * 16 | 0;
+    let v = c == "x" ? r : r & 0x3 | 0x8;
+    return v.toString(16);
+  });
+}
+
+export function getDeviceId() {
+  let storedID = getItem("deviceID");
+  if (storedID) {
+    return storedID;
+  }
+
+  let deviceID = randomID();
+  setItem("deviceID", deviceID);
+
+  return deviceID;
+}
+
+export function getApplicationVersion() {
+  // const releaseVersion = config.version;
+  const releaseVersion = `1.0.0`;
+
+  return `${releaseVersion}`;
+}

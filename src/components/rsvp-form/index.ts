@@ -2,7 +2,7 @@ import Logger from "js-logger";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
-import { db } from "../../index";
+import { db, visitor } from "../../index";
 
 import { isNonEmptyString, isValidEmail } from "../../utilities";
 
@@ -79,11 +79,17 @@ export default class RSVPForm extends Vue {
     this.formData = this.defaultData();
   }
 
-  sendForm(data: any = {}) {
-    db.collection("rsvp").doc().set(data).then(() => {
-      alert("Success sending RSVP");
+  async sendForm(data: any = {}) {
+    try {
+      await db.collection("rsvp").doc().set(data);
+
       Logger.info("Form data sent: ", data);
+      visitor.event("RSVP", "post-success").send();
+
+      alert("Success sending RSVP");
       this.resetForm();
-    });
+    } catch (error) {
+      visitor.event("RSVP", "post-error").send();
+    }
   }
 }
