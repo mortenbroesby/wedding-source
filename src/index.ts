@@ -13,10 +13,6 @@ import "firebase/performance";
 
 import VueMeta from "vue-meta";
 
-import ua from "universal-analytics";
-
-export const visitor = ua(config.googleAnalytics.id);
-
 import {
   i18n,
   localisationService,
