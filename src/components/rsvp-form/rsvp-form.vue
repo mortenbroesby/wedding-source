@@ -5,36 +5,33 @@
 
       <div class="userData">
         <div class="inputContainer">
-          <p>Name</p>
+          <p class="label">Your name(s)</p>
           <input class="input" type="text" name="name" v-model="formData.name" placeholder="" />
-        </div>
-        <div class="inputContainer">
-          <p>Email</p>
-          <input class="input" type="text" name="email" v-model="formData.email" placeholder="" />
         </div>
       </div>
 
       <div class="isAttending">
-        <p class="isAttending__label">Are you attending?</p>
-        <select v-model="formData.isAttending">
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+        <p class="label">Are you attending?</p>
+        <select class="input" v-model="formData.isAttending">
+          <option value="Yes">Yes, I/we will be there.</option>
+          <option value="No">No, I/we won't be there.</option>
         </select>
       </div>
 
-      <div class="bigField">
-        <p class="bigField__label">Song suggestions</p>
-        <textarea v-model="formData.songSuggestions"></textarea>
+      <div class="bigField bigField--extended">
+        <p class="label">Want to tell us something?</p>
+        <textarea class="input" v-model="formData.message"
+          placeholder="Is there anything special we should know? Are you excited?"></textarea>
       </div>
 
       <div class="bigField">
-        <p class="bigField__label">Diet restrictions</p>
-        <textarea v-model="formData.dietRestrictions"></textarea>
+        <p class="label">A song that will make you dance:</p>
+        <textarea class="input" v-model="formData.songSuggestions"></textarea>
       </div>
 
-      <div>
-        <button class="sendButton" @click="onSubmit">SEND</button>
-        <button class="clearButton" @click="onReset">CLEAR</button>
+      <div class="buttons">
+        <button class="button clearButton" @click="onReset">Clear</button>
+        <button class="button sendButton" @click="onSubmit">Send my answer</button>
       </div>
     </div>
   </div>

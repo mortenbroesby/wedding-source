@@ -6,12 +6,16 @@ $colors: (
   'timeline-background':    rgba(#102032, 1),
   'timeline-title':         rgba(#F9C9C8, 1),
   'timeline-subtitle':      rgba(#FFFFFF, 1),
+
+  'rsvp-background':        rgba(#B0DDD7, 1),
 );
 
 /* Color variables */
 $timeline-background: map-get($colors, 'timeline-background');
 $timeline-title: map-get($colors, 'timeline-title');
 $timeline-subtitle: map-get($colors, 'timeline-subtitle');
+
+$rsvp-background: map-get($colors, 'rsvp-background');
 
 /* Mixins */
 @function color($key) {

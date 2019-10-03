@@ -1,0 +1,25 @@
+{
+  "information": [
+    {
+      "id": "hey",
+      "image": "hey",
+      "title": "Hey",
+      "description": "Long description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id fermentum arcu. Mauris rhoncus libero ac mauris facilisis faucibus. Quisque sodales malesuada massa at sollicitudin. Morbi eget finibus dui, vel tempor elit. Ut bibendum nec mauris sed congue. Donec blandit augue eros,",
+      "buttons": [
+        {
+          "label": "Label 1 name"
+        },
+        {
+          "label": "Label 2 name"
+        }
+      ]
+    },
+    {
+      "id": "hello",
+      "image": "hello",
+      "title": "Hello",
+      "description": "Description goes here.",
+      "buttons": []
+    }
+  ]
+}

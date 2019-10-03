@@ -5,18 +5,17 @@
 
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   height: auto;
 
-  background-color: white;
+  background-color: $rsvp-background;
 }
 
 .content {
   width: 100%;
-  min-height: 100vh;
   height: auto;
 
   padding-top: 60px;
+  padding-bottom: 60px;
 
   display: flex;
   flex-direction: column;
@@ -28,7 +27,7 @@
     font-family: "Karla", cursive;
     font-weight: bold;
 
-    padding-bottom: 20px;
+    padding-bottom: 40px;
   }
 
   .userData {
@@ -41,33 +40,118 @@
 
     .inputContainer {
       margin-bottom: 10px;
+
+      .label {
+        font-size: 16px;
+        font-family: "Karla", cursive;
+        font-weight: bold;
+        margin-bottom: 6px;
+      }
+
+      .input {
+        width: 100%;
+        min-width: 560px;
+        padding: 16px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+      }
     }
   }
 
   .isAttending {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+    align-items: flex-start;
+    justify-content: flex-start;
     margin-bottom: 20px;
 
-    &__label {
-      margin-bottom: 10px;
+    .label {
+      font-size: 16px;
+      font-family: "Karla", cursive;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .input {
+      width: 100%;
+      min-width: 560px;
+      padding: 16px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
     }
   }
 
   .bigField {
-    textarea {
-      margin-bottom: 20px;
+    padding-bottom: 20px;
+
+    &--extended {
+      .input {
+        min-height: 150px;
+      }
+    }
+
+    .label {
+      font-size: 16px;
+      font-family: "Karla", cursive;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .input {
+      width: 100%;
+      min-width: 560px;
+      padding: 16px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
     }
   }
 
-  .sendButton,
-  .clearButton {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #000;
+  .buttons {
+    .button {
+      margin-top: 20px;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-family: "Karla", cursive;
+      font-weight: bold;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      &:hover,
+      &:active {
+        animation: bounce 1s infinite;
+      }
+    }
+
+    .sendButton {
+      background: #FFDC00;
+      border: 1px solid #FFDC00;
+    }
+
+    .clearButton {
+      background: none;
+      border: 1px solid #142E4B;
+    }
   }
 }
 
+@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	40% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+
+	80% {
+		-webkit-transform: translateY(-5px);
+		transform: translateY(-5px);
+	}
+}
