@@ -1,6 +1,10 @@
 <template>
   <div class="information">
     <div class="information__content">
+      <div class="header">
+        <h2 class="title">All infos</h2>
+      </div>
+
       <div class="contentItem" v-for="(item, index) in informationItems" :key="index">
         <div class="contentItem__image">
           <div class="contentItem__image__asset" :style="imageStyling"></div>

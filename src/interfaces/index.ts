@@ -20,3 +20,11 @@ export interface InfoItem {
 export interface InfoButton {
   label: string;
 }
+
+export interface IPayload {
+  name: string;
+  isAttending: string;
+  message: string;
+  songSuggestions: string;
+  dietRestrictions: string;
+}

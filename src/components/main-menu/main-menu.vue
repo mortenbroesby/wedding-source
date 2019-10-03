@@ -1,7 +1,9 @@
 <template>
   <div class="main-menu">
     <div class="main-menu__bar">
-      <a class="logo" href="#home">MoJo</a>
+      <a class="logo" href="#home">
+      <div class="logo__content" v-html="logoHTML"></div>
+      </a>
 
       <button class="hamburger" @click="toggleMenu">
         <i class="material-icons">{{ hamburgerIcon }}</i>

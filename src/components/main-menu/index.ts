@@ -30,6 +30,10 @@ export default class MainMenu extends Vue {
     return this.menuItems.filter((item) => item.showExpanded);
   }
 
+  get logoHTML() {
+    return require("../../assets/logo-small.svg");
+  }
+
   /*************************************************/
   /* METHODS */
   /*************************************************/

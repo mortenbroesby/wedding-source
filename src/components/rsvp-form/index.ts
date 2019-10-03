@@ -8,6 +8,7 @@ import { visitor } from "../../services/tracking.service";
 import { isNonEmptyString } from "../../utilities";
 
 import template from "./rsvp-form.vue";
+import { IPayload } from "@/interfaces";
 
 @Component({
   mixins: [template],
@@ -16,7 +17,7 @@ export default class RSVPForm extends Vue {
   /*************************************************/
   /* PROPERTIES */
   /*************************************************/
-  formData = this.defaultData();
+  formData: IPayload = this.defaultData();
 
   /*************************************************/
   /* LIFE CYCLE */
@@ -32,10 +33,11 @@ export default class RSVPForm extends Vue {
   /*************************************************/
   /* METHODS */
   /*************************************************/
-  defaultData() {
+  defaultData(): IPayload {
     return {
       name: "",
       isAttending: "Yes",
+      message: "",
       songSuggestions: "",
       dietRestrictions: "",
     };
@@ -54,10 +56,17 @@ export default class RSVPForm extends Vue {
     const hasDietRestrictions = isNonEmptyString(this.formData.dietRestrictions);
     const dietRestrictions = hasDietRestrictions ? this.formData.dietRestrictions : "None";
 
-    const payload = {
+    const hasMessage = isNonEmptyString(this.formData.message);
+    const message = hasMessage ? this.formData.message : "None";
+
+    const hasSongSuggestions = isNonEmptyString(this.formData.songSuggestions);
+    const songSuggestions = hasSongSuggestions ? this.formData.songSuggestions : "None";
+
+    const payload: IPayload = {
       name: this.formData.name,
       isAttending: this.formData.isAttending,
-      songSuggestions: this.formData.songSuggestions,
+      message: message,
+      songSuggestions: songSuggestions,
       dietRestrictions: dietRestrictions,
     };
 

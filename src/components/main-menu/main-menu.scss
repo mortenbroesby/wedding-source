@@ -23,11 +23,11 @@
     border-bottom: 1px solid #e5e5e5;
     pointer-events: all;
 
+    @include z-index(menu-bar);
+
     .logo {
       height: 100%;
       padding: 20px;
-
-      @include title;
 
       display: flex;
       flex-direction: column;
@@ -69,9 +69,8 @@
       justify-content: center;
 
       .navigation-item {
+        @include title;
         font-size: 20px;
-        font-family: "Lora", cursive;
-
         padding: 10px;
       }
     }
@@ -80,7 +79,7 @@
 
 .overlay {
   position: fixed;
-  z-index: 100;
+  @include z-index(overlay);
   background: rgba(255, 255, 255, 1);
   top: 0;
   left: 0;
@@ -99,15 +98,14 @@
   pointer-events: all;
 
   &.visible {
-    opacity: 0.8;
+    opacity: 1;
     visibility: visible;
     -webkit-animation: perspective 0.5s cubic-bezier(0.58, 0.27, 0.81, 0.57) forwards;
             animation: perspective 0.5s cubic-bezier(0.58, 0.27, 0.81, 0.57) forwards;
   }
 
   &__item {
-    font-size: 20px;
-    font-family: "Lora", cursive;
+    @include title;
 
     padding: 10px 0;
   }
@@ -121,5 +119,38 @@
   .hamburger,
   .overlay {
     display: none !important;
+  }
+
+  .main-menu {
+    .main-menu__bar {
+      background-color: rgba(0, 0, 0, 0);
+      border-bottom: 1px solid transparent;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .main-menu {
+    .main-menu__bar {
+      padding: 20px !important;
+      padding-top: 30px !important;
+    }
+  }
+
+  .navigation-expanded {
+    .navigation-item {
+      font-size: 20px !important;
+      padding: 20px !important;
+      text-shadow: 2px 2px #FFF;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .navigation-expanded {
+    .navigation-item {
+      font-size: 26px !important;
+      padding: 40px !important;
+    }
   }
 }
