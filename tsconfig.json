@@ -25,5 +25,9 @@
   "exclude": [
     "node_modules/**/*"
   ],
-  "compileOnSave": false
+  "compileOnSave": false,
+  "parcel-plugin-typescript": {
+    // If true type-checking is disabled
+    "transpileOnly": false
+  }
 }
