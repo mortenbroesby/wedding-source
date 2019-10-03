@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .cover {
   position: relative;
   display: flex;
@@ -64,10 +66,9 @@
     &__title {
       text-align: center;
 
+      @include title;
       color: white;
       font-size: 60px;
-      font-family: "Karla", cursive;
-      font-weight: bold;
 
       padding-bottom: 20px;
     }

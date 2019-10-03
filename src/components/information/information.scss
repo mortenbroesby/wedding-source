@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .information {
   position: relative;
 
@@ -60,9 +62,7 @@
   padding-top: 20px;
 
   &__title {
-    font-size: 30px;
-    font-family: "Karla", cursive;
-    font-weight: bold;
+    @include title;
 
     padding-bottom: 20px;
   }
@@ -85,8 +85,8 @@
     border-radius: 16px;
     background: #FFDC00;
 
-    font-family: "Karla", cursive;
-    font-weight: bold;
+    @include title;
+    font-size: 16px;
 
     &:not(last-child) {
       margin-bottom: 6px;

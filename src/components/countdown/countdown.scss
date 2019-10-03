@@ -1,16 +1,28 @@
+@import "../../styles/global.scss";
+
 .countdown {
   position: relative;
   width: 100%;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 
   padding: 26px 0;
 
   color: #142E4B;
 
-  .countdown__element {
+  &__title {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+
+    @include title;
+  }
+
+  &__element {
     width: 100%;
 
     .section {
@@ -21,9 +33,7 @@
       width: 100%;
       padding: 10px 0;
 
-      font-size: 30px;
-      font-family: "Karla", cursive;
-      font-weight: bold;
+      @include title;
       text-align: center;
     }
   }

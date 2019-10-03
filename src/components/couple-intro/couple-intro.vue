@@ -5,11 +5,6 @@
       <div class="and">&</div>
       <div class="couple couple--groom"></div>
     </div>
-
-    <div class="countdown">
-      <h1 class="countdown__title">We are getting married in</h1>
-      <countdown></countdown>
-    </div>
   </div>
 </template>
 

@@ -4,6 +4,7 @@
 
     <cover></cover>
     <couple-intro></couple-intro>
+    <countdown></countdown>
 
     <timeline id="timeline"></timeline>
     <information id="info"></information>

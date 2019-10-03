@@ -29,6 +29,11 @@
         <textarea class="input" v-model="formData.songSuggestions"></textarea>
       </div>
 
+      <div class="bigField">
+        <p class="label">Do you have any allergies or dietary restrictions?</p>
+        <textarea class="input" v-model="formData.dietRestrictions"></textarea>
+      </div>
+
       <div class="buttons">
         <button class="button clearButton" @click="onReset">Clear</button>
         <button class="button sendButton" @click="onSubmit">Send my answer</button>

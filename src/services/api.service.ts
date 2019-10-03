@@ -3,8 +3,12 @@ import config from "../config";
 
 import appContent from "../content/index.json";
 
-const { information } = appContent;
+const { information, timeline } = appContent;
 
-export function getInformation() {
+export function getInformationContent() {
   return information;
+}
+
+export function getTimelineContent() {
+  return timeline;
 }

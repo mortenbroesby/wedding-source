@@ -27,9 +27,7 @@
       height: 100%;
       padding: 20px;
 
-      font-size: 30px;
-      font-family: "Karla", cursive;
-      font-weight: bold;
+      @include title;
 
       display: flex;
       flex-direction: column;

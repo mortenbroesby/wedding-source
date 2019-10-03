@@ -1,5 +1,9 @@
+import Logger from "js-logger";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
+
+import { getTimelineContent } from "../../services/api.service";
+import { TimelineItem } from "../../interfaces";
 
 import template from "./timeline.vue";
 
@@ -11,31 +15,44 @@ export default class Timeline extends Vue {
   /*************************************************/
   /* PROPERTIES */
   /*************************************************/
-  timelineItems: any = {};
+  timelineItems: any = [];
 
   /*************************************************/
   /* LIFE CYCLE */
   /*************************************************/
   mounted() {
-    this.fillItems();
+    this.getContent();
   }
 
   /*************************************************/
   /* METHODS */
   /*************************************************/
-  fillItems() {
-    const items = new Array(10).fill({}).map((item, index) => {
+  async getContent() {
+    try {
+     const content
+      = await getTimelineContent();
+
+     this.setContent(content);
+    } catch (error) {
+      Logger.warn("getInformation error: ", error);
+    }
+  }
+
+  formatItems(content: TimelineItem[]) {
+    const items = content.map((item: TimelineItem, index) => {
       return {
-        id: index,
-        image: "", // require("../../assets/cover.jpg"),
-        title: "Title 1",
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id fermentum arcu.
-          Mauris rhoncus libero ac mauris facilisis faucibus. Quisque sodales malesuada massa at sollicitudin.
-          Morbi eget finibus dui, vel tempor elit. Ut bibendum nec mauris sed congue. Donec blandit augue eros,`
+        id: `${index}-${item.id}`,
+        image: item.image,
+        title: item.title,
+        description: item.description,
       };
     });
 
-    this.timelineItems = items;
+    return items;
+  }
+
+  setContent(content: TimelineItem[]) {
+    this.timelineItems = this.formatItems(content);
   }
 
   imageStyling(item: any) {

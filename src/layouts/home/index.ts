@@ -7,6 +7,8 @@ import StoreMixin from "../../mixins/store.mixin";
 import MainMenu from "../../components/main-menu";
 import Cover from "../../components/cover";
 import CoupleIntro from "../../components/couple-intro";
+import Countdown from "../../components/countdown";
+
 import Timeline from "../../components/timeline";
 import Information from "../../components/information";
 import RSVPForm from "../../components/rsvp-form";
@@ -19,6 +21,7 @@ import template from "./home.vue";
     MainMenu,
     Cover,
     CoupleIntro,
+    Countdown,
     Timeline,
     Information,
     RSVPForm,

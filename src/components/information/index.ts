@@ -1,10 +1,12 @@
+import Logger from "js-logger";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
+import { getInformationContent } from "../../services/api.service";
+import { InfoItem } from "../../interfaces";
+
 import template from "./information.vue";
-import { getInformation } from "../../services/api.service";
-import Logger from "js-logger";
-import { InfoItem } from "@/interfaces";
+
 
 @Component({
   mixins: [template],
@@ -19,17 +21,18 @@ export default class Information extends Vue {
   /* LIFE CYCLE */
   /*************************************************/
   mounted() {
-    this.fillItems();
+    this.getContent();
   }
 
   /*************************************************/
   /* METHODS */
   /*************************************************/
-  async fillItems() {
+  async getContent() {
     try {
-     const content = await getInformation();
+     const content
+      = await getInformationContent();
 
-     this.informationItems = this.formatItems(content);
+     this.setContent(content);
     } catch (error) {
       Logger.warn("getInformation error: ", error);
     }
@@ -37,9 +40,6 @@ export default class Information extends Vue {
 
   formatItems(content: InfoItem[]) {
     const items = content.map((item: InfoItem, index) => {
-      Logger.info(">>>>>> index: ", index);
-      Logger.info(">>>>>> item: ", item);
-
       return {
         id: `${index}-${item.id}`,
         image: item.image,
@@ -50,6 +50,10 @@ export default class Information extends Vue {
     });
 
     return items;
+  }
+
+  setContent(content: InfoItem[]) {
+    this.informationItems = this.formatItems(content);
   }
 
   imageStyling(item: any) {

@@ -1,5 +1,7 @@
 <template>
   <div class="countdown">
+    <h1 class="countdown__title">We are getting married in</h1>
+
     <div class="countdown__element">
       <div class="section">
         <p class="text text--days">{{ $t("countdown.days", { daysLeft: daysLeft }) }}</p>
