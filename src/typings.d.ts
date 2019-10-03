@@ -11,3 +11,8 @@ declare module "*.json" {
 declare module "get-user-locale" {
   const getUserLocale: any;
 }
+
+declare module "*.svg" {
+  const content: any;
+  export default content;
+}
