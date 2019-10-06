@@ -7,7 +7,7 @@
 
       <div class="contentItem" v-for="(item, index) in informationItems" :key="index">
         <div class="contentItem__image">
-          <div class="contentItem__image__asset" :style="imageStyling"></div>
+          <img class="contentItem__image__asset" :src="item.image" />
         </div>
 
         <div class="contentItem__metadata">
@@ -15,7 +15,10 @@
           <div class="contentItem__metadata__description" v-html="item.description"></div>
           <div class="contentItem__metadata__buttons">
             <button class="contentItem__metadata__button"
-              v-for="(button, index) in item.buttons" :key="index">{{ button.label }}</button>
+              v-for="(button, index) in item.buttons" :key="index"
+              :class="{ inactive: isInactive(button) }"
+              :disabled="isInactive(button)"
+              @click="openLink(button)">{{ button.label }}</button>
           </div>
         </div>
       </div>

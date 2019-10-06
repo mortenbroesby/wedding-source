@@ -3,8 +3,9 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
 import { getInformationContent } from "../../services/api.service";
-import { InfoItem } from "../../interfaces";
-import { isUndefined } from "../../utilities";
+import { InfoItem, InfoButton } from "../../interfaces";
+import { isUndefined, isDefined } from "../../utilities";
+import _ from "lodash";
 
 import template from "./information.vue";
 
@@ -16,6 +17,13 @@ export default class Information extends Vue {
   /* PROPERTIES */
   /*************************************************/
   informationItems: any = [];
+
+  /*************************************************/
+  /* COMPUTED'S */
+  /*************************************************/
+  get imageFranish() {
+    return require("../../assets/information/franish.jpg");
+  }
 
   /*************************************************/
   /* LIFE CYCLE */
@@ -44,9 +52,12 @@ export default class Information extends Vue {
     }
 
     const items = content.map((item: InfoItem, index) => {
+      const images = require("../../assets/information/*.jpg");
+      const currentImage = _.find(images, (_: string, key: string) => key === item.image);
+
       return {
         id: `${index}-${item.id}`,
-        image: item.image,
+        image: currentImage,
         title: item.title,
         description: item.description,
         buttons: item.buttons,
@@ -60,9 +71,20 @@ export default class Information extends Vue {
     this.informationItems = this.formatItems(content);
   }
 
-  imageStyling(item: any) {
-    return {
-      backgroundImage: `url(${item.image})`
-    };
+  openLink(button: InfoButton) {
+    const isExternalLink = button.external || false;
+    const hasLink = isExternalLink && isDefined(button.link);
+
+    if (hasLink) {
+      const win = window.open(button.link, "_blank");
+
+      if (win) {
+        win.focus();
+      }
+    }
+  }
+
+  isInactive(button: InfoButton) {
+    return button.inactive || false;
   }
 }

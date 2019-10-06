@@ -19,6 +19,9 @@ export interface InfoItem {
 
 export interface InfoButton {
   label: string;
+  link: string;
+  external: boolean;
+  inactive: boolean;
 }
 
 export interface IPayload {

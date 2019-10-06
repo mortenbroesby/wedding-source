@@ -1,24 +1,78 @@
 {
   "information": [
     {
-      "id": "info",
-      "image": "info",
-      "title": "Info",
-      "description": "Long description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id fermentum arcu. Mauris rhoncus libero ac mauris facilisis faucibus. Quisque sodales malesuada massa at sollicitudin. Morbi eget finibus dui, vel tempor elit. Ut bibendum nec mauris sed congue. Donec blandit augue eros,",
+      "id": "franish",
+      "image": "franish",
+      "title": "Franish!",
+      "description": "This is a special day, probably one of a kind. The bride is French, the groom is Danish, the location is Dutch, the whole thing spoken in English. Please forget every assumption you have about how a wedding should be and let us take you in our world ;) <br/><br/>#newtraditions #mixandmatch #franish",
+      "buttons": []
+    },
+    {
+      "id": "welcome",
+      "image": "amsterdam2",
+      "title": "Welcome to Amsterdam!",
+      "description": "Bienvenue chez nous! We are so happy to share with you our wonderful A'dam. Here you can find all our favorite spots and the wedding places. Enjoy the city.",
       "buttons": [
         {
-          "label": "Label 1 name"
+          "label": "Our city tips - will come later",
+          "inactive": true
         },
         {
-          "label": "Label 2 name"
+          "label": "Our map of A'dam",
+          "link": "https://drive.google.com/open?id=1WkJNlcw02d5w1izdg2XBySZptEr-fnrM&usp=sharing",
+          "external": true
         }
       ]
     },
     {
-      "id": "hello",
-      "image": "hello",
-      "title": "Hello",
-      "description": "Long description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id fermentum arcu. Mauris rhoncus libero ac mauris facilisis faucibus. Quisque sodales malesuada massa at sollicitudin. Morbi eget finibus dui, vel tempor elit. Ut bibendum nec mauris sed congue. Donec blandit augue eros,",
+      "id": "accommodation",
+      "image": "amsterdam1",
+      "title": "How to come and where to sleep?",
+      "description": "Both the ceremony and the party are in the heart of Amsterdam. See here our tips about where to transports and accomodations.",
+      "buttons": [
+        {
+          "label": "About transports - will come later",
+          "inactive": true
+        },
+        {
+          "label": "Where to sleep? - will come later",
+          "inactive": true
+        }
+      ]
+    },
+    {
+      "id": "weather",
+      "image": "sunny",
+      "title": "What's the weather like?",
+      "description": "Obviously we hope for the best weather. It’s the first day of spring. In practice we can just give you the average of the last few years: 10°C in the afternoon, 4°C at night, sunny with passing clouds. Sunrise: 6:39. Sunset: 18:56.",
+      "buttons": []
+    },
+    {
+      "id": "dresscode",
+      "image": "dresscode",
+      "title": "Dress code?",
+      "description": "There is no special dress code. We know that the travel is costly for everyone, and we really don’t want you to engage more costs. Be warm! On the boats especially: The boats are simple boats, covered, obviously, but not heated.",
+      "buttons": []
+    },
+    {
+      "id": "gifts",
+      "image": "gifts",
+      "title": "Did you say gifts?",
+      "description": "The best gift is to have you with us on that day! If you wish to help us start our life of newlyweds very well equipped, we will add a link to list just here in a few weeks. In advance we say a huge thank you.",
+      "buttons": []
+    },
+    {
+      "id": "sunday",
+      "image": "sunday",
+      "title": "And Sunday?",
+      "description": "For our family and friends travelling from far, we organise a “Rebon” as they say in France ;) It will be a very very very casual brunch. When and where will be announced later. Did we say it’s casual? <br/><br/>#notfancy #comeasyouare",
+      "buttons": []
+    },
+    {
+      "id": "more",
+      "image": "more",
+      "title": "More?",
+      "description": "If we have more to say, we will just add it here. So come back ;) And if you have more questions just ask us.",
       "buttons": []
     }
   ]
