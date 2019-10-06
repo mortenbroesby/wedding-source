@@ -19,7 +19,7 @@
       </div>
 
       <div class="navigation-alternative" v-if="showAlternative" @click="goHome">
-        <a class="navigation-item">Go back</a>
+        <a class="navigation-item"><i class="material-icons back">keyboard_backspace</i>Go back</a>
       </div>
     </div>
 
