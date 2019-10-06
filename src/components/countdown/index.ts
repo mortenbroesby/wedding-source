@@ -12,59 +12,82 @@ export default class Countdown extends Vue {
   /* PROPERTIES */
   /*************************************************/
   countdownInterval: any = -1;
-  isExpired: boolean = false;
+  timeHasPassed: boolean = false;
 
   daysLeft: number = 0;
   hoursLeft: number = 0;
   minutesLeft: number = 0;
   secondsLeft: number = 0;
 
+  eventTimeUnix: number = 1584801000; // Sat, 21 Mar 2020 14: 30: 00 + 0000
+  countdownIntervalMS: number = 1000;
+
   /*************************************************/
   /* LIFE CYCLE */
   /*************************************************/
   mounted() {
-    this.setupCountdownInterval();
+    this.init();
   }
 
   beforeDestroy() {
-    clearInterval(this.countdownInterval);
+    window.clearInterval(this.countdownInterval);
   }
 
   /*************************************************/
   /* METHODS */
   /*************************************************/
-  countdown() {
-    const eventTimeUnix = 1584801000; // Sat, 21 Mar 2020 14: 30: 00 + 0000
+  init() {
+    this.checkCountdown();
+    this.setupCountdownInterval();
+  }
+
+  checkCountdown() {
+    const hasExpired = this.checkIfExpired();
+    if (hasExpired) {
+      return this.resetTime();
+    }
+
+    this.calculateCountdown();
+  }
+
+  checkIfExpired(): boolean {
     const currentTimeUnix = Math.floor(Date.now() / 1000);
 
-    const diffTime = eventTimeUnix - currentTimeUnix;
-    this.isExpired = diffTime <= 0;
+    const diffTime = this.eventTimeUnix - currentTimeUnix;
+    this.timeHasPassed = diffTime <= 0;
 
-    if (!this.isExpired) {
-      const eventDate = moment.unix(eventTimeUnix);
-      const todaysDate = moment();
+    return this.timeHasPassed;
+  }
 
-      const diff = eventDate.diff(todaysDate);
-      const timeLeft = moment.duration(diff);
+  resetTime() {
+    this.daysLeft = 0;
+    this.hoursLeft = 0;
+    this.minutesLeft = 0;
+    this.secondsLeft = 0;
+  }
 
-      this.daysLeft = eventDate.diff(todaysDate, "days");
-      this.hoursLeft = timeLeft.hours();
-      this.minutesLeft = timeLeft.minutes();
-      this.secondsLeft = timeLeft.seconds();
-    } else {
-      this.daysLeft = 0;
-      this.hoursLeft = 0;
-      this.minutesLeft = 0;
-      this.secondsLeft = 0;
-    }
+  calculateCountdown() {
+    const eventDate = moment.unix(this.eventTimeUnix);
+    const todaysDate = moment();
+
+    const diff = eventDate.diff(todaysDate);
+    const timeLeft = moment.duration(diff);
+
+    this.daysLeft = eventDate.diff(todaysDate, "days");
+    this.hoursLeft = timeLeft.hours();
+    this.minutesLeft = timeLeft.minutes();
+    this.secondsLeft = timeLeft.seconds();
   }
 
   setupCountdownInterval() {
-    this.countdown();
+    const hasExpired = this.checkIfExpired();
 
-    const intervalSeconds = 1;
-    this.countdownInterval = setInterval(() => {
-      this.countdown();
-    }, intervalSeconds * 1000);
+    if (!hasExpired) {
+      window.clearInterval(this.countdownInterval);
+
+      this.countdownInterval = window.setInterval(() => {
+        this.checkCountdown();
+      }, this.countdownIntervalMS);
+    }
   }
 }
