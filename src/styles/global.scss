@@ -93,6 +93,7 @@ body {
   color: color('main-fontColor');
   background-color: color('background');
   @include z-index(root);
+  scroll-behavior: smooth;
 }
 
 html {
