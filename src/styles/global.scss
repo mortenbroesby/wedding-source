@@ -8,6 +8,7 @@ $colors: (
   'main-fontColor':             rgba(#142E4B, 1),
 
   'coupleIntro-background':     rgba(#F9D6C8, 1),
+  'coupleIntro-and':            rgba(#ED3124, 1),
 
   'timeline-background':        rgba(#B0DDD7, 1),
   'timeline-title':             rgba(#FFFFFF, 1),
@@ -16,12 +17,16 @@ $colors: (
   'information-title':          rgba(#ED3124, 1),
 
   'rsvp-background':            rgba(#B0DDD7, 1),
+
+  'footerArea-background':     rgba(#F9D6C8, 1),
+  'footerArea-title':          rgba(#ED3124, 1),
 );
 
 /* Color variables */
 $main-fontColor: map-get($colors, 'main-fontColor');
 
 $coupleIntro-background: map-get($colors, 'coupleIntro-background');
+$coupleIntro-and: map-get($colors, 'coupleIntro-and');
 
 $timeline-background: map-get($colors, 'timeline-background');
 $timeline-title: map-get($colors, 'timeline-title');
@@ -30,6 +35,9 @@ $timeline-subtitle: map-get($colors, 'timeline-subtitle');
 $information-title: map-get($colors, 'information-title');
 
 $rsvp-background: map-get($colors, 'rsvp-background');
+
+$footerArea-background: map-get($colors, 'footerArea-background');
+$footerArea-title: map-get($colors, 'footerArea-title');
 
 /* Mixins */
 @function color($key) {

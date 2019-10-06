@@ -1,0 +1,53 @@
+@import "../../styles/global.scss";
+
+.footer-area {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: auto;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  background-color: $footerArea-background;
+
+  text-align: center;
+
+  > .title {
+    @include title;
+    color: $footerArea-title;
+    padding: 0 20px;
+  }
+
+  .metadata {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+
+    .info {
+      padding: 20px;
+      text-align: center;
+
+      .title {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .metadata {
+    flex-direction: row !important;
+
+    .info {
+      margin-top: 20px !important;
+    }
+  }
+}
+

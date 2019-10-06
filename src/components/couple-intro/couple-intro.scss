@@ -22,28 +22,42 @@
     justify-content: center;
     width: auto;
 
-    .couple {
+    .metadata {
       display: inline-block;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
+      width: 380px;
+      padding: 15px;
 
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: #D8D8D8;
-
-      &--bride {
-        // background-image: url("../../assets/cover.jpg");
+      .title {
+        @include title;
+        margin-top: 8px;
+        margin-bottom: 8px;
       }
 
-      &--groom {
-        // background-image: url("../../assets/cover.jpg");
+      .text {
+
+      }
+    }
+
+    .couple {
+      display: inline-block;
+
+      .image {
+        width: 160px;
+        border: 8px solid #FFF;
+        background-color: #D8D8D8;
+
+        &--bride {
+          transform: rotate(-5deg);
+        }
+
+        &--groom {
+          transform: rotate(5deg);
+        }
       }
     }
 
     .and {
-      padding-top: 28px;
+      padding-top: 20px;
       padding-bottom: 20px;
 
       display: flex;
@@ -53,9 +67,32 @@
 
       text-align: center;
 
-      font-size: 80px;
-      text-shadow: 1px 1px 1px #000;
-      font-family: "Alex Brush", cursive;
+      @include title;
+      font-size: 100px;
+      color: $coupleIntro-and;
+    }
+  }
+
+  .couples-text-large {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+    .couple {
+      display: inline-block;
+      width: 380px;
+      padding: 15px;
+
+      .title {
+        @include title;
+        margin-bottom: 8px;
+      }
+
+      .text {
+
+      }
     }
   }
 }
@@ -66,9 +103,18 @@
       flex-direction: row;
 
       .and {
-        padding-left: 25px;
-        padding-right: 25px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 40px;
+      }
+
+      .metadata {
+        display: none !important;
       }
     }
+  }
+
+  .couples-text-large {
+    display: flex !important;
   }
 }

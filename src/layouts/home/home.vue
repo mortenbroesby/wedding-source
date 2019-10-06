@@ -9,6 +9,8 @@
     <timeline id="timeline"></timeline>
     <information id="info"></information>
     <RSVPForm id="rsvp"></RSVPForm>
+
+    <FooterArea></FooterArea>
   </div>
 </template>
 

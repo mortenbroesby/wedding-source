@@ -13,6 +13,8 @@ import Timeline from "../../components/timeline";
 import Information from "../../components/information";
 import RSVPForm from "../../components/rsvp-form";
 
+import FooterArea from "../../components/footer-area";
+
 import template from "./home.vue";
 
 @Component({
@@ -25,6 +27,7 @@ import template from "./home.vue";
     Timeline,
     Information,
     RSVPForm,
+    FooterArea,
   },
   metaInfo: {}
 })
