@@ -8,11 +8,9 @@ import VueRouter, {
 
 import { trackPage } from "./services/tracking.service";
 
-import Home from "./layouts/home";
-import NotFound from "./layouts/notFound";
-
 export enum RouteName {
   HOME = "home",
+  INFO = "info",
   NOT_FOUND = "not-found",
 }
 
@@ -20,13 +18,19 @@ export const routes: RouteConfig[] = [
   {
     path: `/${RouteName.HOME}/`,
     name: RouteName.HOME,
-    component: Home,
+    component: () => import("./layouts/home"),
     alias: "/",
+  },
+  {
+    path: `/${RouteName.INFO}/:id?`,
+    name: RouteName.INFO,
+    component: () => import("./layouts/info"),
+    props: true,
   },
   {
     path: "*",
     name: RouteName.NOT_FOUND,
-    component: NotFound,
+    component: () => import("./layouts/notFound"),
   }
 ];
 

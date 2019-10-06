@@ -45,7 +45,7 @@
           <p class="text">
             Around 17:30: Cake and drinks <br/>
             19:00: Dîner <br/>
-            22h30: Let's dance! <br/>
+            22:30: Let's dance! <br/>
             03:00: Doors are closing <br/><br/>
 
             <a class="link" href="https://goo.gl/maps/HdwP5BLvE8FUVCcXA">Westerliefde</a> <br/>
