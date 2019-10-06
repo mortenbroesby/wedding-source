@@ -19,6 +19,21 @@ export default class Timeline extends Vue {
   timelineItems: any = [];
 
   /*************************************************/
+  /* COMPUTED's */
+  /*************************************************/
+  get iconCeremonyHTML() {
+    return require("../../assets/icon-ceremony.svg");
+  }
+
+  get iconCruiseHTML() {
+    return require("../../assets/icon-cruise.svg");
+  }
+
+  get iconPartyHTML() {
+    return require("../../assets/icon-party.svg");
+  }
+
+  /*************************************************/
   /* LIFE CYCLE */
   /*************************************************/
   mounted() {
@@ -64,5 +79,9 @@ export default class Timeline extends Vue {
     return {
       backgroundImage: `url(${item.image})`
     };
+  }
+
+  iconHTML(iconName: string) {
+    return require(`../../assets/icon-${iconName}.svg`);
   }
 }
