@@ -132,6 +132,10 @@ export function isDefined(value: any): boolean {
   return typeof value !== "undefined";
 }
 
+export function isUndefined(value: any): boolean {
+  return typeof value === "undefined";
+}
+
 export function stringHasUpperCase(string: string) {
   return /[A-Z]/.test(string);
 }

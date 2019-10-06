@@ -4,6 +4,7 @@ import { Component } from "vue-property-decorator";
 
 import { getTimelineContent } from "../../services/api.service";
 import { TimelineItem } from "../../interfaces";
+import { isUndefined } from "../../utilities";
 
 import template from "./timeline.vue";
 
@@ -39,6 +40,10 @@ export default class Timeline extends Vue {
   }
 
   formatItems(content: TimelineItem[]) {
+    if (isUndefined(content)) {
+      return [];
+    }
+
     const items = content.map((item: TimelineItem, index) => {
       return {
         id: `${index}-${item.id}`,

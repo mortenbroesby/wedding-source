@@ -4,9 +4,9 @@ import { Component } from "vue-property-decorator";
 
 import { getInformationContent } from "../../services/api.service";
 import { InfoItem } from "../../interfaces";
+import { isUndefined } from "../../utilities";
 
 import template from "./information.vue";
-
 
 @Component({
   mixins: [template],
@@ -39,6 +39,10 @@ export default class Information extends Vue {
   }
 
   formatItems(content: InfoItem[]) {
+    if (isUndefined(content)) {
+      return [];
+    }
+
     const items = content.map((item: InfoItem, index) => {
       return {
         id: `${index}-${item.id}`,
