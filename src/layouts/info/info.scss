@@ -1,3 +1,26 @@
-.info {
+@import "../../styles/global.scss";
 
+.info {
+  padding-bottom: 80px;
+
+  .menu-container {
+    height: 100px;
+  }
+
+  .title {
+    background-color: #FFDC00;
+    padding: 60px;
+    max-width: 100%;
+    margin-bottom: 30px;
+
+    @include title;
+    text-align: center;
+  }
+
+  .content {
+    margin: 0 auto;
+    width: auto;
+    max-width: 700px;
+    padding: 20px;
+  }
 }

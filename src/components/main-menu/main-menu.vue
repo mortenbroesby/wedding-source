@@ -1,15 +1,15 @@
 <template>
   <div class="main-menu">
     <div class="main-menu__bar">
-      <a class="logo" href="#home">
-      <div class="logo__content" v-html="logoHTML"></div>
+      <a class="logo" href="#home" @click="goHome">
+        <div class="logo__content" v-html="logoHTML"></div>
       </a>
 
-      <button class="hamburger" @click="toggleMenu">
+      <button class="hamburger" @click="toggleMenu" v-if="!showAlternative">
         <i class="material-icons">{{ hamburgerIcon }}</i>
       </button>
 
-      <div class="navigation-expanded">
+      <div class="navigation-expanded" v-if="!showAlternative">
         <a class="navigation-item"
           @click="hideMenu"
           :href="getURL(menuItem)"
@@ -17,9 +17,13 @@
           {{ menuItem.label }}
         </a>
       </div>
+
+      <div class="navigation-alternative" v-if="showAlternative" @click="goHome">
+        <a class="navigation-item">Go back</a>
+      </div>
     </div>
 
-    <div class="overlay" :class="{ visible: menuVisible }" @click="hideMenu">
+    <div class="overlay" :class="{ visible: menuVisible }" @click="hideMenu" v-if="!showAlternative">
       <a class="overlay__item"
         @click="hideMenu"
         :href="getURL(menuItem)"

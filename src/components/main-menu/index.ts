@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import { Component, Prop } from "vue-property-decorator";
 
 import template from "./main-menu.vue";
 
@@ -7,6 +7,12 @@ import template from "./main-menu.vue";
   mixins: [template],
 })
 export default class MainMenu extends Vue {
+  /*************************************************/
+  /* EXTERNAL PROPERTIES */
+  /*************************************************/
+  @Prop({ default: false })
+  showAlternative: boolean;
+
   /*************************************************/
   /* PROPERTIES */
   /*************************************************/
@@ -49,5 +55,13 @@ export default class MainMenu extends Vue {
 
   getURL(section: any) {
     return `#${section.url}`;
+  }
+
+  goHome() {
+    if (!this.showAlternative) return;
+
+    this.$router.replace({
+      path: "/"
+    });
   }
 }

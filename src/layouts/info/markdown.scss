@@ -1,0 +1,26 @@
+@import "../../styles/global.scss";
+
+.content hr {
+  border: none;
+  outline: none;
+  padding: 20px;
+}
+
+.content h1 {
+  @include title;
+  padding-bottom: 10px;
+}
+
+.content h2 {
+  @include title;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.content img {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 0;
+}

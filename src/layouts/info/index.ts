@@ -6,12 +6,17 @@ import StoreMixin from "../../mixins/store.mixin";
 
 import { isEmptyString } from "../../utilities";
 
+import MainMenu from "../../components/main-menu";
+
+import "./markdown.scss";
 import template from "./info.vue";
 
 @Component({
   mixins: [template],
-  components: {},
-  metaInfo: {}
+  components: {
+    MainMenu,
+  },
+  metaInfo: {},
 })
 export default class Info extends mixins(StoreMixin) {
   /*************************************************/
@@ -29,11 +34,18 @@ export default class Info extends mixins(StoreMixin) {
     };
   }
 
+  get info() {
+    return {
+      title: "Title",
+      content: require("../../content/infoPage/index.md"),
+    };
+  }
+
   /*************************************************/
   /* LIFE CYCLE */
   /*************************************************/
   created() {
-    this.redirectToHome();
+    this.redirectIfEmptyID();
     this.setMeta();
   }
 

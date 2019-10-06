@@ -13,4 +13,12 @@ export default class Cover extends Vue {
   get logoHTML() {
     return require("../../assets/logo-flower.svg");
   }
+
+  get background() {
+    return {
+      xl: require("../../assets/header-xlarge.jpg"),
+      large: require("../../assets/header-large.jpg"),
+      medium: require("../../assets/header-mobile.jpg"),
+    };
+  }
 }

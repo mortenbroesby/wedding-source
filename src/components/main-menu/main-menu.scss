@@ -57,6 +57,7 @@
       }
     }
 
+    .navigation-alternative,
     .navigation-expanded {
       display: none;
 
@@ -73,6 +74,11 @@
         font-size: 20px;
         padding: 10px;
       }
+    }
+
+    .navigation-alternative {
+      display: flex;
+      cursor: pointer;
     }
   }
 }
@@ -112,6 +118,7 @@
 }
 
 @media (min-width: 600px) {
+  .navigation-alternative,
   .navigation-expanded {
     display: flex !important;
   }
@@ -137,6 +144,7 @@
     }
   }
 
+  .navigation-alternative,
   .navigation-expanded {
     .navigation-item {
       font-size: 20px !important;
@@ -147,6 +155,7 @@
 }
 
 @media (min-width: 1000px) {
+  .navigation-alternative,
   .navigation-expanded {
     .navigation-item {
       font-size: 26px !important;
