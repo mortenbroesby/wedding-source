@@ -23,14 +23,16 @@
       </div>
     </div>
 
-    <div class="overlay" :class="{ visible: menuVisible }" @click="hideMenu" v-if="!showAlternative">
-      <a class="overlay__item"
-        @click="hideMenu"
-        :href="getURL(menuItem)"
-        v-for="(menuItem, index) in menuItems" :key="index">
-        {{ menuItem.label }}
-      </a>
-    </div>
+    <transition name="fade">
+      <div class="overlay" :class="{ visible: menuVisible }" @click="hideMenu" v-if="overlayVisible">
+        <a class="overlay__item"
+          @click="hideMenu"
+          :href="getURL(menuItem)"
+          v-for="(menuItem, index) in menuItems" :key="index">
+          {{ menuItem.label }}
+        </a>
+      </div>
+    </transition>
   </div>
 </template>
 

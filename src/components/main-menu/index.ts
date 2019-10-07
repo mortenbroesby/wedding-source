@@ -40,6 +40,14 @@ export default class MainMenu extends Vue {
     return require("../../assets/logo-small.svg");
   }
 
+  get overlayVisible() {
+    if (this.showAlternative) {
+      return false;
+    }
+
+    return this.menuVisible;
+  }
+
   /*************************************************/
   /* METHODS */
   /*************************************************/
