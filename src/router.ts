@@ -39,16 +39,21 @@ Vue.use(VueRouter);
 const routeOptions: RouterOptions = {
   routes,
   mode: "history",
-  linkActiveClass: "active"
+  linkActiveClass: "active",
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      };
+    }
+
+    return { x: 0, y: 0 };
+  }
 };
 
 export const router = new VueRouter(routeOptions);
 
 router.beforeEach((to, from, next) => {
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 0);
-
   const fullPath = to.fullPath;
   const pageName = to.name;
 
