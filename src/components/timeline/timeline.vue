@@ -17,7 +17,7 @@
             14:00: Church doors open <br/>
             14:30: Ceremony <br/><br/>
 
-            <a class="link" href="https://goo.gl/maps/5GjShzqyGbEL3JdE6">Onze Lieve Vrouwkerk</a> <br/>
+            <a class="link" href="https://goo.gl/maps/5GjShzqyGbEL3JdE6" target="_blank">Onze Lieve Vrouwkerk</a> <br/>
             Keizersgracht 220 <br/>
             1016 DZ Amsterdam, NL <br/>
           </p>
@@ -48,7 +48,7 @@
             22:30: Let's dance! <br/>
             03:00: Doors are closing <br/><br/>
 
-            <a class="link" href="https://goo.gl/maps/HdwP5BLvE8FUVCcXA">Westerliefde</a> <br/>
+            <a class="link" href="https://goo.gl/maps/HdwP5BLvE8FUVCcXA" target="_blank">Westerliefde</a> <br/>
             Klönneplein 4-6<br/>
             1014 DD Amsterdam
           </p>

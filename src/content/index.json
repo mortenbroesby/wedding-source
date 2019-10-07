@@ -31,8 +31,8 @@
       "description": "Both the ceremony and the party are in the heart of Amsterdam. See here our tips about transports and accomodations.",
       "buttons": [
         {
-          "label": "About transports - will come later",
-          "inactive": true
+          "label": "About transportation",
+          "link": "/info/transportation"
         },
         {
           "label": "Where to sleep? - will come later",

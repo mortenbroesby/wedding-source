@@ -73,14 +73,18 @@ export default class Information extends Vue {
 
   openLink(button: InfoButton) {
     const isExternalLink = button.external || false;
-    const hasLink = isExternalLink && isDefined(button.link);
+    const hasExternalLink = isExternalLink && isDefined(button.link);
+    const hasLink = isDefined(button.link);
 
-    if (hasLink) {
+    if (hasExternalLink) {
       const win = window.open(button.link, "_blank");
-
       if (win) {
         win.focus();
       }
+    } else if (hasLink) {
+      this.$router.push({
+        path: button.link
+      });
     }
   }
 

@@ -45,6 +45,10 @@ const routeOptions: RouterOptions = {
 export const router = new VueRouter(routeOptions);
 
 router.beforeEach((to, from, next) => {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 0);
+
   const fullPath = to.fullPath;
   const pageName = to.name;
 

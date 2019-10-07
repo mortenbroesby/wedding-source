@@ -4,7 +4,8 @@ import { Component, Prop } from "vue-property-decorator";
 
 import StoreMixin from "../../mixins/store.mixin";
 
-import { isEmptyString } from "../../utilities";
+import { isEmptyString, isDefined } from "../../utilities";
+import _ from "lodash";
 
 import MainMenu from "../../components/main-menu";
 
@@ -36,9 +37,29 @@ export default class Info extends mixins(StoreMixin) {
 
   get info() {
     return {
-      title: "Title",
-      content: require("../../content/infoPage/index.md"),
+      title: this.title,
+      content: this.markdown,
     };
+  }
+
+  get title() {
+    switch (this.id) {
+      case "transportation":
+        return "Transportation";
+      default:
+        return "Title";
+    }
+  }
+
+  get markdown() {
+    const markdown = require("../../content/infoPage/*.md");
+    const currentMarkdown = _.find(markdown, (_: string, key: string) => key === this.id);
+
+    return currentMarkdown;
+  }
+
+  get hasMarkdown() {
+    return isDefined(this.markdown);
   }
 
   /*************************************************/
@@ -53,7 +74,7 @@ export default class Info extends mixins(StoreMixin) {
   /* METHODS */
   /*************************************************/
   redirectIfEmptyID() {
-    if (isEmptyString(this.id)) {
+    if (isEmptyString(this.id) || !this.hasMarkdown) {
       this.redirectToHome();
     }
   }
