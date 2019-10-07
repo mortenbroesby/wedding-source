@@ -80,12 +80,42 @@
       margin-bottom: 6px;
     }
 
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
     .input {
+      position: relative;
       width: 100%;
       padding: 16px;
       border-radius: 5px;
       border: none;
       outline: none;
+      background: #FFF;
+      cursor: pointer;
+      @include z-index(input-arrow);
+    }
+
+    .arrow {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 60px;
+      height: 100%;
+      cursor: pointer;
+      pointer-events: none;
+      -webkit-transition: .25s all ease;
+      -o-transition: .25s all ease;
+      transition: .25s all ease;
+      content: '\25BC';
+      @include z-index(input-arrow);
     }
   }
 

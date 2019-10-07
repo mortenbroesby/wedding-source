@@ -12,16 +12,21 @@
 
       <div class="isAttending">
         <p class="label">Are you attending?</p>
-        <select class="input" v-model="formData.isAttending">
-          <option value="Yes">Yes, I/we will be there</option>
-          <option value="No">No, I/we won't be there</option>
-        </select>
+        <div class="input-wrapper">
+          <select class="input" v-model="formData.isAttending">
+            <option value="Yes">Yes, I/we will be there</option>
+            <option value="No">No, I/we won't be there</option>
+          </select>
+          <div class="arrow">
+            <i class="material-icons back">keyboard_arrow_down</i>
+          </div>
+        </div>
       </div>
 
       <div class="bigField bigField--extended">
         <p class="label">Want to tell us something?</p>
         <textarea class="input" v-model="formData.message"
-          placeholder="Is there anything special we should know? Are you excited?"></textarea>
+          placeholder="Is there anything special we should know? Are you excited? Biensûr vous pouvez écrire en français. Du kan selvfølgelig skrive på Dansk hvis du vil :)"></textarea>
       </div>
 
       <div class="bigField">
