@@ -31,12 +31,16 @@
 
       <div class="bigField">
         <p class="label">A song that will make you dance:</p>
-        <textarea class="input" v-model="formData.songSuggestions"></textarea>
+        <textarea class="input"
+          placeholder="International songs are preferred :)"
+          v-model="formData.songSuggestions"></textarea>
       </div>
 
       <div class="bigField">
         <p class="label">Do you have any allergies or dietary restrictions?</p>
-        <textarea class="input" v-model="formData.dietRestrictions"></textarea>
+        <textarea class="input"
+          placeholder="If so, let us know - for example: No gluten"
+          v-model="formData.dietRestrictions"></textarea>
       </div>
 
       <div class="buttons">
