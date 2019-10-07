@@ -44,6 +44,7 @@ export default class RSVPForm extends Vue {
   }
 
   onReset() {
+    this.$toasted.info("Form has been cleared!");
     this.resetForm();
   }
 
