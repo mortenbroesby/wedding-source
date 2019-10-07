@@ -14,11 +14,13 @@
     width: 100%;
 
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 
     &__content {
       margin-top: 80px;
+      margin-bottom: 4vh;
+      width: 200px;
     }
   }
 }
@@ -49,11 +51,31 @@
   .cover__background {
     background: url("../../assets/header-large.jpg") center/cover no-repeat;
   }
+
+  .cover {
+    &__logo {
+      align-items: center;
+
+      &__content {
+        margin-top: 80px;
+        margin-bottom: 0;
+        width: 260px;
+      }
+    }
+  }
 }
 
 @media (min-width: 1000px) {
   .cover__background {
     background: url("../../assets/header-xlarge.jpg")  center/cover no-repeat;
+  }
+
+  .cover {
+    &__logo {
+      &__content {
+        width: 360px;
+      }
+    }
   }
 }
 

@@ -11,7 +11,7 @@ export default class Cover extends Vue {
   /* COMPUTED's */
   /*************************************************/
   get logoHTML() {
-    return require("../../assets/logo-flower.svg");
+    return require("../../assets/logo-large.svg");
   }
 
   get background() {
