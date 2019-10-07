@@ -39,7 +39,7 @@
       <div class="bigField">
         <p class="label">Do you have any allergies or dietary restrictions?</p>
         <textarea class="input"
-          placeholder="If so, let us know - for example: No gluten"
+          placeholder="If so, let us know - for example: Allergic to gluten."
           v-model="formData.dietRestrictions"></textarea>
       </div>
 

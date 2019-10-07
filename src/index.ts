@@ -11,6 +11,7 @@ import * as firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/performance";
 
+import Toasted from "vue-toasted";
 import VueMeta from "vue-meta";
 
 import {
@@ -46,6 +47,11 @@ Vue.use(firestorePlugin);
 
 Vue.use(VueMeta, {
   refreshOnceOnNavigation: true,
+});
+
+Vue.use(Toasted, {
+  theme: "bubble",
+  duration: 5000,
 });
 
 // Call localisation service init before Vue is loaded

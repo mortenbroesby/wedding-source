@@ -50,7 +50,8 @@ export default class RSVPForm extends Vue {
   onSubmit() {
     const nameFilled = isNonEmptyString(this.formData.name);
     if (!nameFilled) {
-      return alert("Name not filled");
+      this.$toasted.info("You need to fill out your name :)");
+      return;
     }
 
     const hasDietRestrictions = isNonEmptyString(this.formData.dietRestrictions);
@@ -84,11 +85,15 @@ export default class RSVPForm extends Vue {
       Logger.info("Form data sent: ", data);
       visitor.event("rsvp", "rsvp-success").send();
 
+      this.$toasted.success("Thank you - your reply has been received :)");
+
       this.resetForm();
     } catch (error) {
       Logger.warn("sendForm error: ", error);
 
       visitor.event("rsvp", "rsvp-error").send();
+
+      this.$toasted.error("Sorry - there was an error. Please try again");
     }
   }
 }
