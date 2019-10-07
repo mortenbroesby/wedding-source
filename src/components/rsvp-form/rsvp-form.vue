@@ -13,8 +13,8 @@
       <div class="isAttending">
         <p class="label">Are you attending?</p>
         <select class="input" v-model="formData.isAttending">
-          <option value="Yes">Yes, I/we will be there.</option>
-          <option value="No">No, I/we won't be there.</option>
+          <option value="Yes">Yes, I/we will be there</option>
+          <option value="No">No, I/we won't be there</option>
         </select>
       </div>
 

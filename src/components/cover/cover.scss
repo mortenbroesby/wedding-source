@@ -19,7 +19,9 @@
 
     &__content {
       margin-top: 80px;
-      margin-bottom: 4vh;
+      margin-bottom: 80px;
+      margin-bottom: 6vw;
+      margin-bottom: calc(6vw + 40px);
       width: 200px;
     }
   }
