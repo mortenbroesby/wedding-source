@@ -24,13 +24,19 @@
 
     .metadata {
       display: inline-block;
-      width: 380px;
-      padding: 15px;
+      max-width: 380px;
+      width: auto;
+      padding: 15px 30px;
 
       .title {
         @include title;
-        margin-top: 8px;
-        margin-bottom: 8px;
+        margin-top: 14px;
+        margin-bottom: 14px;
+        text-align: center;
+      }
+
+      .text {
+        text-align: center;
       }
     }
 
@@ -41,20 +47,31 @@
         width: 160px;
         border: 8px solid #FFF;
         background-color: #D8D8D8;
+        transition: all ease-in-out 330ms;
 
         &--bride {
           transform: rotate(-5deg);
+
+          &:hover,
+          &:active {
+            transform: rotate(5deg) scale(1.1);
+          }
         }
 
         &--groom {
           transform: rotate(5deg);
+
+          &:hover,
+          &:active {
+            transform: rotate(-5deg) scale(1.1);
+          }
         }
       }
     }
 
     .and {
       padding-top: 20px;
-      padding-bottom: 20px;
+      padding-bottom: 40px;
 
       display: flex;
       flex-direction: column;
@@ -64,7 +81,7 @@
       text-align: center;
 
       @include title;
-      font-size: 100px;
+      font-size: pxToRems(100);
       color: $coupleIntro-and;
     }
   }
@@ -72,9 +89,9 @@
   .couples-text-large {
     display: none;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
 
     .couple {
       display: inline-block;
@@ -83,7 +100,12 @@
 
       .title {
         @include title;
-        margin-bottom: 8px;
+        margin-bottom: 14px;
+        text-align: center;
+      }
+
+      .text {
+        text-align: center;
       }
     }
   }
@@ -95,13 +117,14 @@
       flex-direction: row;
 
       .and {
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: pxToRems(80);
+        padding-right: pxToRems(80);
         padding-bottom: 40px;
       }
 
       .metadata {
         display: none !important;
+        padding: 15px;
       }
     }
   }

@@ -1,0 +1,86 @@
+// Font family
+$font-family--fallback: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$font-family--global: "Lora", $font-family--fallback;
+
+$colors: (
+  'main-fontColor':             rgba(#142E4B, 1),
+
+  'coupleIntro-background':     rgba(#F9D6C8, 1),
+  'coupleIntro-and':            rgba(#ED3124, 1),
+
+  'timeline-background':        rgba(#B0DDD7, 1),
+  'timeline-title':             rgba(#FFFFFF, 1),
+  'timeline-subtitle':          rgba(#142E4B, 1),
+
+  'information-title':          rgba(#ED3124, 1),
+
+  'rsvp-background':            rgba(#B0DDD7, 1),
+
+  'footerArea-background':     rgba(#F9D6C8, 1),
+  'footerArea-title':          rgba(#ED3124, 1),
+);
+
+/* Color variables */
+$main-fontColor: map-get($colors, 'main-fontColor');
+
+$coupleIntro-background: map-get($colors, 'coupleIntro-background');
+$coupleIntro-and: map-get($colors, 'coupleIntro-and');
+
+$timeline-background: map-get($colors, 'timeline-background');
+$timeline-title: map-get($colors, 'timeline-title');
+$timeline-subtitle: map-get($colors, 'timeline-subtitle');
+
+$information-title: map-get($colors, 'information-title');
+
+$rsvp-background: map-get($colors, 'rsvp-background');
+
+$footerArea-background: map-get($colors, 'footerArea-background');
+$footerArea-title: map-get($colors, 'footerArea-title');
+
+/* Mixins */
+@function color($key) {
+  @return map-get($colors, $key);
+}
+
+/* Z-index landscape */
+$z-index: (
+  spinner             : 100,
+  overlay             : 100,
+  menu-bar            : 101,
+  menu                : 50,
+  logo                : 10,
+  root                : 0,
+  behind              : -1,
+);
+
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+@mixin title {
+  font-size: pxToRems(30);
+  font-family: "Karla", cursive;
+  font-weight: bold;
+  line-height: 1;
+}
+
+// Function for converting a px based font-size to rem.
+@function calculateRem($size) {
+  $remSize: $size / 12px;
+  // Default font size on html element is 100%, equivalent to 16px;
+  @return #{$remSize}rem;
+}
+
+// Mixin that will include the fall back px declaration as well as the calculated rem value.
+@mixin fontSize($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@function pxToRems($px) {
+	@return 0rem + $px / 16;
+}

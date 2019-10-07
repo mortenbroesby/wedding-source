@@ -48,7 +48,7 @@
 
       .label {
         @include title;
-        font-size: 16px;
+        font-size: pxToRems(16);
 
         margin-bottom: 6px;
       }
@@ -75,7 +75,7 @@
 
     .label {
       @include title;
-      font-size: 16px;
+      font-size: pxToRems(16);
 
       margin-bottom: 6px;
     }
@@ -102,7 +102,7 @@
 
     .label {
       @include title;
-      font-size: 16px;
+      font-size: pxToRems(16);
 
       margin-bottom: 6px;
     }
@@ -132,7 +132,7 @@
       border-radius: 30px;
 
       @include title;
-      font-size: 16px;
+      font-size: pxToRems(16);
 
       &:not(:last-child) {
         margin-right: 10px;

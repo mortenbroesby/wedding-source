@@ -27,7 +27,7 @@
 
     .title {
       @include title;
-      font-size: 40px;
+      font-size: pxToRems(40);
       color: $timeline-title;
 
       margin-bottom: 20px;

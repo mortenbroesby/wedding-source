@@ -15,7 +15,7 @@
   height: auto;
 
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
 
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
   .header {
     .title {
       @include title;
-      font-size: 40px;
+      font-size: pxToRems(40);
       color: $information-title;
     }
   }
@@ -91,7 +91,7 @@
     background: #FFDC00;
 
     @include title;
-    font-size: 16px;
+    font-size: pxToRems(16);
 
     &:not(:last-child) {
       margin-bottom: 8px;

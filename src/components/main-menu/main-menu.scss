@@ -71,7 +71,7 @@
 
       .navigation-item {
         @include title;
-        font-size: 20px;
+        font-size: pxToRems(20);
         padding: 10px;
       }
     }
@@ -151,7 +151,7 @@
   .navigation-alternative,
   .navigation-expanded {
     .navigation-item {
-      font-size: 20px !important;
+      font-size: pxToRems(20) !important;
       // text-shadow: 2px 2px #FFF;
     }
   }
@@ -161,7 +161,7 @@
   .navigation-alternative,
   .navigation-expanded {
     .navigation-item {
-      font-size: 26px !important;
+      font-size: pxToRems(26) !important;
     }
   }
 }

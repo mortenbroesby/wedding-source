@@ -1,6 +1,7 @@
 <template>
   <div class="footer-area">
     <h1 class="title">With love, Joséphine & Morten</h1>
+    <h1 class="title--small">With love, </br> Joséphine & Morten</h1>
 
     <div class="metadata">
       <div class="info">

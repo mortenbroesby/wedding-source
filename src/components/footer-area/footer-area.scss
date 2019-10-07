@@ -17,10 +17,16 @@
 
   text-align: center;
 
-  > .title {
+  > .title,
+  > .title--small {
     @include title;
     color: $footerArea-title;
     padding: 0 20px;
+    display: none;
+  }
+
+  > .title--small {
+    display: block;
   }
 
   .metadata {
@@ -41,7 +47,17 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 600px) {
+  .footer-area {
+    > .title {
+      display: block;
+    }
+
+    > .title--small {
+      display: none;
+    }
+  }
+
   .metadata {
     flex-direction: row !important;
 
