@@ -1,7 +1,5 @@
 # Wedding Source
 
----
-
 ## Installation
 
 Prerequisites:
@@ -25,8 +23,3 @@ npm run build
 ```
 
 See here for more information: [https://parceljs.org/getting_started.html](https://parceljs.org/getting_started.html)
-
----
-
-## Future considerations
-- 
