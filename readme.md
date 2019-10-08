@@ -1,5 +1,7 @@
 # Wedding Source
 
+Source for our 2020 wedding website: https://josephinemorten.info
+
 ## Installation
 
 Prerequisites:
