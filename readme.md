@@ -1,6 +1,6 @@
 # Wedding Source
 
----
+Source for our 2020 wedding website: https://josephinemorten.info
 
 ## Installation
 
@@ -25,8 +25,3 @@ npm run build
 ```
 
 See here for more information: [https://parceljs.org/getting_started.html](https://parceljs.org/getting_started.html)
-
----
-
-## Future considerations
-- 
