@@ -4,7 +4,7 @@ import VueI18n from "vue-i18n";
 import config from "../config";
 import _ from "lodash";
 
-import { setItem, getItem, removeItem } from "../utilities";
+import { setItem, getItem } from "../utilities";
 
 Vue.use(VueI18n);
 
@@ -13,14 +13,28 @@ export const i18n = new VueI18n({
   messages: {}
 });
 
-interface LanguageOptions {
-  language: string;
-  messages: Object;
+
+type LocaleMessage = string | LocaleMessageObject | LocaleMessageArray;
+interface LocaleMessageArray {
+  [index: number]: LocaleMessage;
+}
+
+interface LocaleMessages {
+  [key: string]: LocaleMessageObject;
 }
 
 interface LanguageConfig {
   culture: string;
   currency: string;
+}
+
+interface LanguageOptions {
+  language: string;
+  messages: LocaleMessageObject;
+}
+
+interface LocaleMessageObject {
+  [key: string]: LocaleMessage;
 }
 
 class LocalisationService {
@@ -54,7 +68,8 @@ class LocalisationService {
 
   setLanguage(language: string, isUserPreference: boolean = true): void {
     if (this.exists(language) && language !== this.activeLanguage) {
-      const options: any = this.getOptions(language);
+      const options = this.getOptions(language);
+
       this.activeLanguage = language;
 
       if (isUserPreference) {
