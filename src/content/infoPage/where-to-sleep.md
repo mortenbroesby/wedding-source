@@ -3,7 +3,9 @@ Probably the best is just to look on Booking.com or Airbnb. But we did a little 
 
 See the below map which shows 15 minutes walking and biking distance from both Westerliefde and the church:
 
-![alt text](./images/map-amsterdam.png "Infogram of Amsterdam, 15 minutes walking / biking")
+![Infogram of Amsterdam, 15 minutes walking / biking](https://docs.google.com/uc?id=1IlBjPD1TBx1oHRmsDahcEZ6JI69Y2dJ7 "Infogram of Amsterdam, 15 minutes walking / biking")
+
+<a href="https://drive.google.com/file/d/1IlBjPD1TBx1oHRmsDahcEZ6JI69Y2dJ7/view?usp=sharing" target="_blank">External link to image</a>
 
 <br/>
 
