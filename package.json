@@ -11,7 +11,7 @@
     "clean": "rimraf .cache/ && rimraf dist/ && rimraf build/",
     "cleanDev": "rimraf .cache/ && rimraf dev-dist/ && rimraf build/",
     "prebuild": "npm run clean",
-    "build": "cross-env NODE_ENV=production parcel build ./src/index.html --public-url ./",
+    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url ./ --out-dir ./dist --no-source-maps --log-level 3",
     "deploy": "npm run build && firebase deploy --only hosting",
     "unit": "jest --config test/unit/jest.config.js --coverage",
     "unitWatch": "jest --config test/unit/jest.config.js --watch"
