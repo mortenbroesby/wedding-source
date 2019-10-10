@@ -35,8 +35,8 @@
           "link": "/info/transportation"
         },
         {
-          "label": "Where to sleep? - will come later",
-          "inactive": true
+          "label": "Where to sleep?",
+          "link": "/info/where-to-sleep"
         }
       ]
     },

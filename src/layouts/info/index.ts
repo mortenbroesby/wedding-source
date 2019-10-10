@@ -46,6 +46,10 @@ export default class Info extends mixins(StoreMixin) {
     switch (this.id) {
       case "transportation":
         return "Transportation";
+
+      case "where-to-sleep":
+        return "Where to sleep?";
+
       default:
         return "Title";
     }
