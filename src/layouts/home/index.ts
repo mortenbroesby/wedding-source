@@ -2,6 +2,8 @@ import Logger from "js-logger";
 import { mixins } from "vue-class-component";
 import { Component } from "vue-property-decorator";
 
+import { version } from "../../../package.json";
+
 import StoreMixin from "../../mixins/store.mixin";
 
 import MainMenu from "../../components/main-menu";
@@ -39,6 +41,10 @@ export default class Home extends mixins(StoreMixin) {
     return {
       titleTemplate: "%s :: Home",
     };
+  }
+
+  get appVersion() {
+    return version;
   }
 
   /*************************************************/

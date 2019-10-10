@@ -6,6 +6,8 @@ declare module "*.vue" {
 declare module "*.json" {
   const value: any;
   export default value;
+
+  export const version: any;
 }
 
 declare module "get-user-locale" {

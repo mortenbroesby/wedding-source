@@ -40,7 +40,7 @@ const routeOptions: RouterOptions = {
   routes,
   mode: "history",
   linkActiveClass: "active",
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to) {
     if (to.hash) {
       return {
         selector: to.hash

@@ -1,6 +1,6 @@
 {
   "name": "wedding-source",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Source for wedding website",
   "author": "Morten Broesby-Olsen <mortenbroesby@gmail.com>",
   "main": "index.ts",
