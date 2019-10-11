@@ -10,6 +10,7 @@ const config = {
     appId: "1:29718419301:web:0368a0ebb2b329b9cdb38c",
     measurementId: "G-HBS3J46933",
   },
+  webPushCertificate: "BBQmxcWJPbT9pBGDs9NWjgdm-BeIDaaW7vkz2fql1ZKUls3TTenvvyY4EddHqkI4URtvE7aSsOfzWNGhVmO60Qc",
   googleAnalytics: {
     id: "G-92GSB0424R",
   }

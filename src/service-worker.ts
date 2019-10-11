@@ -1,20 +1,27 @@
 import config from "./config";
 
 declare var workbox: any;
+declare var firebase: any;
 
-const CACHE_VERSION = 11;
+const CACHE_VERSION = 13;
 
-console.log(">>>>>> CACHE_VERSION: ", CACHE_VERSION);
+console.log("Service worker cache version: ", CACHE_VERSION);
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
-importScripts("https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js");
+importScripts("https://www.gstatic.com/firebasejs/4.10.0/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/4.10.0/firebase-messaging.js");
 
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
   setupWorkbox();
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
+}
+
+if (firebase) {
+  console.log(`Yay! Firebase is loaded 🎉`);
+} else {
+  console.log(`Boo! Firebase didn't load 😬`);
 }
 
 function setupWorkbox() {
@@ -32,6 +39,29 @@ function setupWorkbox() {
 
   // Clean outdated caches
   workbox.precaching.cleanupOutdatedCaches();
+
+  // Cache offline html
+  workbox.precaching.precacheAndRoute([
+    "/offline.html"
+  ]);
+
+  workbox.routing.registerRoute(
+    new RegExp(".html"),
+    new workbox.strategies.NetworkOnly({
+      cacheName: "htmlcache"
+    })
+  );
+
+  workbox.routing.setCatchHandler(({ event }: any) => {
+    console.log(">>>>>> event: ", event);
+
+    switch (event.request.destination) {
+      case "document":
+        return caches.match("offline.html");
+      default:
+        return Response.error();
+    }
+  });
 
   // Cache JS and CSS files.
   // Use cache but update in the background.
