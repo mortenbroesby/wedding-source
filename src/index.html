@@ -61,15 +61,5 @@
 
       gtag("config", "G-92GSB0424R");
     </script>
-
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/service-worker.js").then((reg) => {
-            console.log('Service worker has been registered for scope: ' + reg.scope);
-          });
-        });
-      }
-    </script>
   </body>
 </html>

@@ -57,6 +57,8 @@ Vue.use(Toasted, {
 // Call localisation service init before Vue is loaded
 localisationService.initBeforeApplicationLoad();
 
+import { setupServiceWorker } from "./init-service-worker";
+
 // Import components
 import App from "./App.vue";
 
@@ -110,6 +112,7 @@ function initialiseApplication() {
     /* LIFE CYCLE */
     /*************************************************/
     async created() {
+      this.setupServiceWorker();
       this.initialiseApplication().then(() => {
         this.setMeta();
       });
@@ -151,6 +154,10 @@ function initialiseApplication() {
         localisationService.initAfterApplicationLoad(locale);
         return Promise.resolve();
       }
+    }
+
+    setupServiceWorker() {
+      setupServiceWorker();
     }
 
     /**
