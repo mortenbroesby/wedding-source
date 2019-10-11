@@ -1,26 +1,10 @@
-declare var workbox: any;
-declare var firebase: any;
-
-const CACHE_VERSION = 16;
+const CACHE_VERSION = 17;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 importScripts("https://www.gstatic.com/firebasejs/4.10.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/4.10.0/firebase-messaging.js");
-
-if (workbox) {
-  console.log(`Yay! Workbox is loaded 🎉`);
-  setupWorkbox();
-} else {
-  console.log(`Boo! Workbox didn't load 😬`);
-}
-
-if (firebase) {
-  console.log(`Yay! Firebase is loaded 🎉`);
-} else {
-  console.log(`Boo! Firebase didn't load 😬`);
-}
 
 function setupWorkbox() {
   workbox.setConfig({ debug: true });
@@ -50,7 +34,7 @@ function setupWorkbox() {
     })
   );
 
-  workbox.routing.setCatchHandler(({ event }: any) => {
+  workbox.routing.setCatchHandler(({ event }) => {
     switch (event.request.destination) {
       case "document":
         return caches.match("offline.html");
@@ -108,4 +92,17 @@ function setupWorkbox() {
       ],
     }),
   );
+}
+
+if (workbox) {
+  console.log(`Yay! Workbox is loaded 🎉`);
+  setupWorkbox();
+} else {
+  console.log(`Boo! Workbox didn't load 😬`);
+}
+
+if (firebase) {
+  console.log(`Yay! Firebase is loaded 🎉`);
+} else {
+  console.log(`Boo! Firebase didn't load 😬`);
 }

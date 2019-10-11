@@ -8,7 +8,7 @@ export function setupServiceWorker() {
   Logger.info("Setting up service worker...");
 
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./service-worker.ts").then((registration) => {
+    navigator.serviceWorker.register("./service-worker.js").then((registration) => {
       Logger.info("Service worker has been registered for scope: " + registration.scope);
 
       messaging = initialisedFirebase.messaging();

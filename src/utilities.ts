@@ -1,5 +1,5 @@
-import config from "./config";
 import Logger from "js-logger";
+import config from "./config";
 
 /**
  * [ Storage utility function ]
@@ -187,4 +187,35 @@ export function getApplicationVersion() {
 
 export function randomValue() {
   return Math.floor(Math.random() * 100000000);
+}
+
+export function encrypt(value: any) {
+  let result = "";
+
+  for (let i = 0; i < value.length; i++) {
+    if (i < value.length - 1) {
+      result += value.charCodeAt(i) + 10;
+      result += "-";
+    } else {
+      result += value.charCodeAt(i) + 10;
+    }
+  }
+
+  return result;
+}
+
+export function decrypt(value: any) {
+  let result = "";
+  let array = value.split("-");
+
+  for (let i = 0; i < array.length; i++) {
+    result += String.fromCharCode(array[i] - 10);
+  }
+
+  return result;
+}
+
+export function parseEncrypted(input: string) {
+  const decryptedConfig = decrypt(input);
+  return JSON.parse(decryptedConfig);
 }

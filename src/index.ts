@@ -3,6 +3,7 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 import config from "./config";
 
+import { parseEncrypted } from "./utilities";
 import { router } from "./router";
 import { $store, RootState } from "./store";
 
@@ -30,8 +31,9 @@ Logger.useDefaults();
 Logger.setLevel(logLevel);
 
 // Initialise firebase configuration
+const decryptedConfig = parseEncrypted(config.firebase);
 export const initialisedFirebase
-  = firebase.initializeApp(config.firebase);
+  = firebase.initializeApp(decryptedConfig);
 
 // Initialise firestore
 export const db = firebase.firestore();
