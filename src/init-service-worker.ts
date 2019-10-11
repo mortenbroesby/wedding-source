@@ -13,6 +13,8 @@ export function setupServiceWorker() {
 
       messaging = initialisedFirebase.messaging();
 
+      if (!messaging) return;
+
       messaging.useServiceWorker(registration);
       messaging.usePublicVapidKey(config.webPushCertificate);
 

@@ -1,9 +1,7 @@
-import config from "./config";
-
 declare var workbox: any;
 declare var firebase: any;
 
-const CACHE_VERSION = 13;
+const CACHE_VERSION = 15;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 
@@ -53,8 +51,6 @@ function setupWorkbox() {
   );
 
   workbox.routing.setCatchHandler(({ event }: any) => {
-    console.log(">>>>>> event: ", event);
-
     switch (event.request.destination) {
       case "document":
         return caches.match("offline.html");
