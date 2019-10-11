@@ -46,11 +46,11 @@
       width: 100%;
       margin-bottom: 10px;
 
-      .label {
+      .text {
         @include title;
         font-size: pxToRems(16);
 
-        margin-bottom: 6px;
+        margin-bottom: 8px;
       }
 
       .input {
@@ -73,16 +73,16 @@
     justify-content: flex-start;
     margin-bottom: 20px;
 
-    .label {
-      @include title;
-      font-size: pxToRems(16);
-
-      margin-bottom: 6px;
-    }
-
     .input-wrapper {
       position: relative;
       width: 100%;
+
+      .text {
+        @include title;
+        font-size: pxToRems(16);
+
+        margin-bottom: 8px;
+      }
     }
 
     .input {
@@ -130,11 +130,11 @@
       }
     }
 
-    .label {
+    .text {
       @include title;
       font-size: pxToRems(16);
 
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .input {
@@ -163,10 +163,6 @@
 
       @include title;
       font-size: pxToRems(16);
-
-      &:not(:last-child) {
-        margin-right: 10px;
-      }
 
       &:hover,
       &:active {
@@ -216,6 +212,10 @@
           padding: 12px 24px;
           border-radius: 24px;
           white-space: nowrap;
+
+          &.clearButton {
+            margin-right: 10px !important;
+          }
         }
       }
     }

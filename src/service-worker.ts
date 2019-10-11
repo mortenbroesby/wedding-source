@@ -1,7 +1,7 @@
 declare var workbox: any;
 declare var firebase: any;
 
-const CACHE_VERSION = 15;
+const CACHE_VERSION = 16;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 

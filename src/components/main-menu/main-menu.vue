@@ -1,7 +1,7 @@
 <template>
   <div class="main-menu">
     <div class="main-menu__bar">
-      <a class="logo" href="#home" @click="goHome">
+      <a class="logo" href="#home" @click="goHome" name="home" aria-label="Home">
         <div class="logo__content" v-html="logoHTML"></div>
       </a>
 
@@ -13,6 +13,8 @@
         <a class="navigation-item"
           @click="hideMenu"
           :href="getURL(menuItem)"
+          :name="menuItem.label"
+          :aria-label="menuItem.label"
           v-for="(menuItem, index) in expandedMenuItems" :key="index">
           {{ menuItem.label }}
         </a>

@@ -7,7 +7,7 @@
 
       <div class="contentItem" v-for="(item, index) in informationItems" :key="index">
         <div class="contentItem__image">
-          <img class="contentItem__image__asset" :src="item.image" />
+          <img class="contentItem__image__asset" :src="item.image" :alt="item.title" />
         </div>
 
         <div class="contentItem__metadata">
