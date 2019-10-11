@@ -34,11 +34,20 @@
         ]
       },
       {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=30"
+          }
+        ]
+      },
+      {
         "source": "**/*.@(jpg|jpeg|gif|png)",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=7200"
+            "value": "max-age=30"
           }
         ]
       },
@@ -47,7 +56,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=7200"
+            "value": "max-age=30"
           }
         ]
       }

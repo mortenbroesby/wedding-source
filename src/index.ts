@@ -61,7 +61,7 @@ Vue.use(Toasted, {
 // Call localisation service init before Vue is loaded
 localisationService.initBeforeApplicationLoad();
 
-import { setupServiceWorker } from "./init-service-worker";
+import { setupServiceWorker } from "./service-worker-init";
 
 // Import components
 import App from "./App.vue";

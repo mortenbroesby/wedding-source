@@ -1,4 +1,4 @@
-const CACHE_VERSION = 17;
+const CACHE_VERSION = 21;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 
@@ -91,6 +91,17 @@ function setupWorkbox() {
         }),
       ],
     }),
+  );
+
+  // Hook for workbox sw-caching
+  workbox.precaching.precacheAndRoute([]);
+
+  // Cache offline html
+  workbox.precaching.precacheAndRoute(["/index.html"]);
+
+  // Register SPA entry point
+  workbox.routing.registerNavigationRoute(
+    workbox.precaching.getCacheKeyForURL('/index.html')
   );
 }
 

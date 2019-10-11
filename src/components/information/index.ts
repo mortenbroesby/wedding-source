@@ -7,7 +7,7 @@ import { InfoItem, InfoButton } from "../../interfaces";
 import { isUndefined, isDefined, isNonEmptyString } from "../../utilities";
 import _ from "lodash";
 
-import { askForPermissionToReceiveNotifications } from "../../init-service-worker";
+import { askForPermissionToReceiveNotifications } from "../../service-worker-init";
 import { InfoAction } from "../../enums";
 
 import template from "./information.vue";

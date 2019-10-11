@@ -94,8 +94,8 @@
     "disablePlugin": true,
     "inDev": true,
     "strategy": "inject",
-    "swSrc": "./src/sw.js",
-    "swDest": "sw.js",
+    "swSrc": "./src/service-worker.js",
+    "swDest": "service-worker.js",
     "globPatterns": [
       "**/*.{html,js,css,jpg,png,svg}"
     ]
