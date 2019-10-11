@@ -1,6 +1,6 @@
 import Logger from "js-logger";
 import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import { Component, Watch } from "vue-property-decorator";
 import config from "./config";
 
 import { parseEncrypted } from "./utilities";
@@ -88,6 +88,11 @@ function initialiseApplication() {
   })
   class Application extends Vue {
     /*************************************************/
+    /* PROPERTIES */
+    /*************************************************/
+    checkOnlineStateInterval = -1;
+
+    /*************************************************/
     /* COMPUTED'S */
     /*************************************************/
     get store(): RootState {
@@ -102,6 +107,10 @@ function initialiseApplication() {
       return this.store.applicationHasLoaded;
     }
 
+    get isOnline(): boolean {
+      return this.store.isOnline;
+    }
+
     get metaInfo() {
       return {
         title: "Wedding :: Josephine & Morten",
@@ -113,13 +122,32 @@ function initialiseApplication() {
     }
 
     /*************************************************/
+    /* WATCHERS */
+    /*************************************************/
+    @Watch("isOnline")
+    notifyOnlineState() {
+      if (this.isOnline) {
+        this.$toasted.success(`Notice: You are now online.`);
+      } else {
+        this.$toasted.info(`Notice: You are now offline...`);
+      }
+    }
+
+    /*************************************************/
     /* LIFE CYCLE */
     /*************************************************/
     async created() {
       this.setupServiceWorker();
       this.initialiseApplication().then(() => {
         this.setMeta();
+        this.setupOnlineCheckInterval();
       });
+    }
+
+    beforeDestroy() {
+      window.clearInterval(this.checkOnlineStateInterval);
+      window.removeEventListener("offline", this.checkOnlineState);
+      window.removeEventListener("online", this.checkOnlineState);
     }
 
     /*************************************************/
@@ -162,6 +190,27 @@ function initialiseApplication() {
 
     setupServiceWorker() {
       setupServiceWorker();
+    }
+
+    addEventListeners() {
+      window.addEventListener("offline", this.checkOnlineState);
+      window.addEventListener("online", this.checkOnlineState);
+    }
+
+    setupOnlineCheckInterval() {
+      this.checkOnlineStateInterval = window.setInterval(() => {
+        if (navigator.onLine !== this.isOnline) {
+          this.checkOnlineState();
+        }
+      }, 1000);
+    }
+
+    checkOnlineState() {
+      if (navigator.onLine) {
+        $store.dispatch("setOnline", true);
+      } else {
+        $store.dispatch("setOnline", false);
+      }
     }
 
     /**

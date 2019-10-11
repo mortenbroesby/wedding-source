@@ -6,9 +6,9 @@ import { db } from "../../index";
 import { visitor } from "../../services/tracking.service";
 
 import { isNonEmptyString } from "../../utilities";
+import { IPayload } from "@/interfaces";
 
 import template from "./rsvp-form.vue";
-import { IPayload } from "@/interfaces";
 
 @Component({
   mixins: [template],

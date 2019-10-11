@@ -28,11 +28,13 @@ class TypedStore extends Vuex.Store<RootState> {
 export interface RootState {
   applicationHasLoaded: boolean;
   spinnerVisible: boolean;
+  isOnline: boolean;
 }
 
 export const state: RootState = {
   applicationHasLoaded: false,
   spinnerVisible: true,
+  isOnline: true,
 };
 
 const mutations = {
@@ -42,6 +44,10 @@ const mutations = {
 
   SET_SPINNER_VISIBILITY(prevState: RootState, isVisible: boolean): void {
     prevState.spinnerVisible = isVisible;
+  },
+
+  SET_ONLINE_STATE(prevState: RootState, isOnline: boolean): void {
+    prevState.isOnline = isOnline;
   },
 };
 
@@ -56,6 +62,10 @@ const actions = {
 
   setSpinner({ commit }: Context, isVisible: boolean): void {
     commit("SET_SPINNER_VISIBILITY", isVisible);
+  },
+
+  setOnline({ commit }: Context, isOnline: boolean): void {
+    commit("SET_ONLINE_STATE", isOnline);
   },
 };
 
