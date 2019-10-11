@@ -36,8 +36,19 @@ module.exports = {
     "ignoreComments": 0,
     "no-trailing-spaces": [2, { "skipBlankLines": true }],
 
+    // For sw.js
+    "quotes": [0, "double"],
+    "quote-props": 0,
+    "comma-dangle": 0,
+    "no-undef": 0,
+    "no-restricted-globals": 0,
+    "no-underscore-dangle": 0,
+    "arrow-body-style": 0,
+    "operator-linebreak": 0,
+    "no-console": 0,
+    "consistent-return": 0,
+
     // allow debugger during development
-		"no-console": process.env.NODE_ENV === "production" ? "error" : "off",
 		"no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
   }
 }

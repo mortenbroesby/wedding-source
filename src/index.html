@@ -46,7 +46,7 @@
     <meta name="twitter:image" content="">
     <meta name="twitter:card" content="summary" />
 
-    <link href='https://fonts.googleapis.com/css?family=Karla|Lora|Alex+Brush|Material+Icons' rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Lora|Alex+Brush|Material+Icons" rel="stylesheet">
   </head>
   <body>
     <div id="app"></div>
@@ -57,9 +57,19 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      gtag("js", new Date());
 
-      gtag('config', 'G-92GSB0424R');
+      gtag("config", "G-92GSB0424R");
+    </script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js").then((reg) => {
+            console.log('Service worker has been registered for scope: ' + reg.scope);
+          });
+        });
+      }
     </script>
   </body>
 </html>

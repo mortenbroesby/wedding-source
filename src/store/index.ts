@@ -47,9 +47,7 @@ const mutations = {
 
 const actions = {
   async initialise({ dispatch }: Context): Promise<void> {
-    await setTimeout(() => {
-      dispatch("setApplicationInitialised", true);
-    }, 660);
+    dispatch("setApplicationInitialised", true);
   },
 
   setApplicationInitialised({ commit }: Context, hasInitialised: boolean) {

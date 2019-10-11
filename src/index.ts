@@ -133,7 +133,7 @@ function initialiseApplication() {
 
       setTimeout(() => {
         $store.dispatch("setSpinner", false);
-      }, 1000);
+      }, 1500);
 
       Logger.info("Application initialised.");
 
