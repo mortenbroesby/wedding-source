@@ -1,18 +1,13 @@
-// -------
-// WORKBOX
+const CACHE_VERSION = 8;
 
-const CACHE_VERSION = 6;
-
-importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js",
-);
+import workbox from "workbox-sw";
 
 if (workbox) {
   workbox.core.setCacheNameDetails({
-    prefix: 'wedding-app',
+    prefix: "wedding-app",
     suffix: `v${CACHE_VERSION}`,
-    precache: 'wedding-app-precache',
-    runtime: 'wedding-app-runtime',
+    precache: "wedding-app-precache",
+    runtime: "wedding-app-runtime",
   });
 
   workbox.core.skipWaiting();
@@ -28,7 +23,7 @@ if (workbox) {
   workbox.routing.registerRoute(
     /^https:\/\/fonts\.googleapis\.com/,
     new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'google-fonts-stylesheets',
+      cacheName: "google-fonts-stylesheets",
     }),
   );
 
@@ -36,7 +31,7 @@ if (workbox) {
   workbox.routing.registerRoute(
     /^https:\/\/fonts\.gstatic\.com/,
     new workbox.strategies.CacheFirst({
-      cacheName: 'google-fonts-webfonts',
+      cacheName: "google-fonts-webfonts",
       plugins: [
         new workbox.cacheableResponse.Plugin({
           statuses: [0, 200],
@@ -75,8 +70,6 @@ if (workbox) {
       ],
     }),
   );
-
-  // workbox.precaching.precacheAndRoute([]);
 
   workbox.googleAnalytics.initialize();
 

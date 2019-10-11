@@ -45,11 +45,13 @@
     "vue-router": "3.0.1",
     "vue-toasted": "1.1.27",
     "vuefire": "2.1.2",
-    "vuex": "3.0.1"
+    "vuex": "3.0.1",
+    "workbox-sw": "^4.3.1"
   },
   "devDependencies": {
     "@types/jest": "24.0.16",
     "@types/node": "12.7.9",
+    "@types/workbox-sw": "^4.2.1",
     "@vue/component-compiler-utils": "2.6.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "autoprefixer": "9.1.3",

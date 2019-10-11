@@ -1,81 +1,85 @@
-import Logger from "js-logger";
+import config from "./config";
 
-const CACHE_VERSION = 7;
+declare var workbox: any;
 
-const offlineUrl = "/offline.html";
+const CACHE_VERSION = 11;
 
-const currentCache = {
-  offline: `offline-cache-v${CACHE_VERSION}`
-};
+console.log(">>>>>> CACHE_VERSION: ", CACHE_VERSION);
 
-/**
- * The event listener for the service worker installation
- */
-self.addEventListener("install", (event: any) => {
-  event.waitUntil(
-    caches.open(currentCache.offline)
-      .then(cache => cache.addAll([
-        offlineUrl
-      ]))
-  );
-});
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js");
 
-/**
-* Is the current request for an HTML page?
-* @param {Object} event
-*/
-function isHtmlPage(event: any) {
-  return event.request.method === "GET" && event.request.headers.get("accept").includes("text/html");
+if (workbox) {
+  console.log(`Yay! Workbox is loaded 🎉`);
+  setupWorkbox();
+} else {
+  console.log(`Boo! Workbox didn't load 😬`);
 }
 
-/**
-* Fetch and cache any results as we receive them.
-*/
-self.addEventListener("fetch", (event: any) => {
-  Logger.info("sw.js fetch: ", event);
+function setupWorkbox() {
+  workbox.setConfig({ debug: true });
 
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      // Only return cache if it's not an HTML page
-      if (response && !isHtmlPage(event)) {
-        return response;
-      }
+  workbox.core.setCacheNameDetails({
+    prefix: "wedding-app",
+    suffix: `v${CACHE_VERSION}`,
+    precache: "wedding-app-precache",
+    runtime: "wedding-app-runtime",
+  });
 
-      return fetch(event.request).then((fetchResponse) => {
-        // Dont cache if not a 200 response
-        if (!fetchResponse || fetchResponse.status !== 200) {
-          return fetchResponse;
-        }
+  workbox.core.skipWaiting();
+  workbox.core.clientsClaim();
 
-        const responseToCache = fetchResponse.clone();
+  // Clean outdated caches
+  workbox.precaching.cleanupOutdatedCaches();
 
-        caches.open(currentCache.offline)
-          .then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-
-        return fetchResponse;
-      }).catch((error) => {
-        Logger.info("sw.js fetch error: ", error);
-
-        // Check if the user is offline first and is trying to navigate to a web page
-        if (isHtmlPage(event)) {
-          return caches.match(offlineUrl);
-        }
-      });
-    })
+  // Cache JS and CSS files.
+  // Use cache but update in the background.
+  workbox.routing.registerRoute(
+    /\.(?:js|css)$/,
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: "assets-cache",
+    }),
   );
-});
 
-// Cleanup stale cache
-self.addEventListener("activate", (event: any) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames
-          .filter((cacheName) => cacheName !== currentCache.offline)
-          .map((cacheName) => caches.delete(cacheName))
-      );
-    })
+  // Cache the Google Fonts stylesheets with a stale while revalidate strategy.
+  workbox.routing.registerRoute(
+    /^https:\/\/fonts\.googleapis\.com/,
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: "google-fonts-stylesheets",
+    }),
   );
-});
+
+  // Cache the Google Fonts webfont files with a cache first strategy for 1 year.
+  workbox.routing.registerRoute(
+    /^https:\/\/fonts\.gstatic\.com/,
+    new workbox.strategies.CacheFirst({
+      cacheName: "google-fonts-webfonts",
+      plugins: [
+        new workbox.cacheableResponse.Plugin({
+          statuses: [0, 200],
+        }),
+        new workbox.expiration.Plugin({
+          maxAgeSeconds: 60 * 60 * 24 * 365,
+        }),
+      ],
+    }),
+  );
+
+  // Cache image files.
+  // Use the cache if its available.
+  workbox.routing.registerRoute(
+    /\.(?:png|jpg|jpeg|svg|gif)$/,
+    new workbox.strategies.CacheFirst({
+      cacheName: "image-cache",
+      plugins: [
+        new workbox.expiration.Plugin({
+          // Cache only 20 images.
+          maxEntries: 20,
+          // Cache for a maximum of a week.
+          maxAgeSeconds: 7 * 24 * 60 * 60,
+        }),
+      ],
+    }),
+  );
+}

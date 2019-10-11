@@ -20,7 +20,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "./src/**/*.ts"
+    "./src/**/*.ts", "src/service-worker.js"
   ],
   "exclude": [
     "node_modules/**/*"

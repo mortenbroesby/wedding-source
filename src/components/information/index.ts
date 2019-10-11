@@ -4,8 +4,11 @@ import { Component } from "vue-property-decorator";
 
 import { getInformationContent } from "../../services/api.service";
 import { InfoItem, InfoButton } from "../../interfaces";
-import { isUndefined, isDefined } from "../../utilities";
+import { isUndefined, isDefined, isNonEmptyString } from "../../utilities";
 import _ from "lodash";
+
+import { askForPermissionToReceiveNotifications } from "../../init-service-worker";
+import { InfoAction } from "../../enums";
 
 import template from "./information.vue";
 
@@ -72,6 +75,12 @@ export default class Information extends Vue {
   }
 
   openLink(button: InfoButton) {
+    const hasAction = isNonEmptyString(button.action);
+
+    if (hasAction) {
+      return this.executeAction(button.action);
+    }
+
     const isExternalLink = button.external || false;
     const hasExternalLink = isExternalLink && isDefined(button.link);
     const hasLink = isDefined(button.link);
@@ -85,6 +94,12 @@ export default class Information extends Vue {
       this.$router.push({
         path: button.link
       });
+    }
+  }
+
+  executeAction(action: InfoAction) {
+    if (action === InfoAction.AskForNotificationPermissions) {
+      return askForPermissionToReceiveNotifications();
     }
   }
 

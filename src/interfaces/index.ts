@@ -1,3 +1,5 @@
+import { InfoAction } from "../enums";
+
 /*************************************************/
 /* INTERFACES & DEFINITIONS */
 /*************************************************/
@@ -22,6 +24,7 @@ export interface InfoButton {
   link: string;
   external: boolean;
   inactive: boolean;
+  action: InfoAction;
 }
 
 export interface IPayload {

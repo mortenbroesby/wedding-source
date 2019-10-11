@@ -72,8 +72,13 @@
       "id": "more",
       "image": "more",
       "title": "More?",
-      "description": "If we have more to say, we will just add it here. So come back ;) And if you have more questions just ask us.",
-      "buttons": []
+      "description": "If we have more to say, we will just add it here. So come back ;) And if you have more questions just ask us. <br/><br/> We will also send out notifications to those that want them using this website. To enable this, click the button below:",
+      "buttons": [
+        {
+          "label": "Receive notifications",
+          "action": "ask-for-notification-permissions"
+        }
+      ]
     }
   ]
 }

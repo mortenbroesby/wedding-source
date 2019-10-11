@@ -37,6 +37,6 @@
 		"no-trailing-whitespace": true,
     "no-null-keyword": true,
     "no-consecutive-blank-lines": [true, 2],
-    "no-console": true
+    "no-console": false
 	}
 }

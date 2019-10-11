@@ -7,7 +7,8 @@ import { router } from "./router";
 import { $store, RootState } from "./store";
 
 import { firestorePlugin } from "vuefire";
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
+import "firebase/messaging";
 import "firebase/firestore";
 import "firebase/performance";
 
@@ -29,7 +30,8 @@ Logger.useDefaults();
 Logger.setLevel(logLevel);
 
 // Initialise firebase configuration
-firebase.initializeApp(config.firebase);
+export const initialisedFirebase
+  = firebase.initializeApp(config.firebase);
 
 // Initialise firestore
 export const db = firebase.firestore();
