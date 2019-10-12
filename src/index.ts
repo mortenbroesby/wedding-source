@@ -86,7 +86,8 @@ function initialiseApplication() {
     /*************************************************/
     /* PROPERTIES */
     /*************************************************/
-    checkOnlineStateInterval = -1;
+    checkLogicInterval = -1;
+    windowHeight: number = window.innerHeight;
 
     /*************************************************/
     /* COMPUTED'S */
@@ -129,22 +130,27 @@ function initialiseApplication() {
       }
     }
 
+    @Watch("windowHeight")
+    onHeightChange() {
+      this.setWindowHeight();
+    }
+
     /*************************************************/
     /* LIFE CYCLE */
     /*************************************************/
     async created() {
-      this.setWindowSize();
+      this.setWindowHeight();
       this.addEventListeners();
       this.setupServiceWorker();
 
       this.initialiseApplication().then(() => {
         this.setMeta();
-        this.setupOnlineCheckInterval();
+        this.setupCheckInterval();
       });
     }
 
     beforeDestroy() {
-      window.clearInterval(this.checkOnlineStateInterval);
+      window.clearInterval(this.checkLogicInterval);
       this.removeEventListeners();
     }
 
@@ -193,19 +199,23 @@ function initialiseApplication() {
     addEventListeners() {
       window.addEventListener("offline", this.checkOnlineState);
       window.addEventListener("online", this.checkOnlineState);
-      window.addEventListener("resize", this.setWindowSize);
-      window.addEventListener("orientationchange", this.setWindowSize);
+      window.addEventListener("resize", this.setWindowHeight);
+      window.addEventListener("orientationchange", this.setWindowHeight);
     }
 
     removeEventListeners() {
       window.removeEventListener("offline", this.checkOnlineState);
       window.removeEventListener("online", this.checkOnlineState);
-      window.removeEventListener("resize", this.setWindowSize);
-      window.removeEventListener("orientationchange", this.setWindowSize);
+      window.removeEventListener("resize", this.setWindowHeight);
+      window.removeEventListener("orientationchange", this.setWindowHeight);
     }
 
-    setupOnlineCheckInterval() {
-      this.checkOnlineStateInterval = window.setInterval(() => {
+    setupCheckInterval() {
+      this.checkLogicInterval = window.setInterval(() => {
+        if (this.windowHeight !== window.innerHeight) {
+          this.setWindowHeight();
+        }
+
         if (navigator.onLine !== this.isOnline) {
           this.checkOnlineState();
         }
@@ -220,7 +230,9 @@ function initialiseApplication() {
       }
     }
 
-    setWindowSize() {
+    setWindowHeight() {
+      this.windowHeight = window.innerHeight;
+
       if (supportsCSSVariables()) {
         document.documentElement.style.setProperty("--vh", `${window.innerHeight / 100}px`);
       }
