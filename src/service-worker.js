@@ -1,4 +1,4 @@
-const CACHE_VERSION = 24;
+const CACHE_VERSION = 25;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 
@@ -123,7 +123,10 @@ function setupFirebase() {
         return payload;
       })
       .then(() => {
-        const body = (payload && payload.data && payload.data.message) || "Check it out!";
+        console.log("onMessage received - background: ", payload);
+
+        const hasMessage = payload && payload.data && payload.data.message;
+        const body = (hasMessage) || "Check it out!";
         return registration.showNotification(
           "Wedding Jo & Morten has updates", {
             body

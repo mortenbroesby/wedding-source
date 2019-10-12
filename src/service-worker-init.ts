@@ -29,7 +29,7 @@ export function setupServiceWorker() {
       messaging.usePublicVapidKey(config.webPushCertificate);
 
       messaging.onMessage((payload: any) => {
-        console.log("Message received. ", payload);
+        console.log("onMessage received: ", payload);
         notifyMe(new NotificationModel(payload));
       });
     }).catch((error) => {
