@@ -49,6 +49,15 @@
   background-color: #FFF;
 }
 
+@media only screen and (max-device-width: 812px) and (orientation: landscape) {
+  .cover__background,
+  .cover {
+    @supports (color: var(--primary)) {
+      height: vh(200) !important;
+    }
+  }
+}
+
 @media (min-width: 800px) {
   .cover__background {
     background: url("../../assets/header-large.jpg") center/cover no-repeat;

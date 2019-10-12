@@ -145,10 +145,7 @@ function initialiseApplication() {
 
     beforeDestroy() {
       window.clearInterval(this.checkOnlineStateInterval);
-
-      window.removeEventListener("offline", this.checkOnlineState);
-      window.removeEventListener("online", this.checkOnlineState);
-      window.removeEventListener("resize", this.setWindowSize);
+      this.removeEventListeners();
     }
 
     /*************************************************/
@@ -197,6 +194,14 @@ function initialiseApplication() {
       window.addEventListener("offline", this.checkOnlineState);
       window.addEventListener("online", this.checkOnlineState);
       window.addEventListener("resize", this.setWindowSize);
+      window.addEventListener("orientationchange", this.setWindowSize);
+    }
+
+    removeEventListeners() {
+      window.removeEventListener("offline", this.checkOnlineState);
+      window.removeEventListener("online", this.checkOnlineState);
+      window.removeEventListener("resize", this.setWindowSize);
+      window.removeEventListener("orientationchange", this.setWindowSize);
     }
 
     setupOnlineCheckInterval() {
