@@ -132,7 +132,7 @@ function initialiseApplication() {
 
     @Watch("windowHeight")
     onHeightChange() {
-      this.setWindowHeight();
+      this.setHeightProperty();
     }
 
     /*************************************************/
@@ -232,10 +232,12 @@ function initialiseApplication() {
 
     setWindowHeight() {
       this.windowHeight = window.innerHeight;
+    }
 
-      if (supportsCSSVariables()) {
-        document.documentElement.style.setProperty("--vh", `${window.innerHeight / 100}px`);
-      }
+    setHeightProperty() {
+      if (!supportsCSSVariables()) return;
+
+      document.documentElement.style.setProperty("--vh", `${this.windowHeight / 100}px`);
     }
 
     /**
