@@ -123,9 +123,9 @@ function initialiseApplication() {
     @Watch("isOnline")
     notifyOnlineState() {
       if (this.isOnline) {
-        this.$toasted.success(`Notice: You are now online.`);
+        this.$toasted.success(`Notice: You are online.`);
       } else {
-        this.$toasted.info(`Notice: You are now offline...`);
+        this.$toasted.info(`Notice: You are offline...`);
       }
     }
 

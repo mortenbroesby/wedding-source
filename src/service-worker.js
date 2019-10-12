@@ -1,4 +1,4 @@
-const CACHE_VERSION = 25;
+const CACHE_VERSION = 28;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 
@@ -21,27 +21,6 @@ function setupWorkbox() {
 
   // Clean outdated caches
   workbox.precaching.cleanupOutdatedCaches();
-
-  // Cache offline html
-  workbox.precaching.precacheAndRoute([
-    "/offline.html"
-  ]);
-
-  workbox.routing.registerRoute(
-    new RegExp(".html"),
-    new workbox.strategies.NetworkOnly({
-      cacheName: "htmlcache"
-    })
-  );
-
-  workbox.routing.setCatchHandler(({ event }) => {
-    switch (event.request.destination) {
-      case "document":
-        return caches.match("offline.html");
-      default:
-        return Response.error();
-    }
-  });
 
   // Cache JS and CSS files.
   // Use cache but update in the background.
@@ -92,9 +71,6 @@ function setupWorkbox() {
       ],
     }),
   );
-
-  // Hook for workbox sw-caching
-  workbox.precaching.precacheAndRoute([]);
 
   // Cache offline html
   workbox.precaching.precacheAndRoute(["/index.html"]);
