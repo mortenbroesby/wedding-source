@@ -1,4 +1,4 @@
-const CACHE_VERSION = 23;
+const CACHE_VERSION = 24;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 

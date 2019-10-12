@@ -17,5 +17,5 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "start_url": "/?source=pwa",
-  "scope": "/mojo/"
+  "scope": "./"
 }

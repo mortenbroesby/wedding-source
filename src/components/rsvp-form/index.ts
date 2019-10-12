@@ -94,7 +94,7 @@ export default class RSVPForm extends Vue {
 
       visitor.event("rsvp", "rsvp-error").send();
 
-      this.$toasted.error("Sorry - there was an error. Please try again");
+      this.$toasted.error("Sorry - there was an error. Please try again.");
     }
   }
 }

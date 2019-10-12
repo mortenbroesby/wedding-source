@@ -14,6 +14,8 @@
     "cleanUrls": true,
     "ignore": [
       "firebase.json",
+      "credentials.json",
+      "functionCreds.json",
       "**/.*",
       "**/node_modules/**"
     ],
