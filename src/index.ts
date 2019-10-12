@@ -133,7 +133,9 @@ function initialiseApplication() {
     /* LIFE CYCLE */
     /*************************************************/
     async created() {
+      this.setWindowSize();
       this.setupServiceWorker();
+
       this.initialiseApplication().then(() => {
         this.setMeta();
         this.setupOnlineCheckInterval();
@@ -142,8 +144,10 @@ function initialiseApplication() {
 
     beforeDestroy() {
       window.clearInterval(this.checkOnlineStateInterval);
+
       window.removeEventListener("offline", this.checkOnlineState);
       window.removeEventListener("online", this.checkOnlineState);
+      window.removeEventListener("resize", this.setWindowSize);
     }
 
     /*************************************************/
@@ -191,6 +195,7 @@ function initialiseApplication() {
     addEventListeners() {
       window.addEventListener("offline", this.checkOnlineState);
       window.addEventListener("online", this.checkOnlineState);
+      window.addEventListener("resize", this.setWindowSize);
     }
 
     setupOnlineCheckInterval() {
@@ -207,6 +212,10 @@ function initialiseApplication() {
       } else {
         $store.dispatch("setOnline", false);
       }
+    }
+
+    setWindowSize() {
+      document.documentElement.style.setProperty("--vh", `${window.innerHeight / 100}px`);
     }
 
     /**
