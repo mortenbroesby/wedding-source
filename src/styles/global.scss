@@ -14,8 +14,8 @@ body {
   font-size: 12px;
   letter-spacing: 1px;
   line-height: 1.5;
-  color: color('main-fontColor');
-  background-color: color('background');
+  color: get-color("main-fontColor");
+  background-color: get-color("main-background");
   @include z-index(root);
   scroll-behavior: smooth;
 

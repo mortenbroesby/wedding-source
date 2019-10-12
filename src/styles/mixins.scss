@@ -3,44 +3,58 @@ $font-family--fallback: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto",
 $font-family--global: "Lora", $font-family--fallback;
 
 $colors: (
-  'main-fontColor':             rgba(#142E4B, 1),
+  "main-background":            #FFFFFF,
+  'main-fontColor':             #142E4B,
 
-  'coupleIntro-background':     rgba(#F9D6C8, 1),
-  'coupleIntro-and':            rgba(#ED3124, 1),
+  'coupleIntro-background':     #F9D6C8,
+  'coupleIntro-and':            #ED3124,
 
-  'timeline-background':        rgba(#B0DDD7, 1),
-  'timeline-title':             rgba(#FFFFFF, 1),
-  'timeline-subtitle':          rgba(#142E4B, 1),
+  'timeline-background':        #B0DDD7,
+  'timeline-title':             #FFFFFF,
+  'timeline-subtitle':          #142E4B,
 
-  'information-title':          rgba(#ED3124, 1),
+  'information-title':          #ED3124,
 
-  'rsvp-background':            rgba(#B0DDD7, 1),
+  'rsvp-background':            #B0DDD7,
 
-  'footerArea-background':     rgba(#F9D6C8, 1),
-  'footerArea-title':          rgba(#ED3124, 1),
+  'footerArea-background':      #F9D6C8,
+  'footerArea-title':           #ED3124,
 );
 
-/* Color variables */
-$main-fontColor: map-get($colors, 'main-fontColor');
+// Get the named color from our color map, with optional opacity.
+// @param  string $color   A named color found in our $colors map.
+// @param  number $opacity Desired opacity, defaulting to 1 (full opacity).
+// @return color           The requested color with the alpha value. Remember that "color" is a value type of its own in Sass.
+@function get-color($color, $opacity: 1) {
 
-$coupleIntro-background: map-get($colors, 'coupleIntro-background');
-$coupleIntro-and: map-get($colors, 'coupleIntro-and');
+	// Check to make sure the named color we requested exists in our $colors map.
+	@if map-has-key($colors, $color) {
 
-$timeline-background: map-get($colors, 'timeline-background');
-$timeline-title: map-get($colors, 'timeline-title');
-$timeline-subtitle: map-get($colors, 'timeline-subtitle');
+		// If so, return the color value along with the alpha channel value.
+		@return transparentize(map-get( $colors, $color ), 1 - $opacity);
+	}
 
-$information-title: map-get($colors, 'information-title');
-
-$rsvp-background: map-get($colors, 'rsvp-background');
-
-$footerArea-background: map-get($colors, 'footerArea-background');
-$footerArea-title: map-get($colors, 'footerArea-title');
-
-/* Mixins */
-@function color($key) {
-  @return map-get($colors, $key);
+	// If the requested color name was not found in our map, return magenta instead
+	// (so it's obvious that something is wrong without completely erroring out).
+	@return #f0f;
 }
+
+/* Color variables */
+$main-fontColor: get-color('main-fontColor');
+
+$coupleIntro-background: get-color('coupleIntro-background');
+$coupleIntro-and: get-color('coupleIntro-and');
+
+$timeline-background: get-color('timeline-background');
+$timeline-title: get-color('timeline-title');
+$timeline-subtitle: get-color('timeline-subtitle');
+
+$information-title: get-color('information-title');
+
+$rsvp-background: get-color('rsvp-background');
+
+$footerArea-background: get-color('footerArea-background');
+$footerArea-title: get-color('footerArea-title');
 
 /* Z-index landscape */
 $z-index: (
