@@ -12,6 +12,12 @@
   ],
   "presets": [
     "env",
-    "vue"
+    "vue",
+    [
+      "@babel/preset-env", {
+        "debug": true,
+        "useBuiltIns": "usage"
+      }
+    ]
   ]
 }
