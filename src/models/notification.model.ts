@@ -1,9 +1,9 @@
 import Logger from "js-logger";
 import { isNonEmptyString, isDefined } from "../utilities";
-import _ from "lodash";
+import { find } from "lodash-es";
 
 const images = require("../*.png");
-const icon = _.find(images, (image, key) => key === "android-chrome-192x192");
+const icon = find(images, (image, key) => key === "android-chrome-192x192");
 
 export class NotificationModel {
   title: "Wedding Jo & Morten has updates";

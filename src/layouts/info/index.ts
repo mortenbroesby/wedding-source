@@ -5,7 +5,7 @@ import { Component, Prop } from "vue-property-decorator";
 import StoreMixin from "../../mixins/store.mixin";
 
 import { isEmptyString, isDefined } from "../../utilities";
-import _ from "lodash";
+import { find } from "lodash-es";
 
 import MainMenu from "../../components/main-menu";
 
@@ -57,7 +57,7 @@ export default class Info extends mixins(StoreMixin) {
 
   get markdown() {
     const markdown = require("../../content/infoPage/*.md");
-    const currentMarkdown = _.find(markdown, (_: string, key: string) => key === this.id);
+    const currentMarkdown = find(markdown, (_: string, key: string) => key === this.id);
 
     return currentMarkdown;
   }

@@ -3,7 +3,7 @@ import Vue from "vue";
 import { Component, Watch } from "vue-property-decorator";
 import config from "./config";
 
-import { parseEncrypted } from "./utilities";
+import { parseEncrypted, supportsCSSVariables } from "./utilities";
 import { router } from "./router";
 import { $store, RootState } from "./store";
 
@@ -134,6 +134,7 @@ function initialiseApplication() {
     /*************************************************/
     async created() {
       this.setWindowSize();
+      this.addEventListeners();
       this.setupServiceWorker();
 
       this.initialiseApplication().then(() => {
@@ -215,7 +216,9 @@ function initialiseApplication() {
     }
 
     setWindowSize() {
-      document.documentElement.style.setProperty("--vh", `${window.innerHeight / 100}px`);
+      if (supportsCSSVariables()) {
+        document.documentElement.style.setProperty("--vh", `${window.innerHeight / 100}px`);
+      }
     }
 
     /**

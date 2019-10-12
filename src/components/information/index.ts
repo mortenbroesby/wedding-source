@@ -5,7 +5,7 @@ import { Component } from "vue-property-decorator";
 import { getInformationContent } from "../../services/api.service";
 import { InfoItem, InfoButton } from "../../interfaces";
 import { isUndefined, isDefined, isNonEmptyString } from "../../utilities";
-import _ from "lodash";
+import { find } from "lodash-es";
 
 import { askForPermissionToReceiveNotifications } from "../../service-worker-init";
 import { InfoAction } from "../../enums";
@@ -56,7 +56,7 @@ export default class Information extends Vue {
 
     const items = content.map((item: InfoItem, index) => {
       const images = require("../../assets/information/*.jpg");
-      const currentImage = _.find(images, (_: string, key: string) => key === item.image);
+      const currentImage = find(images, (_: string, key: string) => key === item.image);
 
       return {
         id: `${index}-${item.id}`,

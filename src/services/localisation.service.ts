@@ -2,7 +2,7 @@ import Logger from "js-logger";
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 import config from "../config";
-import _ from "lodash";
+import { find } from "lodash-es";
 
 import { setItem, getItem } from "../utilities";
 
@@ -158,7 +158,7 @@ export const formatMessage = (key: string, payload?: any) => String(i18n.t(key, 
 export const defaultLanguage = config.defaultLanguage;
 
 export const defaultLocale = () => {
-  const defaultLanguage = _.find(config.languages, (language: any, key: string) => key === config.defaultLanguage);
+  const defaultLanguage = find(config.languages, (language: any, key: string) => key === config.defaultLanguage);
   if (defaultLanguage) {
     return defaultLanguage.locale;
   }

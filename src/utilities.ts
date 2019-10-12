@@ -1,6 +1,8 @@
 import Logger from "js-logger";
 import config from "./config";
 
+import { version } from "../package.json";
+
 /**
  * [ Storage utility function ]
 
@@ -179,10 +181,7 @@ export function getDeviceId() {
 }
 
 export function getApplicationVersion() {
-  // const releaseVersion = config.version;
-  const releaseVersion = `1.0.0`;
-
-  return `${releaseVersion}`;
+  return `${version}`;
 }
 
 export function randomValue() {
@@ -218,4 +217,21 @@ export function decrypt(value: any) {
 export function parseEncrypted(input: string) {
   const decryptedConfig = decrypt(input);
   return JSON.parse(decryptedConfig);
+}
+
+export function supportsCSSVariables(): boolean {
+  let stylesheet = document.createElement("style");
+  let support = false;
+
+  stylesheet.innerHTML = ":root { --tmp-var: bold; }";
+  document.head.appendChild(stylesheet);
+
+  support = !!(window.CSS && window.CSS.supports
+    && window.CSS.supports("font-weight", "var(--tmp-var)"));
+
+  if (stylesheet && stylesheet.parentNode) {
+    stylesheet.parentNode.removeChild(stylesheet);
+  }
+
+  return support;
 }

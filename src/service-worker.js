@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { find } from "lodash-es";
 
 const CACHE_VERSION = 30;
 
@@ -9,7 +9,7 @@ importScripts("https://www.gstatic.com/firebasejs/4.10.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/4.10.0/firebase-messaging.js");
 
 const images = require("./*.png");
-const icon = _.find(images, (image, key) => key === "android-chrome-192x192");
+const icon = find(images, (image, key) => key === "android-chrome-192x192");
 
 function setupWorkbox() {
   workbox.setConfig({ debug: true });
