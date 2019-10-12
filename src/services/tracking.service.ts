@@ -45,7 +45,5 @@ export function trackPage({ fullPath = "/", pageName = RouteName.HOME }: { fullP
     dt: pageName,
   };
 
-  // Logger.info(">>>>>> trackPage payload: ", trackingPayload);
-
   visitor.pageview(trackingPayload).send();
 }

@@ -1,4 +1,4 @@
-const CACHE_VERSION = 21;
+const CACHE_VERSION = 23;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 
@@ -105,6 +105,41 @@ function setupWorkbox() {
   );
 }
 
+function setupFirebase() {
+  firebase.initializeApp({
+    messagingSenderId: "29718419301",
+  });
+
+  const messaging = firebase.messaging();
+
+  messaging.setBackgroundMessageHandler((payload) => {
+    const promiseChain = clients
+      .matchAll({
+        type: "window",
+        includeUncontrolled: true
+      })
+      .then(windowClients => {
+        windowClients.map((client) => client.postMessage(payload));
+        return payload;
+      })
+      .then(() => {
+        const body = (payload && payload.data && payload.data.message) || "Check it out!";
+        return registration.showNotification(
+          "Wedding Jo & Morten has updates", {
+            body
+          }
+        );
+      });
+
+    return promiseChain;
+  });
+}
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  clients.openWindow(`/`);
+}, false);
+
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
   setupWorkbox();
@@ -114,6 +149,7 @@ if (workbox) {
 
 if (firebase) {
   console.log(`Yay! Firebase is loaded 🎉`);
+  setupFirebase();
 } else {
   console.log(`Boo! Firebase didn't load 😬`);
 }

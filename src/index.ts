@@ -7,10 +7,9 @@ import { parseEncrypted } from "./utilities";
 import { router } from "./router";
 import { $store, RootState } from "./store";
 
-import { firestorePlugin } from "vuefire";
 import firebase from "firebase/app";
-import "firebase/messaging";
 import "firebase/firestore";
+import "firebase/messaging";
 import "firebase/performance";
 
 import Toasted from "vue-toasted";
@@ -45,9 +44,6 @@ export const perf = firebase.performance();
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
 Vue.config.performance = true;
-
-// Initialise Vue plugins
-Vue.use(firestorePlugin);
 
 Vue.use(VueMeta, {
   refreshOnceOnNavigation: true,

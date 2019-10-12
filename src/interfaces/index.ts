@@ -34,3 +34,8 @@ export interface IPayload {
   songSuggestions: string;
   dietRestrictions: string;
 }
+
+export interface INotification {
+  title: string;
+  body: string;
+}

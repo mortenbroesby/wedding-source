@@ -3,6 +3,12 @@ declare module "*.vue" {
   export default Vue;
 }
 
+
+declare module "*.model.js" {
+  const value: any;
+  export default value;
+}
+
 declare module "*.json" {
   const value: any;
   export default value;
