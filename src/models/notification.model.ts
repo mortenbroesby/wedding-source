@@ -1,24 +1,29 @@
 import Logger from "js-logger";
-import { isNonEmptyString } from "../utilities";
+import { isNonEmptyString, isDefined } from "../utilities";
+import _ from "lodash";
+
+const images = require("../*.png");
+const icon = _.find(images, (image, key) => key === "android-chrome-192x192");
 
 export class NotificationModel {
-  title: "";
+  title: "Wedding Jo & Morten has updates";
 
   options: any = {
-    body: "",
-    image: "./android-chrome-512x512.png",
+    body: "Check it out!",
+    icon: icon,
   };
 
   constructor(payload: any) {
-    if (payload !== undefined) {
-      if (payload.data !== undefined) {
-
+    if (isDefined(payload)) {
+      if (isDefined(payload.data)) {
         if (isNonEmptyString(payload.data.title)) {
           this.title = payload.data.title;
         }
 
         if (isNonEmptyString(payload.data.message)) {
-          this.options.body = payload.data.message;
+          if ("body" in Notification.prototype) {
+            this.options.body = payload.data.message;
+          }
         }
       }
     }
@@ -32,7 +37,7 @@ export class NotificationModel {
         {
           action: "visit-page-action",
           title: "Go to Josephine & Morten Website",
-          icon: "/images/demos/action-download-book-128x128.png"
+          icon
         }
       ];
     }
@@ -42,11 +47,7 @@ export class NotificationModel {
     }
 
     if ("icon" in Notification.prototype) {
-      this.options.icon = "./android-chrome-192x192.png";
-    }
-
-    if ("image" in Notification.prototype) {
-      this.options.image = "./android-chrome-512x512.png";
+      this.options.icon = icon;
     }
   }
 }

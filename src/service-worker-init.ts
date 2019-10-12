@@ -1,10 +1,11 @@
 import Logger from "js-logger";
-import { initialisedFirebase } from ".";
-import config from "./config";
-import { db } from "./index";
 import Vue from "vue";
 
 import { parseEncrypted } from "./utilities";
+
+import { initialisedFirebase } from ".";
+import config from "./config";
+import { db } from "./index";
 
 const cloudMessage = parseEncrypted(config.cloudMessage);
 
@@ -29,8 +30,10 @@ export function setupServiceWorker() {
       messaging.usePublicVapidKey(config.webPushCertificate);
 
       messaging.onMessage((payload: any) => {
-        console.log("onMessage received: ", payload);
-        notifyMe(new NotificationModel(payload));
+        notifyMe({
+          notification: new NotificationModel(payload),
+          payload
+        });
       });
     }).catch((error) => {
       Logger.warn("Service worker registration error: " + error);
@@ -124,13 +127,12 @@ export async function subscribeTokenToTopic(token, topic = "notifications"): Pro
   return Promise.resolve("subscribed");
 }
 
-function notifyMe(notification: NotificationModel) {
+function notifyMe({ notification, payload = {} }: { notification: NotificationModel; payload?: {}; }) {
   if (!serviceWorkerRegistration) return;
 
   // Let"s check if the browser supports notifications
   if (!("Notification" in window)) {
-    console.log("This browser does not support desktop notification");
-    return;
+    return console.log("This browser does not support desktop notification");
   }
 
   // We need to ask the user for permission
@@ -138,10 +140,11 @@ function notifyMe(notification: NotificationModel) {
     return askForPermissionToReceiveNotifications();
   }
 
-  console.log("Triggering notification: ", notification);
+  // Trigger notification
+  console.log("Triggering notification: ", notification, payload);
 
   serviceWorkerRegistration.showNotification(
-    notification.title,
-    notification.options
+    "Wedding Jo & Morten has updates",
+    notification.options,
   );
 }

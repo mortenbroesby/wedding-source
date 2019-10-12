@@ -48,6 +48,9 @@ module.exports = {
     "no-console": 0,
     "consistent-return": 0,
     "import/prefer-default-export": 0,
+    "no-plusplus": 0,
+    "import/no-unresolved": 0,
+    "import/newline-after-import": 0,
 
     // allow debugger during development
 		"no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",

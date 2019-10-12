@@ -1,10 +1,15 @@
-const CACHE_VERSION = 28;
+import _ from "lodash";
+
+const CACHE_VERSION = 30;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 importScripts("https://www.gstatic.com/firebasejs/4.10.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/4.10.0/firebase-messaging.js");
+
+const images = require("./*.png");
+const icon = _.find(images, (image, key) => key === "android-chrome-192x192");
 
 function setupWorkbox() {
   workbox.setConfig({ debug: true });
@@ -103,10 +108,16 @@ function setupFirebase() {
 
         const hasMessage = payload && payload.data && payload.data.message;
         const body = (hasMessage) || "Check it out!";
+
+        const title = "Wedding Jo & Morten has updates";
+        const options = {
+          body,
+          icon,
+        };
+
         return registration.showNotification(
-          "Wedding Jo & Morten has updates", {
-            body
-          }
+          title,
+          options,
         );
       });
 
@@ -116,8 +127,22 @@ function setupFirebase() {
 
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
-  clients.openWindow(`/`);
-}, false);
+
+  event.waitUntil(clients.matchAll({
+    type: 'window'
+  }).then((clientList) => {
+    for (let i = 0; i < clientList.length; i++) {
+      const client = clientList[i];
+      if (client.url === '/' && 'focus' in client) {
+        return client.focus();
+      }
+    }
+
+    if (clients.openWindow) {
+      return clients.openWindow('/');
+    }
+  }));
+});
 
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
