@@ -7,11 +7,11 @@
   "scripts": {
     "eslint": "eslint --fix --ext .js,.vue src",
     "predev": "npm run cleanDev",
-    "dev": "parcel serve src/index.html -d dev-dist --public-url /dev-dist/ --open",
-    "clean": "rimraf .cache/ && rimraf dist/ && rimraf build/",
-    "cleanDev": "rimraf .cache/ && rimraf dev-dist/ && rimraf build/",
+    "dev": "parcel serve src/index.html -d dev-public --public-url /dev-public/ --open",
+    "clean": "rimraf .cache/ && rimraf public/ && rimraf build/",
+    "cleanDev": "rimraf .cache/ && rimraf dev-public/ && rimraf build/",
     "prebuild": "npm run clean",
-    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url / --out-dir ./dist --no-source-maps --log-level 3",
+    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url / --out-dir ./public --no-source-maps --log-level 3",
     "deploy": "npm run build && firebase deploy --only hosting",
     "unit": "jest --config test/unit/jest.config.js --coverage",
     "unitWatch": "jest --config test/unit/jest.config.js --watch"
@@ -92,12 +92,12 @@
   "staticFiles": {
     "staticPath": [
       {
-        "outDirPattern": "**/dev-dist",
+        "outDirPattern": "**/dev-public",
         "staticPath": "static",
         "watcherGlob": "**/*"
       },
       {
-        "outDirPattern": "**/dist",
+        "outDirPattern": "**/public",
         "staticPath": "static",
         "watcherGlob": "**/*"
       }
