@@ -2,6 +2,7 @@ import Logger from "js-logger";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
+import firebase from "firebase/app";
 import { db } from "../../index";
 import { visitor } from "../../services/tracking.service";
 
@@ -81,7 +82,10 @@ export default class RSVPForm extends Vue {
 
   async sendForm(data: any = {}) {
     try {
-      await db.collection("rsvp").doc().set(data);
+      const timestamp = await firebase.firestore.Timestamp.now().toMillis();
+      const stringifiedTimestamp = `${timestamp}`;
+
+      await db.collection("test").doc(stringifiedTimestamp).set(data);
 
       Logger.info("Form data sent: ", data);
       visitor.event("rsvp", "rsvp-success").send();
