@@ -85,7 +85,7 @@ export default class RSVPForm extends Vue {
       const timestamp = await firebase.firestore.Timestamp.now().toMillis();
       const stringifiedTimestamp = `${timestamp}`;
 
-      await db.collection("test").doc(stringifiedTimestamp).set(data);
+      await db.collection("rsvp").doc(stringifiedTimestamp).set(data);
 
       Logger.info("Form data sent: ", data);
       visitor.event("rsvp", "rsvp-success").send();
