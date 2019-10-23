@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { Component, Watch } from "vue-property-decorator";
+import { Component } from "vue-property-decorator";
 import moment from "moment";
 
 import template from "./countdown.vue";
