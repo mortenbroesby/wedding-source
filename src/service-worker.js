@@ -1,6 +1,6 @@
 import { find } from "lodash-es";
 
-const CACHE_VERSION = 30;
+const CACHE_VERSION = 31;
 
 console.log("Service worker cache version: ", CACHE_VERSION);
 
@@ -29,12 +29,12 @@ function setupWorkbox() {
 
   // Cache JS and CSS files.
   // Use cache but update in the background.
-  workbox.routing.registerRoute(
-    /\.(?:js|css)$/,
-    new workbox.strategies.StaleWhileRevalidate({
-      cacheName: "assets-cache",
-    }),
-  );
+  // workbox.routing.registerRoute(
+  //   /\.(?:js|css)$/,
+  //   new workbox.strategies.StaleWhileRevalidate({
+  //     cacheName: "assets-cache",
+  //   }),
+  // );
 
   // Cache the Google Fonts stylesheets with a stale while revalidate strategy.
   workbox.routing.registerRoute(
@@ -62,28 +62,28 @@ function setupWorkbox() {
 
   // Cache image files.
   // Use the cache if its available.
-  workbox.routing.registerRoute(
-    /\.(?:png|jpg|jpeg|svg|gif)$/,
-    new workbox.strategies.CacheFirst({
-      cacheName: "image-cache",
-      plugins: [
-        new workbox.expiration.Plugin({
-          // Cache only 20 images.
-          maxEntries: 20,
-          // Cache for a maximum of a week.
-          maxAgeSeconds: 7 * 24 * 60 * 60,
-        }),
-      ],
-    }),
-  );
+  // workbox.routing.registerRoute(
+  //   /\.(?:png|jpg|jpeg|svg|gif)$/,
+  //   new workbox.strategies.CacheFirst({
+  //     cacheName: "image-cache",
+  //     plugins: [
+  //       new workbox.expiration.Plugin({
+  //         // Cache only 20 images.
+  //         maxEntries: 20,
+  //         // Cache for a maximum of a week.
+  //         maxAgeSeconds: 7 * 24 * 60 * 60,
+  //       }),
+  //     ],
+  //   }),
+  // );
 
   // Cache offline html
-  workbox.precaching.precacheAndRoute(["/index.html"]);
+  // workbox.precaching.precacheAndRoute(["/index.html"]);
 
-  // Register SPA entry point
-  workbox.routing.registerNavigationRoute(
-    workbox.precaching.getCacheKeyForURL('/index.html')
-  );
+  // // Register SPA entry point
+  // workbox.routing.registerNavigationRoute(
+  //   workbox.precaching.getCacheKeyForURL('/index.html')
+  // );
 }
 
 function setupFirebase() {
