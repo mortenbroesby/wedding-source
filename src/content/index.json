@@ -58,8 +58,14 @@
       "id": "gifts",
       "image": "gifts",
       "title": "Did you say gifts?",
-      "description": "The best gift is to have you with us on that day! If you wish to help us start our life of newlyweds very well equipped, we will add a link to list just here in a few weeks. In advance we say a huge thank you.",
-      "buttons": []
+      "description": "The best gift is to have you with us on that day! If you wish to help us start our life of newlyweds very well equipped. In advance we say a huge thank you!",
+      "buttons": [
+        {
+          "label": "Gift list / registry",
+          "link": "https://josephinemorten.zankyou.com/uk",
+          "external": true
+        }
+      ]
     },
     {
       "id": "sunday",
