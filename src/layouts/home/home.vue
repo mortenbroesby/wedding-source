@@ -6,9 +6,11 @@
     <couple-intro></couple-intro>
     <countdown></countdown>
 
-    <timeline id="timeline"></timeline>
+    <info-extra id="infoExtra"></info-extra>
+    <timeline id="timeline" v-show="false"></timeline>
+
     <information id="info"></information>
-    <RSVPForm id="rsvp"></RSVPForm>
+    <RSVPForm id="rsvp" v-show="false"></RSVPForm>
 
     <FooterArea></FooterArea>
   </div>

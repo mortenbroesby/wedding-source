@@ -19,7 +19,7 @@ export default class Countdown extends Vue {
   minutesLeft: number = 0;
   secondsLeft: number = 0;
 
-  eventTimeUnix: number = 1584801000; // Sat, 21 Mar 2020 14: 30: 00 + 0000
+  eventTimeUnix: number = 1604068200; // 10/30/2020 @ 2:30pm (UTC) - https://www.unixtimestamp.com/index.php
   countdownIntervalMS: number = 1000;
 
   /*************************************************/
