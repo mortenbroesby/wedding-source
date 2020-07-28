@@ -9,10 +9,6 @@ $colors: (
   'coupleIntro-background':     #F9D6C8,
   'coupleIntro-and':            #ED3124,
 
-  'infoExtra-background':       #B0DDD7,
-  'infoExtra-title':            #FFFFFF,
-  'infoExtra-subtitle':         #142E4B,
-
   'timeline-background':        #B0DDD7,
   'timeline-title':             #FFFFFF,
   'timeline-subtitle':          #142E4B,
@@ -30,7 +26,6 @@ $colors: (
 // @param  number $opacity Desired opacity, defaulting to 1 (full opacity).
 // @return color           The requested color with the alpha value. Remember that "color" is a value type of its own in Sass.
 @function get-color($color, $opacity: 1) {
-
 	// Check to make sure the named color we requested exists in our $colors map.
 	@if map-has-key($colors, $color) {
 
@@ -48,10 +43,6 @@ $main-fontColor: get-color('main-fontColor');
 
 $coupleIntro-background: get-color('coupleIntro-background');
 $coupleIntro-and: get-color('coupleIntro-and');
-
-$infoExtra-background: get-color('infoExtra-background');
-$infoExtra-title: get-color('infoExtra-title');
-$infoExtra-subtitle: get-color('infoExtra-subtitle');
 
 $timeline-background: get-color('timeline-background');
 $timeline-title: get-color('timeline-title');

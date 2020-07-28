@@ -20,9 +20,9 @@ export default class MainMenu extends Vue {
 
   menuItems = [
     { label: "Home", url: "home", showExpanded: false },
-    { label: "When & Where", url: "infoExtra", showExpanded: true },
+    { label: "When & Where", url: "timeline", showExpanded: true },
     { label: "All infos", url: "info", showExpanded: true },
-    // { label: "RSVP", url: "rsvp", showExpanded: true },
+    { label: "RSVP", url: "rsvp", showExpanded: true },
   ];
 
   /*************************************************/

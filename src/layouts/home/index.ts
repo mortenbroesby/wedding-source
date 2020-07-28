@@ -11,7 +11,6 @@ import Cover from "../../components/cover";
 import CoupleIntro from "../../components/couple-intro";
 import Countdown from "../../components/countdown";
 
-import InfoExtra from "../../components/info-extra";
 import Timeline from "../../components/timeline";
 
 import Information from "../../components/information";
@@ -28,7 +27,6 @@ import template from "./home.vue";
     Cover,
     CoupleIntro,
     Countdown,
-    InfoExtra,
     Timeline,
     Information,
     RSVPForm,

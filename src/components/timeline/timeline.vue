@@ -2,7 +2,7 @@
   <div class="timeline">
     <div class="header">
       <h2 class="title">When & where?</h2>
-      <h2 class="subtitle">Saturday 21st of March 2020</h2>
+      <h2 class="subtitle">Friday 30th of October 2020</h2>
     </div>
 
     <div class="timeline-content">
