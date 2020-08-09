@@ -39,8 +39,6 @@ export default class RSVPForm extends Vue {
       name: "",
       isAttending: "Yes",
       message: "",
-      songSuggestions: "",
-      dietRestrictions: "",
     };
   }
 
@@ -56,21 +54,13 @@ export default class RSVPForm extends Vue {
       return;
     }
 
-    const hasDietRestrictions = isNonEmptyString(this.formData.dietRestrictions);
-    const dietRestrictions = hasDietRestrictions ? this.formData.dietRestrictions : "None";
-
     const hasMessage = isNonEmptyString(this.formData.message);
     const message = hasMessage ? this.formData.message : "None";
-
-    const hasSongSuggestions = isNonEmptyString(this.formData.songSuggestions);
-    const songSuggestions = hasSongSuggestions ? this.formData.songSuggestions : "None";
 
     const payload: IPayload = {
       name: this.formData.name,
       isAttending: this.formData.isAttending,
       message: message,
-      songSuggestions: songSuggestions,
-      dietRestrictions: dietRestrictions,
     };
 
     this.sendForm(payload);
@@ -83,9 +73,7 @@ export default class RSVPForm extends Vue {
   async sendForm(data: any = {}) {
     try {
       const timestamp = await firebase.firestore.Timestamp.now().toMillis();
-      const stringifiedTimestamp = `${timestamp}`;
-
-      await db.collection("rsvp").doc(stringifiedTimestamp).set(data);
+      await db.collection("rsvpOctober").doc(`${timestamp}`).set(data);
 
       Logger.info("Form data sent: ", data);
       visitor.event("rsvp", "rsvp-success").send();

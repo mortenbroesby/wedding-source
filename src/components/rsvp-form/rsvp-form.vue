@@ -40,31 +40,6 @@
         </label>
       </div>
 
-      <div class="bigField">
-        <label class="label"
-          for="songSuggestions">
-          <p class="text">A song that will make you dance:</p>
-
-          <textarea class="input"
-            name="songSuggestions"
-            placeholder="International songs are preferred :)"
-            v-model="formData.songSuggestions"
-          ></textarea>
-        </label>
-      </div>
-
-      <div class="bigField">
-        <label class="label" for="dietRestrictions">
-          <p class="text">Do you have any allergies or dietary restrictions?</p>
-
-          <textarea class="input"
-            name="dietRestrictions"
-            placeholder="If so, let us know - for example: Allergic to gluten."
-            v-model="formData.dietRestrictions"
-          ></textarea>
-        </label>
-      </div>
-
       <div class="buttons">
         <button class="button clearButton" @click="onReset">Clear</button>
         <button class="button sendButton" @click="onSubmit">Send my answer</button>

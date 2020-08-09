@@ -31,8 +31,6 @@ export interface IPayload {
   name: string;
   isAttending: string;
   message: string;
-  songSuggestions: string;
-  dietRestrictions: string;
 }
 
 export interface INotification {
