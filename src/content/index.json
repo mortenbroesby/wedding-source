@@ -1,6 +1,13 @@
 {
   "information": [
     {
+      "id": "covid",
+      "image": "covid",
+      "title": "What will Covid change?",
+      "description": "Are we sure the wedding will be possible on October 30th? We are as sure as we were in March. Of course we can't predict the future. What we can do it adapt. So we'll have hand sanitizer and increase social distance as much as possible. The venue will respect the measures required. We personally will hug who wants to hug but are also fine with greeting each other with a Namasté sign or an elbow check. Also if you want to wear a mask you are very welcome. If we need to do more we will. And if you have any suggestions please let us know.",
+      "buttons": []
+    },
+    {
       "id": "franish",
       "image": "franish",
       "title": "Franish!",
@@ -44,7 +51,7 @@
       "id": "weather",
       "image": "sunny",
       "title": "What's the weather like?",
-      "description": "Obviously we hope for the best weather. It’s the first day of spring. In practice we can just give you the average of the last few years: 10°C in the afternoon, 4°C at night, sunny with passing clouds. Sunrise: 6:39. Sunset: 18:56.",
+      "description": "Obviously we hope for the best weather. In practice we can just give you the historical average for October 30th: 7°C-11°C. Sunrise: 07:33. Sunset: 17:14.",
       "buttons": []
     },
     {
